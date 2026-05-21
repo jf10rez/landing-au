@@ -1,26 +1,96 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-bg-base: #0A0A0B;
+  --color-bg-surface: #111113;
+  --color-bg-elevated: #161618;
+  --color-bg-input: #1C1C1F;
+
+  --color-border-default: rgba(255, 255, 255, 0.06);
+  --color-border-hover: rgba(255, 0, 51, 0.5);
+
+  --color-text-primary: #F0F0F2;
+  --color-text-secondary: #8A8A8F;
+  --color-text-tertiary: #52525B;
+
+  --color-accent: #FF0033;
+  --color-accent-hover: #E6002D;
+  --color-accent-dim: rgba(255, 0, 51, 0.15);
+  --color-accent-glow: rgba(255, 0, 51, 0.4);
+
+  --color-metric: #FFFFFF;
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0A0A0B;
+  color: #F0F0F2;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: rgba(255, 0, 51, 0.3);
+  color: #FFFFFF;
+}
+
+/* Custom keyframes */
+@keyframes scanline {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+}
+
+@keyframes line-reveal {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* Utility classes for animations */
+@utility animate-scanline {
+  animation: scanline 0.6s cubic-bezier(0.87, 0, 0.13, 1) forwards;
+}
+
+@utility animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@utility animate-line-reveal {
+  animation: line-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Reduced motion: disable animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

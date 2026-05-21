@@ -74,6 +74,7 @@ export function Pricing() {
               <div className="mt-8">
                 <Button
                   href="https://calendly.com"
+                  rel="noopener noreferrer"
                   size="lg"
                   className="w-full shadow-[0_0_32px_rgba(255,0,51,0.3)]"
                 >

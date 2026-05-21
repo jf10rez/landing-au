@@ -24,21 +24,21 @@ export function UseCases() {
             <ScrollReveal key={uc.id} delay={i * 150}>
               <div className="grid gap-8 rounded-2xl border border-border-default bg-bg-base p-6 md:grid-cols-3 md:p-8">
                 <div className="flex flex-col gap-3">
-                  <span className="font-mono text-xs uppercase tracking-wider text-accent">
+                  <h3 className="font-mono text-xs uppercase tracking-wider text-accent">
                     {uc.clientType}
-                  </span>
-                  <h3 className="font-sans text-lg font-semibold text-text-primary">
-                    Problema
                   </h3>
+                  <h4 className="font-sans text-lg font-semibold text-text-primary">
+                    Problema
+                  </h4>
                   <p className="text-sm leading-relaxed text-text-secondary">
                     {uc.problem}
                   </p>
                 </div>
 
                 <div className="flex flex-col gap-3">
-                  <h3 className="font-sans text-lg font-semibold text-text-primary">
+                  <h4 className="font-sans text-lg font-semibold text-text-primary">
                     Soluci\u00f3n
-                  </h3>
+                  </h4>
                   <p className="text-sm leading-relaxed text-text-secondary">
                     {uc.solution}
                   </p>

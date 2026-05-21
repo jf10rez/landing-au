@@ -40,35 +40,37 @@ export function FAQ() {
                       isOpen && "border-border-hover"
                     )}
                   >
-                    <button
-                      onClick={() => toggle(item.id)}
-                      className="flex w-full items-center justify-between p-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface"
-                      aria-expanded={isOpen}
-                    >
-                      <span className="font-sans text-base font-medium text-text-primary pr-4">
-                        {item.question}
-                      </span>
-                      <span
-                        className={cn(
-                          "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-accent/30 text-accent transition-transform duration-300",
-                          isOpen && "rotate-45"
-                        )}
-                        aria-hidden
+                    <h3 className="m-0">
+                      <button
+                        onClick={() => toggle(item.id)}
+                        className="flex w-full items-center justify-between p-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface"
+                        aria-expanded={isOpen}
                       >
-                        <svg
-                          width="12"
-                          height="12"
-                          viewBox="0 0 12 12"
-                          fill="none"
+                        <span className="font-sans text-base font-medium text-text-primary pr-4">
+                          {item.question}
+                        </span>
+                        <span
+                          className={cn(
+                            "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-accent/30 text-accent transition-transform duration-300",
+                            isOpen && "rotate-45"
+                          )}
+                          aria-hidden
                         >
-                          <path
-                            d="M6 1v10M1 6h10"
-                            stroke="currentColor"
-                            strokeWidth="1.5"
-                          />
-                        </svg>
-                      </span>
-                    </button>
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 12 12"
+                            fill="none"
+                          >
+                            <path
+                              d="M6 1v10M1 6h10"
+                              stroke="currentColor"
+                              strokeWidth="1.5"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </h3>
 
                     <div
                       className="grid transition-[grid-template-rows] duration-300"

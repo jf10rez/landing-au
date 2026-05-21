@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://operador-ia.com"),
   title: "Automatizaciones que no fallan | Operador IA",
   description:
     "Dise\u00f1amos workflows con n8n, agentes de IA y APIs para eliminar tareas repetitivas en ventas, marketing y operaciones. Sin plantillas. Sin promesas vac\u00edas.",
@@ -18,10 +19,14 @@ export const metadata: Metadata = {
     "lead generation",
   ],
   authors: [{ name: "Operador IA" }],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "es_ES",
     url: "https://operador-ia.com",
+    siteName: "Operador IA",
     title: "Automatizaciones que no fallan | Operador IA",
     description:
       "Dise\u00f1amos workflows con n8n, agentes de IA y APIs para eliminar tareas repetitivas en ventas, marketing y operaciones.",

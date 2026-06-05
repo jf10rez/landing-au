@@ -35,7 +35,7 @@ export function Products() {
                     <span className="mb-2 block font-mono text-xs uppercase tracking-wider text-accent">
                       {product.category === "b2b"
                         ? "Automatizaci\u00f3n B2B"
-                        : "Para Agencias"}
+                        : "Automatizaci\u00f3n para Agencias"}
                     </span>
                     <h3 className="font-sans text-2xl font-semibold text-text-primary">
                       {product.title}

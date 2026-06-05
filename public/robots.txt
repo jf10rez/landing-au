@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://operador-ia.com/sitemap.xml
+Sitemap: https://ilaxus.com/sitemap.xml

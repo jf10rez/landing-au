@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useMemo } from "react";
-import { animate, createTimeline } from "animejs";
+import { createTimeline } from "animejs";
 import { useReducedMotion } from "@/app/hooks/useReducedMotion";
 import { cn } from "@/app/lib/utils";
 

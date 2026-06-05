@@ -4,9 +4,9 @@ export const products: Product[] = [
   {
     id: "b2b",
     category: "b2b",
-    title: "Flujos de ventas y operaciones",
+    title: "Automatizaci\u00f3n de ventas y prospecci\u00f3n B2B",
     description:
-      "Conectamos tu CRM, email, LinkedIn y calendario para que los leads se muevan solos. Prospecci\u00f3n, seguimiento y reporting sin intervenci\u00f3n manual.",
+      "Workflows que conectan CRM, email, LinkedIn y calendario. Leads que se mueven solos: prospecci\u00f3n, scoring y seguimiento automatizado.",
     features: [
       "Enriquecimiento autom\u00e1tico de leads",
       "Secuencias de email con condicionales",
@@ -20,9 +20,9 @@ export const products: Product[] = [
   {
     id: "agency",
     category: "agency",
-    title: "Operaciones para agencias",
+    title: "Automatizaci\u00f3n para agencias de marketing",
     description:
-      "Reporting multi-cliente, generaci\u00f3n de contenido, gesti\u00f3n de ads y social media \u2014 todo ejecutado por workflows programados. Tu equipo enfocado en estrategia, no en clicks.",
+      "Reporting multi-cliente, contenido con IA, ads y social media \u2014 todo ejecutado por workflows. Tu equipo en estrategia, no en tareas repetitivas.",
     features: [
       "Dashboards de reporting autom\u00e1tico",
       "Pipelines de contenido con IA",

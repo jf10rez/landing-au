@@ -33,7 +33,7 @@ export function HowItWorks() {
               Proceso
             </span>
             <h2 className="font-sans text-[clamp(2rem,4vw,3rem)] font-bold leading-tight tracking-[-0.01em] text-text-primary">
-              C\u00f3mo funciona
+              C\u00f3mo automatizamos tus procesos
             </h2>
           </div>
         </ScrollReveal>

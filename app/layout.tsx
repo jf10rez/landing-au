@@ -4,46 +4,43 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://operador-ia.com"),
-  title: "Automatizaciones que no fallan | Operador IA",
+  metadataBase: new URL("https://ilaxus.com"),
+  title: "Automatización de Procesos B2B con IA | Ilaxus",
   description:
-    "Dise\u00f1amos workflows con n8n, agentes de IA y APIs para eliminar tareas repetitivas en ventas, marketing y operaciones. Sin plantillas. Sin promesas vac\u00edas.",
+    "Automatizamos workflows empresariales con n8n y agentes de IA. Sin plantillas. Diseño a medida de tu arquitectura. Agenda una auditoría gratuita.",
   keywords: [
-    "automatizaci\u00f3n",
-    "n8n",
-    "workflows",
-    "agentes IA",
-    "automatizaci\u00f3n B2B",
-    "automatizaci\u00f3n agencias",
-    "CRM automation",
-    "lead generation",
+    "automatización de procesos",
+    "automatización B2B",
+    "workflows con IA",
+    "n8n para empresas",
+    "automatización agencias marketing",
   ],
-  authors: [{ name: "Operador IA" }],
+  authors: [{ name: "Ilaxus" }],
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "es_ES",
-    url: "https://operador-ia.com",
-    siteName: "Operador IA",
-    title: "Automatizaciones que no fallan | Operador IA",
+    url: "https://ilaxus.com",
+    siteName: "Ilaxus",
+    title: "Automatización de Procesos B2B con IA | Ilaxus",
     description:
-      "Dise\u00f1amos workflows con n8n, agentes de IA y APIs para eliminar tareas repetitivas en ventas, marketing y operaciones.",
+      "Automatizamos workflows empresariales con n8n y agentes de IA. Sin plantillas. Diseño a medida para tu arquitectura.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Operador IA - Automatizaciones",
+        alt: "Ilaxus — Automatización de procesos empresariales con IA",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Automatizaciones que no fallan | Operador IA",
+    title: "Automatización de Procesos B2B con IA | Ilaxus",
     description:
-      "Dise\u00f1amos workflows con n8n, agentes de IA y APIs para eliminar tareas repetitivas.",
+      "Workflows empresariales con n8n y agentes de IA. Sin plantillas. A medida de tu arquitectura.",
     images: ["/og-image.jpg"],
   },
   robots: {

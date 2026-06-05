@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Container } from "@/app/components/ui/Container";
 import { ScrollReveal } from "@/app/components/animation/ScrollReveal";
 
@@ -24,12 +25,12 @@ export function Footer() {
 
         <div className="flex flex-col items-center gap-8 py-16 md:flex-row md:justify-between">
           <ScrollReveal>
-            <a
+            <Link
               href="/"
               className="font-mono text-sm font-medium tracking-wider text-text-primary"
             >
-              OPERADOR<span className="text-accent">.IA</span>
-            </a>
+              ILAXUS
+            </Link>
           </ScrollReveal>
 
           <div className="flex flex-wrap items-center justify-center gap-6">
@@ -61,7 +62,7 @@ export function Footer() {
 
         <div className="flex flex-col items-center gap-2 border-t border-border-default py-8 text-center">
           <p className="text-xs text-text-tertiary">
-            &copy; {new Date().getFullYear()} Operador IA. Todos los derechos
+            &copy; {new Date().getFullYear()} Ilaxus. Todos los derechos
             reservados.
           </p>
           <p className="text-xs text-text-tertiary">

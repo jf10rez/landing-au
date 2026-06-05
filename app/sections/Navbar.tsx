@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Container } from "@/app/components/ui/Container";
 import { cn } from "@/app/lib/utils";
 
@@ -31,12 +32,12 @@ export function Navbar() {
     >
       <Container>
         <div className="flex h-16 items-center justify-between">
-          <a
+          <Link
             href="/"
             className="font-mono text-sm font-medium tracking-wider text-text-primary"
           >
-            OPERADOR<span className="text-accent">.IA</span>
-          </a>
+            ILAXUS
+          </Link>
 
           <div className="hidden items-center gap-8 md:flex">
             {links.map((link) => (

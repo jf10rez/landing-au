@@ -13,16 +13,15 @@ export function Hero() {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           <div className="flex flex-col gap-8">
             <TextReveal
-              text="Automatizaciones que no fallan."
+              text="Automatización de procesos sin plantillas."
               as="h1"
               glitch
               className="font-sans text-[clamp(3rem,6vw,6rem)] font-bold leading-[1.0] tracking-[-0.02em] text-text-primary"
             />
 
             <p className="max-w-xl text-lg leading-relaxed text-text-secondary">
-              Dise\u00f1amos workflows con n8n, agentes de IA y APIs para eliminar
-              tareas repetitivas en ventas, marketing y operaciones. Sin
-              plantillas. Sin promesas vac\u00edas.
+              Workflows con IA que se acoplan a tu arquitectura. n8n, agentes
+              personalizados y APIs — sin forzar herramientas que no necesitás.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">

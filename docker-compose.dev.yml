@@ -1,0 +1,47 @@
+# =============================================================================
+# landing-au — docker-compose.dev.yml
+# =============================================================================
+# Entorno de desarrollo local con Hot Reload, Fast Refresh y volúmenes
+# optimizados. No afecta la configuración de producción.
+#
+# Uso:
+#   docker compose -f docker-compose.dev.yml up --build
+# =============================================================================
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: landing-au-dev
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+      - CI=true
+
+    # Volumen bind-mount para el código fuente + volúmenes nombrados para
+    # directorios que el contenedor escribe. Esto evita que los archivos
+    # del host (node_modules, .next) interfieran con los del contenedor.
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+      - next_cache:/app/.next
+
+    # Instalar dependencias al inicio y luego iniciar el dev server.
+    # pnpm install es idempotente: si node_modules está actualizado,
+    # termina en ~1s sin cambios. Si package.json cambió, instala lo nuevo.
+    command: sh -c "pnpm install && pnpm dev"
+
+    # Habilitar TTY para poder ejecutar `docker exec` interactivamente
+    stdin_open: true
+    tty: true
+
+volumes:
+  node_modules:
+  next_cache:

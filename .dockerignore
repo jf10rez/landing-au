@@ -1,0 +1,83 @@
+# =============================================================================
+# landing-au — .dockerignore
+# =============================================================================
+# Objetivo: Minimizar el build context y excluir todo lo que no es necesario
+# para la imagen de producción. Cada byte excluido acelera el build y reduce
+# la superficie de ataque.
+# =============================================================================
+
+# Dependencias locales (se instalan en el contenedor)
+node_modules
+.pnpm-store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Next.js build artifacts (se generan en el contenedor)
+.next
+out
+build
+
+# Lockfiles (se copian explícitamente en el Dockerfile)
+# Nota: pnpm-lock.yaml NO se ignora porque se necesita para pnpm install --frozen-lockfile
+package-lock.json
+yarn.lock
+
+# Configuración de Docker (no necesaria en el build context)
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# Git
+.git
+.gitignore
+
+# Entornos y secretos (NUNCA incluir en la imagen)
+.env
+.env.local
+.env.development
+.env.production
+.env*.local
+
+# Logs
+logs
+*.log
+
+# Testing
+__tests__
+coverage
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+
+# Linting y formateo
+.eslint*
+.prettier*
+.editorconfig
+
+# IDE y editor
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Documentación del proyecto
+README.md
+PLAN.md
+SEO-PENDING.md
+AGENTS.md
+CLAUDE.md
+INFRASTRUCTURE.md
+
+# CI/CD local
+.github
+
+# Misc
+*.md

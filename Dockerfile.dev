@@ -1,0 +1,44 @@
+# syntax=docker/dockerfile:1
+
+# =============================================================================
+# landing-au — Dockerfile de Desarrollo
+# =============================================================================
+# Objetivo: Entorno de desarrollo con Hot Reload para Next.js 16 App Router
+# + pnpm. No realiza build de producción. Ejecuta `next dev` con Turbopack.
+# =============================================================================
+
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Instalar pnpm via corepack (misma versión exacta que producción)
+# Esto garantiza que el entorno de desarrollo y producción usan
+# exactamente el mismo gestor de paquetes y la misma versión.
+RUN corepack enable && corepack prepare pnpm@10.33.4 --activate
+
+# Dependencias del sistema para compilación de módulos nativos
+# (prisma, bcrypt, sharp, etc. — actualmente no se necesitan pero se
+# dejan para futuras integraciones sin rebuild de la imagen).
+RUN apk add --no-cache libc6-compat
+
+# Copiar manifiestos de dependencias primero para cacheo de capas.
+# Si package.json o pnpm-lock.yaml no cambian, Docker usa la capa cacheada
+# y salta `pnpm install` completamente.
+COPY package.json pnpm-lock.yaml ./
+
+# Instalar TODAS las dependencias (dev + prod).
+# --frozen-lockfile asegura que el lockfile no se modifique accidentalmente.
+RUN pnpm install --frozen-lockfile
+
+# Copiar el código fuente completo.
+# En desarrollo con docker-compose, este directorio es sobrescrito por el
+# volumen bind-mount (.:/app), pero esta copia permite usar la imagen
+# standalone sin Compose (útil para CI de lint o pruebas rápidas).
+COPY . .
+
+# Exponer el puerto del dev server de Next.js
+EXPOSE 3000
+
+# Comando por defecto: dev server con Turbopack (Next.js 16)
+# El comando real se puede sobrescribir en docker-compose.dev.yml.
+CMD ["pnpm", "dev"]

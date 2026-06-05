@@ -12,35 +12,47 @@ export function StickyCTA() {
   const reduced = useReducedMotion();
 
   useEffect(() => {
+    let frame = 0;
+    let current = false;
+
     const handleScroll = () => {
-      const threshold = window.innerHeight * 0.8;
-      setVisible(window.scrollY > threshold);
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        const threshold = window.innerHeight * 0.8;
+        const next = window.scrollY > threshold;
+        if (next !== current) {
+          current = next;
+          setVisible(next);
+        }
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   useEffect(() => {
     if (!ref.current || reduced) return;
 
-    if (visible) {
-      animate(ref.current, {
-        translateX: ["120%", "0%"],
-        opacity: [0, 1],
-        duration: 700,
-        easing: "cubicBezier(0.34, 1.56, 0.64, 1)",
-        autoplay: true,
-      });
-    } else {
-      animate(ref.current, {
-        translateX: ["0%", "120%"],
-        opacity: [1, 0],
-        duration: 500,
-        easing: "cubicBezier(0.87, 0, 0.13, 1)",
-        autoplay: true,
-      });
-    }
+    const animation = animate(ref.current, {
+      translateX: visible ? ["120%", "0%"] : ["0%", "120%"],
+      opacity: visible ? [0, 1] : [1, 0],
+      duration: visible ? 700 : 500,
+      easing: visible
+        ? "cubicBezier(0.34, 1.56, 0.64, 1)"
+        : "cubicBezier(0.87, 0, 0.13, 1)",
+      autoplay: true,
+    });
+
+    return () => {
+      animation.pause();
+    };
   }, [visible, reduced]);
 
   if (reduced && !visible) return null;
@@ -49,14 +61,14 @@ export function StickyCTA() {
     <div
       ref={ref}
       className={cn(
-        "fixed bottom-6 right-6 z-50 translate-x-[120%] opacity-0 md:bottom-8 md:right-8",
+        "fixed inset-x-4 bottom-4 z-50 translate-x-[120%] opacity-0 sm:inset-x-auto sm:right-6 md:bottom-8 md:right-8",
         reduced && visible && "translate-x-0 opacity-100"
       )}
     >
       <Button
         href="#pricing"
         size="lg"
-        className="shadow-[0_0_32px_rgba(255,0,51,0.25)] hover:shadow-[0_0_48px_rgba(255,0,51,0.4)]"
+        className="w-full shadow-[0_0_24px_rgba(255,0,51,0.2)] hover:shadow-[0_0_40px_rgba(255,0,51,0.35)] sm:w-auto"
       >
         Agendar llamada
       </Button>

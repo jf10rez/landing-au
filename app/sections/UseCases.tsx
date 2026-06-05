@@ -9,21 +9,21 @@ export function UseCases() {
     <SectionWrapper id="casos" className="bg-bg-surface">
       <Container>
         <ScrollReveal>
-          <div className="mb-16 max-w-2xl">
+          <div className="mb-10 max-w-2xl sm:mb-14 lg:mb-16">
             <span className="mb-4 block font-mono text-xs uppercase tracking-wider text-accent">
               Resultados
             </span>
-            <h2 className="font-sans text-[clamp(2rem,4vw,3rem)] font-bold leading-tight tracking-[-0.01em] text-text-primary">
+            <h2 className="font-sans text-[clamp(2rem,8vw,3rem)] font-bold leading-tight tracking-normal text-text-primary sm:text-[clamp(2.25rem,4vw,3rem)]">
               Números que importan
             </h2>
           </div>
         </ScrollReveal>
 
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col gap-6 lg:gap-8">
           {useCases.map((uc, i) => (
             <ScrollReveal key={uc.id} delay={i * 150}>
-              <div className="grid gap-8 rounded-2xl border border-border-default bg-bg-base p-6 md:grid-cols-3 md:p-8">
-                <div className="flex flex-col gap-3">
+              <div className="grid gap-6 rounded-lg border border-border-default bg-bg-base p-5 sm:p-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(180px,0.7fr)] md:gap-8 lg:p-8">
+                <div className="flex min-w-0 flex-col gap-3">
                   <h3 className="font-mono text-xs uppercase tracking-wider text-accent">
                     {uc.clientType}
                   </h3>
@@ -35,7 +35,7 @@ export function UseCases() {
                   </p>
                 </div>
 
-                <div className="flex flex-col gap-3">
+                <div className="flex min-w-0 flex-col gap-3">
                   <h4 className="font-sans text-lg font-semibold text-text-primary">
                     Solución
                   </h4>
@@ -44,7 +44,7 @@ export function UseCases() {
                   </p>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-6 md:flex-col md:items-start md:justify-center">
+                <div className="grid grid-cols-2 gap-4 border-t border-border-default pt-5 md:flex md:flex-col md:items-start md:justify-center md:border-t-0 md:pt-0">
                   {uc.metrics.map((metric) => (
                     <CountUp
                       key={metric.label}

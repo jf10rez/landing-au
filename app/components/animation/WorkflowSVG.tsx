@@ -72,7 +72,7 @@ export function WorkflowSVG() {
     <svg
       ref={svgRef}
       viewBox="0 0 600 300"
-      className="w-full max-w-[600px]"
+      className="aspect-[2/1] w-full max-w-[600px]"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-label="Diagrama de workflow automatizado"

@@ -12,37 +12,37 @@ export function Products() {
     <SectionWrapper id="productos">
       <Container>
         <ScrollReveal>
-          <div className="mb-16 max-w-2xl">
+          <div className="mb-10 max-w-2xl sm:mb-14 lg:mb-16">
             <span className="mb-4 block font-mono text-xs uppercase tracking-wider text-accent">
               Productos
             </span>
-            <h2 className="font-sans text-[clamp(2rem,4vw,3rem)] font-bold leading-tight tracking-[-0.01em] text-text-primary">
+            <h2 className="font-sans text-[clamp(2rem,8vw,3rem)] font-bold leading-tight tracking-normal text-text-primary sm:text-[clamp(2.25rem,4vw,3rem)]">
               Dos modelos. Un mismo resultado: menos trabajo manual.
             </h2>
           </div>
         </ScrollReveal>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-5 md:grid-cols-2 lg:gap-6">
           {products.map((product, i) => (
             <ScrollReveal
               key={product.id}
               delay={i * 120}
               className="perspective-[1000px]"
             >
-              <div className="group relative">
-                <Card className="flex h-full flex-col gap-6">
+              <div className="group relative h-full">
+                <Card className="flex h-full min-w-0 flex-col gap-5 sm:gap-6">
                   <div>
                     <span className="mb-2 block font-mono text-xs uppercase tracking-wider text-accent">
                       {product.category === "b2b"
                         ? "Automatización B2B"
                         : "Automatización para Agencias"}
                     </span>
-                    <h3 className="font-sans text-2xl font-semibold text-text-primary">
+                    <h3 className="font-sans text-xl font-semibold leading-snug text-text-primary sm:text-2xl">
                       {product.title}
                     </h3>
                   </div>
 
-                  <p className="text-base leading-relaxed text-text-secondary">
+                  <p className="text-sm leading-relaxed text-text-secondary sm:text-base">
                     {product.description}
                   </p>
 
@@ -50,7 +50,7 @@ export function Products() {
                     {product.features.map((feature) => (
                       <li
                         key={feature}
-                        className="flex items-start gap-2 text-sm text-text-secondary"
+                        className="flex min-w-0 items-start gap-2 text-sm text-text-secondary"
                       >
                         <span className="mt-1.5 block h-1 w-1 shrink-0 rounded-full bg-accent" />
                         {feature}
@@ -64,8 +64,12 @@ export function Products() {
                     ))}
                   </div>
 
-                  <div className="pt-4">
-                    <Button href={product.ctaHref} variant="secondary">
+                  <div className="pt-2 sm:pt-4">
+                    <Button
+                      href={product.ctaHref}
+                      variant="secondary"
+                      className="w-full sm:w-auto"
+                    >
                       {product.ctaLabel}
                     </Button>
                   </div>
@@ -74,7 +78,7 @@ export function Products() {
                 {/* Scanline effect */}
                 <div
                   className={cn(
-                    "pointer-events-none absolute inset-0 overflow-hidden rounded-xl opacity-0 transition-opacity duration-100",
+                    "pointer-events-none absolute inset-0 overflow-hidden rounded-lg opacity-0 transition-opacity duration-100",
                     "group-hover:opacity-100"
                   )}
                   aria-hidden

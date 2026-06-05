@@ -29,6 +29,7 @@ export function CountUp({
     if (!ref.current || hasAnimated) return;
 
     const el = ref.current;
+    let animation: ReturnType<typeof animate> | undefined;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -37,7 +38,7 @@ export function CountUp({
             if (reduced) {
               el.textContent = `${prefix}${end}${suffix}`;
             } else {
-              animate(el, {
+              animation = animate(el, {
                 innerText: [0, end],
                 duration,
                 round: 1,
@@ -58,7 +59,10 @@ export function CountUp({
 
     observer.observe(el);
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      animation?.pause();
+    };
   }, [end, prefix, suffix, duration, reduced, hasAnimated]);
 
   return (

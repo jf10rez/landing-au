@@ -28,17 +28,17 @@ export function HowItWorks() {
     <SectionWrapper id="como-funciona" className="bg-bg-surface">
       <Container>
         <ScrollReveal>
-          <div className="mb-16 max-w-2xl">
+          <div className="mb-10 max-w-2xl sm:mb-14 lg:mb-16">
             <span className="mb-4 block font-mono text-xs uppercase tracking-wider text-accent">
               Proceso
             </span>
-            <h2 className="font-sans text-[clamp(2rem,4vw,3rem)] font-bold leading-tight tracking-[-0.01em] text-text-primary">
+            <h2 className="font-sans text-[clamp(2rem,8vw,3rem)] font-bold leading-tight tracking-normal text-text-primary sm:text-[clamp(2.25rem,4vw,3rem)]">
               Cómo automatizamos tus procesos
             </h2>
           </div>
         </ScrollReveal>
 
-        <div className="grid gap-10 md:grid-cols-3 lg:gap-12">
+        <div className="grid gap-8 md:grid-cols-3 lg:gap-12">
           {steps.map((step, i) => (
             <ScrollReveal
               key={step.number}
@@ -46,11 +46,11 @@ export function HowItWorks() {
               direction="up"
               distance={24}
             >
-              <div className="flex min-w-0 flex-col gap-4">
+              <div className="flex min-w-0 flex-col gap-3 rounded-lg border border-border-default/70 bg-bg-base/35 p-5 md:border-0 md:bg-transparent md:p-0">
                 <span className="font-mono text-4xl font-medium text-text-tertiary">
                   {step.number}
                 </span>
-                <h3 className="font-sans text-xl font-semibold text-text-primary">
+                <h3 className="font-sans text-lg font-semibold leading-snug text-text-primary lg:text-xl">
                   {step.title}
                 </h3>
                 <p className="text-base leading-relaxed text-text-secondary">

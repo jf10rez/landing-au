@@ -23,7 +23,7 @@ export function Footer() {
           <div className="absolute inset-0 origin-center scale-x-0 animate-line-reveal bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
         </div>
 
-        <div className="flex flex-col items-center gap-8 py-16 md:flex-row md:justify-between">
+        <div className="flex flex-col items-center gap-8 py-12 md:flex-row md:justify-between md:py-16">
           <ScrollReveal>
             <Link
               href="/"
@@ -33,7 +33,7 @@ export function Footer() {
             </Link>
           </ScrollReveal>
 
-          <div className="flex flex-wrap items-center justify-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-6">
             {links.map((link) => (
               <ScrollReveal key={link.href} delay={20}>
                 <a

@@ -17,7 +17,7 @@ export function SectionWrapper({
   return (
     <TagName
       id={id}
-      className={cn("py-[clamp(80px,10vh,120px)]", className)}
+      className={cn("scroll-mt-20 py-16 sm:py-20 lg:py-28", className)}
     >
       {children}
     </TagName>

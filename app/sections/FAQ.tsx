@@ -18,11 +18,11 @@ export function FAQ() {
     <SectionWrapper id="faq" className="bg-bg-surface">
       <Container>
         <ScrollReveal>
-          <div className="mb-16 max-w-2xl">
+          <div className="mb-10 max-w-2xl sm:mb-14 lg:mb-16">
             <span className="mb-4 block font-mono text-xs uppercase tracking-wider text-accent">
               FAQ
             </span>
-            <h2 className="font-sans text-[clamp(2rem,4vw,3rem)] font-bold leading-tight tracking-[-0.01em] text-text-primary">
+            <h2 className="font-sans text-[clamp(2rem,8vw,3rem)] font-bold leading-tight tracking-normal text-text-primary sm:text-[clamp(2.25rem,4vw,3rem)]">
               Preguntas frecuentes
             </h2>
           </div>
@@ -36,17 +36,17 @@ export function FAQ() {
                 <ScrollReveal key={item.id} delay={i * 50}>
                   <div
                     className={cn(
-                      "rounded-xl border border-border-default bg-bg-base transition-all duration-200",
+                      "rounded-lg border border-border-default bg-bg-base transition-all duration-200",
                       isOpen && "border-border-hover"
                     )}
                   >
                     <h3 className="m-0">
                       <button
                         onClick={() => toggle(item.id)}
-                        className="flex w-full items-center justify-between p-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface"
+                        className="flex min-h-14 w-full items-center justify-between p-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface sm:p-5"
                         aria-expanded={isOpen}
                       >
-                        <span className="font-sans text-base font-medium text-text-primary pr-4">
+                        <span className="pr-4 font-sans text-sm font-medium leading-relaxed text-text-primary sm:text-base">
                           {item.question}
                         </span>
                         <span
@@ -72,14 +72,9 @@ export function FAQ() {
                       </button>
                     </h3>
 
-                    <div
-                      className="grid transition-[grid-template-rows] duration-300"
-                      style={{
-                        gridTemplateRows: isOpen ? "1fr" : "0fr",
-                      }}
-                    >
-                      <div className="overflow-hidden">
-                        <div className="px-5 pb-5 text-sm leading-relaxed text-text-secondary">
+                    <div hidden={!isOpen}>
+                      <div>
+                        <div className="px-4 pb-4 text-sm leading-relaxed text-text-secondary sm:px-5 sm:pb-5">
                           {item.answer}
                         </div>
                       </div>

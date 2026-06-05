@@ -72,7 +72,7 @@ export function ScrollReveal({
           }
         });
       },
-      { threshold }
+      { rootMargin: "0px 0px -10% 0px", threshold }
     );
 
     observer.observe(el);

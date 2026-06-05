@@ -9,14 +9,14 @@ export function Pricing() {
     <SectionWrapper id="pricing">
       <Container>
         <ScrollReveal>
-          <div className="mb-16 max-w-2xl text-center mx-auto">
+          <div className="mx-auto mb-10 max-w-2xl text-center sm:mb-14 lg:mb-16">
             <span className="mb-4 block font-mono text-xs uppercase tracking-wider text-accent">
               Primer paso
             </span>
-            <h2 className="font-sans text-[clamp(2rem,4vw,3rem)] font-bold leading-tight tracking-[-0.01em] text-text-primary">
+            <h2 className="font-sans text-[clamp(2rem,8vw,3rem)] font-bold leading-tight tracking-normal text-text-primary sm:text-[clamp(2.25rem,4vw,3rem)]">
               Agenda una llamada de diagnóstico
             </h2>
-            <p className="mt-4 text-lg text-text-secondary">
+            <p className="mt-4 text-base leading-relaxed text-text-secondary sm:text-lg">
               Sin compromiso. 30 minutos para mapear tus procesos y ver si hay
               margen de automatización.
             </p>
@@ -25,16 +25,16 @@ export function Pricing() {
 
         <ScrollReveal>
           <div className="mx-auto max-w-xl">
-            <Card glow className="relative overflow-visible p-8 text-center">
+            <Card glow className="relative overflow-visible p-5 text-center sm:p-8">
               {/* Glow pulse behind card */}
               <div
-                className="absolute inset-0 -z-10 rounded-2xl bg-accent/20 blur-2xl"
+                className="absolute inset-x-4 inset-y-0 -z-10 hidden rounded-lg bg-accent/20 blur-2xl sm:block"
                 aria-hidden
               >
-                <div className="animate-pulse-glow h-full w-full rounded-2xl bg-accent/30" />
+                <div className="animate-pulse-glow h-full w-full rounded-lg bg-accent/30" />
               </div>
 
-              <h3 className="font-sans text-2xl font-semibold text-text-primary">
+              <h3 className="font-sans text-xl font-semibold text-text-primary sm:text-2xl">
                 Diagnóstico gratuito
               </h3>
               <p className="mt-3 text-base text-text-secondary">
@@ -51,7 +51,7 @@ export function Pricing() {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="flex items-center gap-3 text-sm text-text-secondary"
+                    className="flex items-start gap-3 text-sm text-text-secondary"
                   >
                     <svg
                       className="h-4 w-4 shrink-0 text-accent"
@@ -76,7 +76,7 @@ export function Pricing() {
                   href="https://calendly.com"
                   rel="noopener noreferrer"
                   size="lg"
-                  className="w-full shadow-[0_0_32px_rgba(255,0,51,0.3)]"
+                  className="w-full shadow-[0_0_20px_rgba(255,0,51,0.22)] sm:shadow-[0_0_32px_rgba(255,0,51,0.3)]"
                 >
                   Agendar llamada
                 </Button>

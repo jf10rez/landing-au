@@ -84,6 +84,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          # latest solo en main
           tags: |
             type=ref,event=branch
             type=ref,event=pr
@@ -91,7 +92,6 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
             type=sha,prefix=,suffix=,format=short
-            # latest solo en main
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
 
       # -----------------------------------------------------------------------
@@ -116,4 +116,4 @@ jobs:
       # -----------------------------------------------------------------------
       - name: Image digest
         if: github.event_name != 'pull_request'
-        run: echo "Image pushed: ${{ steps.build.outputs.digest }}"
+        run: 'echo "Image pushed: ${{ steps.build.outputs.digest }}"'

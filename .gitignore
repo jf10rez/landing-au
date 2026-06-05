@@ -10,7 +10,6 @@
 !.yarn/releases
 !.yarn/versions
 .pnpm-store
-pnpm-lock.yaml
 
 # testing
 /coverage

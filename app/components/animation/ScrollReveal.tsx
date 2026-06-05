@@ -49,7 +49,10 @@ export function ScrollReveal({
       }
     };
 
-    const initial = { opacity: 0, ...getTranslate() };
+    const translate = getTranslate();
+    const initial = { opacity: 0, ...translate };
+    const target =
+      "x" in translate ? { x: [translate.x, 0] } : { y: [translate.y, 0] };
 
     set(el, initial);
 
@@ -59,7 +62,7 @@ export function ScrollReveal({
           if (entry.isIntersecting) {
             animate(el, {
               opacity: [0, 1],
-              ...getTranslate(),
+              ...target,
               duration,
               delay,
               easing,

@@ -16,7 +16,7 @@ export function Navbar() {
 
   const links = [
     { href: "#productos", label: "Productos" },
-    { href: "#como-funciona", label: "C\u00f3mo funciona" },
+    { href: "#como-funciona", label: "Cómo funciona" },
     { href: "#casos", label: "Casos" },
     { href: "#pricing", label: "Agendar" },
   ];

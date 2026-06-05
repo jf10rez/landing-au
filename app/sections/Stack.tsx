@@ -13,7 +13,7 @@ export function Stack() {
               Stack
             </span>
             <h2 className="font-sans text-[clamp(2rem,4vw,3rem)] font-bold leading-tight tracking-[-0.01em] text-text-primary">
-              n8n + OpenClaw + las herramientas que ya ten\u00e9s
+              n8n + OpenClaw + las herramientas que ya tienes
             </h2>
           </div>
         </ScrollReveal>

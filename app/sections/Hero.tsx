@@ -16,12 +16,12 @@ export function Hero() {
               text="Automatización de procesos sin plantillas."
               as="h1"
               glitch
-              className="font-sans text-[clamp(3rem,6vw,6rem)] font-bold leading-[1.0] tracking-[-0.02em] text-text-primary"
+              className="font-sans text-[clamp(2.55rem,5.4vw,5.25rem)] font-bold leading-[1.08] tracking-normal text-text-primary"
             />
 
             <p className="max-w-xl text-lg leading-relaxed text-text-secondary">
               Workflows con IA que se acoplan a tu arquitectura. n8n, agentes
-              personalizados y APIs — sin forzar herramientas que no necesitás.
+              personalizados y APIs — sin forzar herramientas que no necesitas.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -29,7 +29,7 @@ export function Hero() {
                 Agendar una llamada
               </Button>
               <Button href="#como-funciona" variant="secondary" size="lg">
-                Ver c\u00f3mo funciona
+                Ver cómo funciona
               </Button>
             </div>
           </div>

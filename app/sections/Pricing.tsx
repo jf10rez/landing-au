@@ -14,11 +14,11 @@ export function Pricing() {
               Primer paso
             </span>
             <h2 className="font-sans text-[clamp(2rem,4vw,3rem)] font-bold leading-tight tracking-[-0.01em] text-text-primary">
-              Agend\u00e1 una llamada de diagn\u00f3stico
+              Agenda una llamada de diagnóstico
             </h2>
             <p className="mt-4 text-lg text-text-secondary">
               Sin compromiso. 30 minutos para mapear tus procesos y ver si hay
-              margen de automatizaci\u00f3n.
+              margen de automatización.
             </p>
           </div>
         </ScrollReveal>
@@ -35,19 +35,19 @@ export function Pricing() {
               </div>
 
               <h3 className="font-sans text-2xl font-semibold text-text-primary">
-                Diagn\u00f3stico gratuito
+                Diagnóstico gratuito
               </h3>
               <p className="mt-3 text-base text-text-secondary">
                 Analizamos tus operaciones actuales y te entregamos un mapa de
-                workflows automatizables con estimaci\u00f3n de ROI.
+                workflows automatizables con estimación de ROI.
               </p>
 
               <ul className="mt-6 flex flex-col gap-3 text-left">
                 {[
                   "Mapeo de procesos actuales",
-                  "Identificaci\u00f3n de cuellos de botella",
-                  "Propuesta de workflows con estimaci\u00f3n",
-                  "Roadmap de implementaci\u00f3n",
+                  "Identificación de cuellos de botella",
+                  "Propuesta de workflows con estimación",
+                  "Roadmap de implementación",
                 ].map((item) => (
                   <li
                     key={item}
@@ -83,7 +83,7 @@ export function Pricing() {
               </div>
 
               <p className="mt-4 text-xs text-text-tertiary">
-                Sin tarjeta de cr\u00e9dito. Sin compromiso.
+                Sin tarjeta de crédito. Sin compromiso.
               </p>
             </Card>
           </div>

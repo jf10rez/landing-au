@@ -8,7 +8,7 @@ export function SocialProof() {
       <Container>
         <ScrollReveal>
           <p className="mb-8 text-center font-mono text-xs uppercase tracking-wider text-text-tertiary">
-            Equipos que ya operan sin fricci\u00f3n
+            Equipos que ya operan sin fricción
           </p>
         </ScrollReveal>
 

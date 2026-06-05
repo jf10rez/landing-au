@@ -14,7 +14,7 @@ export function UseCases() {
               Resultados
             </span>
             <h2 className="font-sans text-[clamp(2rem,4vw,3rem)] font-bold leading-tight tracking-[-0.01em] text-text-primary">
-              N\u00fameros que importan
+              Números que importan
             </h2>
           </div>
         </ScrollReveal>
@@ -37,7 +37,7 @@ export function UseCases() {
 
                 <div className="flex flex-col gap-3">
                   <h4 className="font-sans text-lg font-semibold text-text-primary">
-                    Soluci\u00f3n
+                    Solución
                   </h4>
                   <p className="text-sm leading-relaxed text-text-secondary">
                     {uc.solution}

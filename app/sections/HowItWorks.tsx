@@ -5,21 +5,21 @@ import { ScrollReveal } from "@/app/components/animation/ScrollReveal";
 const steps = [
   {
     number: "01",
-    title: "Diagn\u00f3stico Operativo",
+    title: "Diagnóstico Operativo",
     description:
       "Mapeamos tus procesos actuales. Identificamos los puntos donde el tiempo se pierde y el dinero se filtra.",
   },
   {
     number: "02",
-    title: "Construcci\u00f3n del Workflow",
+    title: "Construcción del Workflow",
     description:
-      "Dise\u00f1amos el flujo con n8n, agentes de IA y las APIs de tus herramientas. Cada nodo tiene un prop\u00f3sito medible.",
+      "Diseñamos el flujo con n8n, agentes de IA y las APIs de tus herramientas. Cada nodo tiene un propósito medible.",
   },
   {
     number: "03",
     title: "Entrega y Monitoreo",
     description:
-      "No te dejamos solo. Entregamos el sistema documentado, capacitamos a tu equipo y monitoreamos que los n\u00fameros mejoren.",
+      "No te dejamos solo. Entregamos el sistema documentado, capacitamos a tu equipo y monitoreamos que los números mejoren.",
   },
 ];
 
@@ -33,20 +33,20 @@ export function HowItWorks() {
               Proceso
             </span>
             <h2 className="font-sans text-[clamp(2rem,4vw,3rem)] font-bold leading-tight tracking-[-0.01em] text-text-primary">
-              C\u00f3mo automatizamos tus procesos
+              Cómo automatizamos tus procesos
             </h2>
           </div>
         </ScrollReveal>
 
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-10 md:grid-cols-3 lg:gap-12">
           {steps.map((step, i) => (
             <ScrollReveal
               key={step.number}
               delay={i * 200}
-              direction={i % 2 === 0 ? "left" : "right"}
-              distance={30}
+              direction="up"
+              distance={24}
             >
-              <div className="flex flex-col gap-4">
+              <div className="flex min-w-0 flex-col gap-4">
                 <span className="font-mono text-4xl font-medium text-text-tertiary">
                   {step.number}
                 </span>

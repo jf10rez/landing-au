@@ -5,7 +5,7 @@ import { ScrollReveal } from "@/app/components/animation/ScrollReveal";
 export function Footer() {
   const links = [
     { label: "Productos", href: "#productos" },
-    { label: "C\u00f3mo funciona", href: "#como-funciona" },
+    { label: "Cómo funciona", href: "#como-funciona" },
     { label: "Casos", href: "#casos" },
     { label: "Agendar", href: "#pricing" },
   ];
@@ -66,7 +66,7 @@ export function Footer() {
             reservados.
           </p>
           <p className="text-xs text-text-tertiary">
-            Dise\u00f1ado para operar sin fricci\u00f3n.
+            Diseñado para operar sin fricción.
           </p>
         </div>
       </Container>

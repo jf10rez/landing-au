@@ -4,6 +4,15 @@ import { useEffect, useRef } from "react";
 import { animate, createTimeline, set } from "animejs";
 import { useReducedMotion } from "@/app/hooks/useReducedMotion";
 
+const workflowNodes = [
+  { label: "INPUT", x: 30, y: 130, accent: true },
+  { label: "PARSE", x: 180, y: 60 },
+  { label: "ENRICH", x: 180, y: 200 },
+  { label: "ROUTE", x: 360, y: 60 },
+  { label: "FILTER", x: 360, y: 200 },
+  { label: "OUTPUT", x: 510, y: 130, accent: true },
+];
+
 export function WorkflowSVG() {
   const svgRef = useRef<SVGSVGElement>(null);
   const reduced = useReducedMotion();
@@ -42,17 +51,21 @@ export function WorkflowSVG() {
       easing: "cubicBezier(0.34, 1.56, 0.64, 1)",
     });
 
-    // Infinite pulse animation on data dots
-    pulses.forEach((pulse) => {
+    const pulseAnimations = Array.from(pulses).map((pulse, index) =>
       animate(pulse, {
         opacity: [0.8, 0],
         scale: [1, 2.5],
         duration: 1500,
         loop: true,
         easing: "easeOutExpo",
-        delay: Math.random() * 1000,
-      });
-    });
+        delay: index * 350,
+      })
+    );
+
+    return () => {
+      tl.pause();
+      pulseAnimations.forEach((animation) => animation.pause());
+    };
   }, [reduced]);
 
   return (
@@ -104,131 +117,32 @@ export function WorkflowSVG() {
       />
 
       {/* Nodes */}
-      <g className="flow-node" transform="translate(30, 130)">
-        <rect
-          width="60"
-          height="40"
-          rx="8"
-          fill="#161618"
-          stroke="rgba(255,0,51,0.5)"
-          strokeWidth="1.5"
-        />
-        <text
-          x="30"
-          y="24"
-          textAnchor="middle"
-          fill="#F0F0F2"
-          fontSize="10"
-          fontFamily="var(--font-geist-mono)"
-        >
-          INPUT
-        </text>
-      </g>
-
-      <g className="flow-node" transform="translate(180, 60)">
-        <rect
-          width="60"
-          height="40"
-          rx="8"
-          fill="#161618"
-          stroke="rgba(255,255,255,0.15)"
-          strokeWidth="1"
-        />
-        <text
-          x="30"
-          y="24"
-          textAnchor="middle"
-          fill="#8A8A8F"
-          fontSize="10"
-          fontFamily="var(--font-geist-mono)"
-        >
-          PARSE
-        </text>
-      </g>
-
-      <g className="flow-node" transform="translate(180, 200)">
-        <rect
-          width="60"
-          height="40"
-          rx="8"
-          fill="#161618"
-          stroke="rgba(255,255,255,0.15)"
-          strokeWidth="1"
-        />
-        <text
-          x="30"
-          y="24"
-          textAnchor="middle"
-          fill="#8A8A8F"
-          fontSize="10"
-          fontFamily="var(--font-geist-mono)"
-        >
-          ENRICH
-        </text>
-      </g>
-
-      <g className="flow-node" transform="translate(360, 60)">
-        <rect
-          width="60"
-          height="40"
-          rx="8"
-          fill="#161618"
-          stroke="rgba(255,255,255,0.15)"
-          strokeWidth="1"
-        />
-        <text
-          x="30"
-          y="24"
-          textAnchor="middle"
-          fill="#8A8A8F"
-          fontSize="10"
-          fontFamily="var(--font-geist-mono)"
-        >
-          ROUTE
-        </text>
-      </g>
-
-      <g className="flow-node" transform="translate(360, 200)">
-        <rect
-          width="60"
-          height="40"
-          rx="8"
-          fill="#161618"
-          stroke="rgba(255,255,255,0.15)"
-          strokeWidth="1"
-        />
-        <text
-          x="30"
-          y="24"
-          textAnchor="middle"
-          fill="#8A8A8F"
-          fontSize="10"
-          fontFamily="var(--font-geist-mono)"
-        >
-          FILTER
-        </text>
-      </g>
-
-      <g className="flow-node" transform="translate(510, 130)">
-        <rect
-          width="60"
-          height="40"
-          rx="8"
-          fill="#161618"
-          stroke="rgba(255,0,51,0.5)"
-          strokeWidth="1.5"
-        />
-        <text
-          x="30"
-          y="24"
-          textAnchor="middle"
-          fill="#F0F0F2"
-          fontSize="10"
-          fontFamily="var(--font-geist-mono)"
-        >
-          OUTPUT
-        </text>
-      </g>
+      {workflowNodes.map((node) => (
+        <g key={node.label} transform={`translate(${node.x}, ${node.y})`}>
+          <g className="flow-node">
+            <rect
+              width="60"
+              height="40"
+              rx="8"
+              fill="#161618"
+              stroke={
+                node.accent ? "rgba(255,0,51,0.5)" : "rgba(255,255,255,0.15)"
+              }
+              strokeWidth={node.accent ? "1.5" : "1"}
+            />
+            <text
+              x="30"
+              y="24"
+              textAnchor="middle"
+              fill={node.accent ? "#F0F0F2" : "#8A8A8F"}
+              fontSize="10"
+              fontFamily="var(--font-geist-mono)"
+            >
+              {node.label}
+            </text>
+          </g>
+        </g>
+      ))}
 
       {/* Pulse dots */}
       <circle className="flow-pulse" cx="120" cy="115" r="3" fill="#FF0033" opacity="0" />

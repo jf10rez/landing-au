@@ -27,7 +27,7 @@ export function TextReveal({
   const containerRef = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
 
-  const chars = useMemo(() => text.split(""), [text]);
+  const words = useMemo(() => text.split(" "), [text]);
 
   useEffect(() => {
     if (reduced || !containerRef.current) return;
@@ -42,7 +42,7 @@ export function TextReveal({
       translateY: ["110%", "0%"],
       opacity: [0, 1],
       duration,
-      delay: stagger,
+      delay: (_el: Element, i: number) => delay + i * stagger,
       easing: "cubicBezier(0.16, 1, 0.3, 1)",
     });
 
@@ -55,6 +55,10 @@ export function TextReveal({
         easing: "linear",
       });
     }
+
+    return () => {
+      tl.pause();
+    };
   }, [reduced, text, glitch, stagger, duration, delay]);
 
   if (reduced) {
@@ -62,7 +66,11 @@ export function TextReveal({
   }
 
   return (
-    <Tag ref={containerRef as React.RefObject<HTMLHeadingElement>} className={cn("relative", className)}>
+    <Tag
+      ref={containerRef as React.RefObject<HTMLHeadingElement>}
+      aria-label={text}
+      className={cn("relative", className)}
+    >
       {glitch && (
         <>
           <span
@@ -81,17 +89,22 @@ export function TextReveal({
           </span>
         </>
       )}
-      <span className="block overflow-hidden">
-        {chars.map((char, i) => (
+      <span aria-hidden className="block overflow-hidden py-[0.08em]">
+        {words.map((word, wordIndex) => (
           <span
-            key={i}
-            className="char inline-block"
-            style={{
-              opacity: reduced ? 1 : 0,
-              whiteSpace: char === " " ? "pre" : undefined,
-            }}
+            key={`${word}-${wordIndex}`}
+            className="inline-block whitespace-nowrap"
+            style={{ marginRight: wordIndex < words.length - 1 ? "0.25em" : 0 }}
           >
-            {char === " " ? "\u00A0" : char}
+            {word.split("").map((char, charIndex) => (
+              <span
+                key={`${char}-${wordIndex}-${charIndex}`}
+                className="char inline-block"
+                style={{ opacity: 0 }}
+              >
+                {char}
+              </span>
+            ))}
           </span>
         ))}
       </span>

@@ -4,13 +4,13 @@ export const products: Product[] = [
   {
     id: "b2b",
     category: "b2b",
-    title: "Automatizaci\u00f3n de ventas y prospecci\u00f3n B2B",
+    title: "Automatización de ventas y prospección B2B",
     description:
-      "Workflows que conectan CRM, email, LinkedIn y calendario. Leads que se mueven solos: prospecci\u00f3n, scoring y seguimiento automatizado.",
+      "Workflows que conectan CRM, email, LinkedIn y calendario. Leads que se mueven solos: prospección, scoring y seguimiento automatizado.",
     features: [
-      "Enriquecimiento autom\u00e1tico de leads",
+      "Enriquecimiento automático de leads",
       "Secuencias de email con condicionales",
-      "Sincronizaci\u00f3n bidireccional CRM",
+      "Sincronización bidireccional CRM",
       "Alertas de oportunidad en tiempo real",
     ],
     tags: ["n8n", "HubSpot / Salesforce", "LinkedIn Automation", "Email Sequences", "CRM Sync"],
@@ -20,14 +20,14 @@ export const products: Product[] = [
   {
     id: "agency",
     category: "agency",
-    title: "Automatizaci\u00f3n para agencias de marketing",
+    title: "Automatización para agencias de marketing",
     description:
-      "Reporting multi-cliente, contenido con IA, ads y social media \u2014 todo ejecutado por workflows. Tu equipo en estrategia, no en tareas repetitivas.",
+      "Reporting multi-cliente, contenido con IA, ads y social media — todo ejecutado por workflows. Tu equipo en estrategia, no en tareas repetitivas.",
     features: [
-      "Dashboards de reporting autom\u00e1tico",
+      "Dashboards de reporting automático",
       "Pipelines de contenido con IA",
-      "Optimizaci\u00f3n de campa\u00f1as programada",
-      "Publicaci\u00f3n cross-platform",
+      "Optimización de campañas programada",
+      "Publicación cross-platform",
     ],
     tags: ["Meta Ads", "Google Ads", "Content Pipelines", "Reporting", "Social Posting"],
     ctaLabel: "Ver flujos para agencias",

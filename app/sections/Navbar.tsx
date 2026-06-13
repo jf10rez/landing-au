@@ -43,10 +43,10 @@ export function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
-        scrolled
-          ? "bg-bg-base/80 backdrop-blur-xl border-b border-border-default"
-          : "bg-transparent border-b border-transparent"
+        "fixed top-0 left-0 right-0 z-40 border-b transition-all duration-300",
+        "bg-bg-base/80 backdrop-blur-xl border-border-default",
+        "md:border-transparent",
+        scrolled && "md:bg-bg-base/80 md:backdrop-blur-xl md:border-border-default"
       )}
     >
       <Container>

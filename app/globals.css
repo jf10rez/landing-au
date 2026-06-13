@@ -104,6 +104,15 @@ p {
   animation: line-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* GSAP parallax utilities */
+@utility will-change-transform {
+  will-change: transform;
+}
+
+@utility will-change-transform-opacity {
+  will-change: transform, opacity;
+}
+
 /* Reduced motion: disable animations */
 @media (prefers-reduced-motion: reduce) {
   *,

@@ -1,9 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { animate, set } from "animejs";
+import { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useReducedMotion } from "@/app/hooks/useReducedMotion";
 import { cn } from "@/app/lib/utils";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface ScrollRevealProps {
   children: React.ReactNode;
@@ -21,10 +24,10 @@ export function ScrollReveal({
   children,
   className,
   delay = 0,
-  duration = 800,
+  duration = 0.8,
   direction = "up",
   distance = 40,
-  easing = "cubicBezier(0.16, 1, 0.3, 1)",
+  easing = "power3.out",
   threshold = 0.15,
   once = true,
 }: ScrollRevealProps) {
@@ -36,7 +39,7 @@ export function ScrollReveal({
 
     const el = ref.current;
 
-    const getTranslate = () => {
+    const getFromVars = () => {
       switch (direction) {
         case "up":
           return { y: distance };
@@ -49,35 +52,27 @@ export function ScrollReveal({
       }
     };
 
-    const translate = getTranslate();
-    const initial = { opacity: 0, ...translate };
-    const target =
-      "x" in translate ? { x: [translate.x, 0] } : { y: [translate.y, 0] };
+    const fromVars = { opacity: 0, ...getFromVars() };
 
-    set(el, initial);
+    gsap.set(el, fromVars);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animate(el, {
-              opacity: [0, 1],
-              ...target,
-              duration,
-              delay,
-              easing,
-              autoplay: true,
-            });
-            if (once) observer.unobserve(el);
-          }
-        });
-      },
-      { rootMargin: "0px 0px -10% 0px", threshold }
-    );
+    const ctx = gsap.context(() => {
+      gsap.to(el, {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        duration,
+        delay: delay / 1000,
+        ease: easing,
+        scrollTrigger: {
+          trigger: el,
+          start: `top ${100 - threshold * 100}%`,
+          once,
+        },
+      });
+    });
 
-    observer.observe(el);
-
-    return () => observer.disconnect();
+    return () => ctx.revert();
   }, [reduced, delay, duration, direction, distance, easing, threshold, once]);
 
   if (reduced) {

@@ -9,6 +9,7 @@ import { Pricing } from "@/app/sections/Pricing";
 import { FAQ } from "@/app/sections/FAQ";
 import { Footer } from "@/app/sections/Footer";
 import { StickyCTA } from "@/app/components/ui/StickyCTA";
+import { ParallaxProvider } from "@/app/components/animation/ParallaxProvider";
 import { faq } from "@/app/data/faq";
 
 const jsonLd = {
@@ -147,19 +148,21 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Navbar />
-      <main className="flex-1">
-        <Hero />
-        <SocialProof />
-        <Products />
-        <HowItWorks />
-        <Stack />
-        <UseCases />
-        <Pricing />
-        <FAQ />
-      </main>
-      <Footer />
-      <StickyCTA />
+      <ParallaxProvider>
+        <Navbar />
+        <main className="flex-1">
+          <Hero />
+          <SocialProof />
+          <Products />
+          <HowItWorks />
+          <Stack />
+          <UseCases />
+          <Pricing />
+          <FAQ />
+        </main>
+        <Footer />
+        <StickyCTA />
+      </ParallaxProvider>
     </>
   );
 }

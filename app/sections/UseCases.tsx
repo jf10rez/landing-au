@@ -1,6 +1,7 @@
 import { Container } from "@/app/components/ui/Container";
 import { SectionWrapper } from "@/app/components/layout/SectionWrapper";
 import { ScrollReveal } from "@/app/components/animation/ScrollReveal";
+import { UseCasesParallax } from "@/app/components/animation/UseCasesParallax";
 import { CountUp } from "@/app/components/animation/CountUp";
 import { useCases } from "@/app/data/useCases";
 
@@ -19,10 +20,15 @@ export function UseCases() {
           </div>
         </ScrollReveal>
 
-        <div className="flex flex-col gap-6 lg:gap-8">
-          {useCases.map((uc, i) => (
-            <ScrollReveal key={uc.id} delay={i * 150}>
-              <div className="grid gap-6 rounded-lg border border-border-default bg-bg-base p-5 sm:p-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(180px,0.7fr)] md:gap-8 lg:p-8">
+        <UseCasesParallax>
+          <div className="flex flex-col gap-6 lg:gap-8">
+            {useCases.map((uc) => (
+              <div
+                key={uc.id}
+                data-case-card
+                style={{ willChange: "transform" }}
+                className="grid gap-6 rounded-lg border border-border-default bg-bg-base p-5 sm:p-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(180px,0.7fr)] md:gap-8 lg:p-8"
+              >
                 <div className="flex min-w-0 flex-col gap-3">
                   <h3 className="font-mono text-xs uppercase tracking-wider text-accent">
                     {uc.clientType}
@@ -55,9 +61,9 @@ export function UseCases() {
                   ))}
                 </div>
               </div>
-            </ScrollReveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </UseCasesParallax>
       </Container>
     </SectionWrapper>
   );

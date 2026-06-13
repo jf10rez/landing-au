@@ -1,8 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { animate } from "animejs";
+import { useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import { useReducedMotion } from "@/app/hooks/useReducedMotion";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface CountUpProps {
   end: number;
@@ -25,45 +29,35 @@ export function CountUp({
   const [hasAnimated, setHasAnimated] = useState(false);
   const reduced = useReducedMotion();
 
-  useEffect(() => {
-    if (!ref.current || hasAnimated) return;
+  useGSAP(
+    () => {
+      if (!ref.current || hasAnimated || reduced) return;
 
-    const el = ref.current;
-    let animation: ReturnType<typeof animate> | undefined;
+      const el = ref.current;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            if (reduced) {
-              el.textContent = `${prefix}${end}${suffix}`;
-            } else {
-              animation = animate(el, {
-                innerText: [0, end],
-                duration,
-                round: 1,
-                easing: "cubicBezier(0.16, 1, 0.3, 1)",
-                onUpdate: (self) => {
-                  const val = Math.round(self.progress * end);
-                  el.textContent = `${prefix}${val}${suffix}`;
-                },
-              });
-            }
-            setHasAnimated(true);
-            observer.unobserve(el);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
+      gsap.fromTo(
+        el,
+        { innerText: 0 },
+        {
+          innerText: end,
+          duration: duration / 1000,
+          ease: "power3.out",
+          snap: { innerText: 1 },
+          onUpdate() {
+            el.textContent = `${prefix}${Math.round(Number(gsap.getProperty(el, "innerText")))}${suffix}`;
+          },
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            once: true,
+          },
+        }
+      );
 
-    observer.observe(el);
-
-    return () => {
-      observer.disconnect();
-      animation?.pause();
-    };
-  }, [end, prefix, suffix, duration, reduced, hasAnimated]);
+      setHasAnimated(true);
+    },
+    { dependencies: [end, prefix, suffix, duration, reduced, hasAnimated] }
+  );
 
   return (
     <div className={className}>

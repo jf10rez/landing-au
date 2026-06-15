@@ -19,7 +19,7 @@ const jsonLd = {
       "@type": "Organization",
       name: "Ilaxus",
       url: "https://ilaxus.com",
-      logo: "https://ilaxus.com/logo.png",
+      logo: "https://ilaxus.com/logo-wide.png",
       description:
         "Automatización de procesos empresariales con IA. Diseñamos workflows con n8n, agentes de IA y APIs adaptados a tu arquitectura de negocio.",
       email: "contacto@ilaxus.com",

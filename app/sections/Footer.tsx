@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/app/components/ui/Container";
 import { ScrollReveal } from "@/app/components/animation/ScrollReveal";
@@ -27,9 +28,18 @@ export function Footer() {
           <ScrollReveal>
             <Link
               href="/"
-              className="font-mono text-sm font-medium tracking-wider text-text-primary"
+              className="inline-block"
+              aria-label="Ilaxus — Inicio"
             >
-              ILAXUS
+              <Image
+                src="/logo-ilaxus-800.webp"
+                alt="Ilaxus"
+                width={800}
+                height={450}
+                sizes="100px"
+                className="h-14 w-auto"
+              />
+              <span className="sr-only">Ilaxus</span>
             </Link>
           </ScrollReveal>
 

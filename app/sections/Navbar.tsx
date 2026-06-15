@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/app/components/ui/Container";
 import { cn } from "@/app/lib/utils";
@@ -50,12 +51,22 @@ export function Navbar() {
       )}
     >
       <Container>
-        <div className="flex h-16 items-center justify-between gap-4">
+        <div className="flex h-18 items-center justify-between gap-4">
           <Link
             href="/"
-            className="shrink-0 font-mono text-sm font-medium tracking-wider text-text-primary"
+            className="shrink-0"
+            aria-label="Ilaxus — Inicio"
           >
-            ILAXUS
+            <Image
+              src="/logo-ilaxus-800.webp"
+              alt="Ilaxus"
+              width={800}
+              height={450}
+              priority
+              sizes="(max-width: 768px) 100px, 114px"
+              className="h-14 w-auto md:h-16"
+            />
+            <span className="sr-only">Ilaxus</span>
           </Link>
 
           <div className="hidden items-center gap-8 md:flex">

@@ -21,7 +21,7 @@
   - `public/robots.txt` → `Sitemap:`
   - `app/sitemap.ts` → `url`
 
-- [ ] **Logo en alta resolución**: Subir `/public/logo.png` (recomendado 512×512 mínimo) para JSON-LD `Organization.logo`. Actualizar URL absoluta en `app/page.tsx`.
+- [x] **Logo en alta resolución**: Generados `/public/logo-wide.png` (1200×675), `/public/logo-ilaxus-400.webp` y `/public/logo-ilaxus-800.webp`. URL de JSON-LD `Organization.logo` actualizada en `app/page.tsx`.
 
 ---
 
@@ -39,11 +39,9 @@
 
 ## Pendientes de Assets
 
-- [ ] **OG Image**: Crear `/public/og-image.jpg` (1200×630 px, < 200KB).  
-  Especificaciones: fondo `#0A0A0B`, tipografía Geist Sans, acento `#FF0033`. Sin texto demasiado pequeño (mín 30px).  
-  Asegurar que `metadata.openGraph.images[0].alt` en `layout.tsx` sea descriptivo.
+- [x] **OG Image**: Creado `/public/og-image.jpg` (1200×630 px, 43 KB) con fondo `#0A0A0B`, acento `#FF0033` y tipografía sans-serif del sistema.
 
-- [ ] **Favicon / Apple touch icon**: Añadir `icon` e `apple-touch-icon` en `app/layout.tsx` metadata o archivos en `/app/` (Next.js convención).
+- [x] **Favicon / Apple touch icon**: Añadidos `app/favicon.ico`, `app/apple-icon.png`, `app/icon.png` y metadata en `app/layout.tsx`.
 
 ---
 

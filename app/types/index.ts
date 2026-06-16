@@ -27,6 +27,7 @@ export interface StackItem {
   id: string;
   name: string;
   category: string;
+  icon: React.ComponentType<{ className?: string }>;
 }
 
 export interface SocialProofItem {

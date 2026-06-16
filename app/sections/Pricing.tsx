@@ -1,9 +1,9 @@
 import { Container } from "@/app/components/ui/Container";
 import { SectionWrapper } from "@/app/components/layout/SectionWrapper";
 import { Card } from "@/app/components/ui/Card";
-import { Button } from "@/app/components/ui/Button";
 import { ScrollReveal } from "@/app/components/animation/ScrollReveal";
 import { PricingParallax } from "@/app/components/animation/PricingParallax";
+import { BookingForm } from "@/app/components/ui/BookingForm";
 
 export function Pricing() {
   return (
@@ -15,11 +15,11 @@ export function Pricing() {
               Primer paso
             </span>
             <h2 className="font-sans text-[clamp(2rem,8vw,3rem)] font-bold leading-tight tracking-normal text-text-primary sm:text-[clamp(2.25rem,4vw,3rem)]">
-              Agenda una llamada de diagnóstico
+              Solicita un diagnóstico gratuito
             </h2>
             <p className="mt-4 text-base leading-relaxed text-text-secondary sm:text-lg">
-              Sin compromiso. 30 minutos para mapear tus procesos y ver si hay
-              margen de automatización.
+              Cuéntanos qué proceso quieres automatizar y te contactaremos en
+              menos de 24 horas.
             </p>
           </div>
         </ScrollReveal>
@@ -66,14 +66,7 @@ export function Pricing() {
                 </ul>
 
                 <div className="mt-8">
-                  <Button
-                    href="https://calendly.com"
-                    rel="noopener noreferrer"
-                    size="lg"
-                    className="w-full shadow-[0_0_20px_rgba(255,0,51,0.22)] sm:shadow-[0_0_32px_rgba(255,0,51,0.3)]"
-                  >
-                    Agendar llamada
-                  </Button>
+                  <BookingForm />
                 </div>
 
                 <p className="mt-4 text-xs text-text-tertiary">

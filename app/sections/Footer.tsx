@@ -8,7 +8,7 @@ export function Footer() {
     { label: "Productos", href: "#productos" },
     { label: "Cómo funciona", href: "#como-funciona" },
     { label: "Casos", href: "#casos" },
-    { label: "Agendar", href: "#pricing" },
+    { label: "Contacto", href: "#pricing" },
   ];
 
   const social = [

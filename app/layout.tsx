@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ilaxus.com"),
   title: "Automatización de Procesos B2B con IA | Ilaxus",
   description:
-    "Automatizamos workflows empresariales con n8n y agentes de IA. Sin plantillas. Diseño a medida de tu arquitectura. Agenda una auditoría gratuita.",
+    "Automatizamos workflows empresariales con n8n y agentes de IA. Sin plantillas. Diseño a medida de tu arquitectura. Solicita un diagnóstico gratuito.",
   keywords: [
     "automatización de procesos",
     "automatización B2B",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: "Ilaxus",
     title: "Automatización de Procesos B2B con IA | Ilaxus",
     description:
-      "Automatizamos workflows empresariales con n8n y agentes de IA. Sin plantillas. Diseño a medida para tu arquitectura.",
+      "Automatizamos workflows empresariales con n8n y agentes de IA. Sin plantillas. Diseño a medida para tu arquitectura. Solicita un diagnóstico gratuito.",
     images: [
       {
         url: "/og-image.jpg",

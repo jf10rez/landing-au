@@ -70,7 +70,7 @@ export function StickyCTA() {
         size="lg"
         className="w-full shadow-[0_0_24px_rgba(255,0,51,0.2)] hover:shadow-[0_0_40px_rgba(255,0,51,0.35)] sm:w-auto"
       >
-        Agendar llamada
+        Solicitar diagnóstico
       </Button>
     </div>
   );

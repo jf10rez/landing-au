@@ -52,8 +52,8 @@ const jsonLd = {
         },
         {
           "@type": "SiteNavigationElement",
-          name: "Agendar",
-          url: "https://ilaxus.com/#pricing",
+          "name": "Contacto",
+          "url": "https://ilaxus.com/#pricing",
         },
       ],
     },

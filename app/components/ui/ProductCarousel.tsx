@@ -90,6 +90,8 @@ export function ProductCarousel({ products, autoplayMs = 5000 }: ProductCarousel
   const progressTweenRef = useRef<gsap.core.Tween | null>(null);
   const touchStartX = useRef(0);
 
+  const heightContainerRef = useRef<HTMLDivElement>(null);
+
   const [active, setActive] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const reduced = useReducedMotion();
@@ -147,6 +149,22 @@ export function ProductCarousel({ products, autoplayMs = 5000 }: ProductCarousel
         el.style.willChange = Math.abs(wrapped) <= 1 ? "transform, opacity" : "auto";
       }
     });
+
+    /* ---- Animate stage height on mobile to match active card ---- */
+    if (isMobile) {
+      const activeEl = cardRefs.current[active];
+      const container = heightContainerRef.current;
+      if (activeEl && container) {
+        gsap.to(container, {
+          height: activeEl.offsetHeight,
+          duration: 0.5,
+          ease: "power3.out",
+        });
+      }
+    } else if (heightContainerRef.current) {
+      /* Reset inline height on desktop so min-h / content flow takes over */
+      gsap.set(heightContainerRef.current, { height: "" });
+    }
   }, [active, count, bp, isMobile, reduced]);
 
   /* ---- Progress bar ---- */
@@ -250,6 +268,17 @@ export function ProductCarousel({ products, autoplayMs = 5000 }: ProductCarousel
         zIndex: s.zIndex,
       });
     });
+
+    /* Set initial stage height on mobile; clear on desktop */
+    if (isMobile) {
+      const activeEl = cardRefs.current[active];
+      const container = heightContainerRef.current;
+      if (activeEl && container) {
+        gsap.set(container, { height: activeEl.offsetHeight });
+      }
+    } else if (heightContainerRef.current) {
+      gsap.set(heightContainerRef.current, { height: "" });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reduced]);
 
@@ -275,7 +304,9 @@ export function ProductCarousel({ products, autoplayMs = 5000 }: ProductCarousel
       onMouseLeave={resumeAutoplay}
     >
       {/* 3D stage */}
-      <div className="relative mx-auto min-h-[480px] max-w-5xl md:min-h-[500px] lg:min-h-[540px]">
+      <div
+        ref={heightContainerRef}
+        className="relative mx-auto min-h-[480px] max-w-5xl md:min-h-[500px] lg:min-h-[540px]">
         <div
           className="relative h-full w-full"
           style={{

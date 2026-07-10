@@ -14,7 +14,7 @@ export function Products() {
               Productos
             </span>
             <h2 className="font-sans text-[clamp(2rem,8vw,3rem)] font-bold leading-tight tracking-normal text-text-primary sm:text-[clamp(2.25rem,4vw,3rem)]">
-              Tres modelos. Un mismo resultado: menos trabajo manual.
+              Tres formas de recuperar tu tiempo. Elige la tuya.
             </h2>
           </div>
         </ScrollReveal>

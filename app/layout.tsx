@@ -5,15 +5,17 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ilaxus.com"),
-  title: "Automatización de Procesos B2B con IA | Ilaxus",
+  title: "Ilaxus — Automatización con IA que da resultados reales",
   description:
-    "Automatizamos workflows empresariales con n8n y agentes de IA. Sin plantillas. Diseño a medida de tu arquitectura. Solicita un diagnóstico gratuito.",
+    "Workflows inteligentes con n8n y agentes de IA que llenan tu pipeline, actualizan tus dashboards en automático y gestionan tu día a día. Sin plantillas. Sin copiar y pegar datos nunca más.",
   keywords: [
-    "automatización de procesos",
-    "automatización B2B",
-    "workflows con IA",
-    "n8n para empresas",
-    "automatización agencias marketing",
+    "automatización con IA",
+    "workflows n8n",
+    "automatización ventas",
+    "reporting automático marketing",
+    "agentes de IA",
+    "automatización para agencias",
+    "pipeline de ventas automático",
   ],
   authors: [{ name: "Ilaxus" }],
   alternates: {
@@ -24,23 +26,23 @@ export const metadata: Metadata = {
     locale: "es_ES",
     url: "https://ilaxus.com",
     siteName: "Ilaxus",
-    title: "Automatización de Procesos B2B con IA | Ilaxus",
+    title: "Ilaxus — Automatización con IA que da resultados reales",
     description:
-      "Automatizamos workflows empresariales con n8n y agentes de IA. Sin plantillas. Diseño a medida para tu arquitectura. Solicita un diagnóstico gratuito.",
+      "Workflows inteligentes con n8n y agentes de IA que llenan tu pipeline, actualizan tus dashboards en automático y gestionan tu día a día. Sin plantillas.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Ilaxus — Automatización de procesos empresariales con IA",
+        alt: "Ilaxus — Automatización con IA que da resultados reales",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Automatización de Procesos B2B con IA | Ilaxus",
+    title: "Ilaxus — Automatización con IA que da resultados reales",
     description:
-      "Workflows empresariales con n8n y agentes de IA. Sin plantillas. A medida de tu arquitectura.",
+      "Workflows con n8n y agentes de IA que llenan tu pipeline y actualizan tus dashboards solos. Sin plantillas.",
     images: ["/og-image.jpg"],
   },
   robots: {

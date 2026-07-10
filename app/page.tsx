@@ -21,7 +21,7 @@ const jsonLd = {
       url: "https://ilaxus.com",
       logo: "https://ilaxus.com/logo-wide.png",
       description:
-        "Automatización de procesos empresariales con IA. Diseñamos workflows con n8n, agentes de IA y APIs adaptados a tu arquitectura de negocio.",
+        "Workflows inteligentes con n8n y agentes de IA que automatizan ventas, marketing y operaciones. Resultados reales, no procesos. Para tu arquitectura.",
       email: "contacto@ilaxus.com",
       sameAs: [
         "https://linkedin.com/company/ilaxus",
@@ -31,9 +31,9 @@ const jsonLd = {
     {
       "@type": "WebSite",
       url: "https://ilaxus.com",
-      name: "Ilaxus — Automatización de Procesos B2B",
+      name: "Ilaxus — Automatización con IA que da resultados reales",
       description:
-        "Automatizamos workflows empresariales con n8n y agentes de IA. Sin plantillas.",
+        "Workflows con n8n y agentes de IA que llenan tu pipeline y actualizan tus dashboards solos. Sin plantillas.",
       hasPart: [
         {
           "@type": "SiteNavigationElement",
@@ -59,9 +59,9 @@ const jsonLd = {
     },
     {
       "@type": "Product",
-      name: "Automatización de ventas y operaciones B2B",
+      name: "Automatización comercial con IA para equipos de ventas",
       description:
-        "Workflows de prospección, CRM, secuencias de email y reporting para equipos comerciales B2B. Integración con HubSpot, Salesforce, LinkedIn y más.",
+        "Leads enriquecidos, pipeline automático, CRM sincronizado. Tu equipo deja de copiar datos y empieza a cerrar deals. Integración con HubSpot, Salesforce, LinkedIn.",
       category: "Business Process Automation",
       brand: {
         "@type": "Brand",
@@ -81,7 +81,7 @@ const jsonLd = {
       "@type": "Product",
       name: "Automatización para agencias de marketing",
       description:
-        "Reporting multi-cliente automatizado, pipelines de contenido con IA, optimización de campañas y publicación cross-platform para agencias de marketing.",
+        "Dashboards multi-cliente que se actualizan solos, contenido con IA de idea a publicación, optimización de campañas programada y cross-platform en un clic.",
       category: "Marketing Automation",
       brand: {
         "@type": "Brand",
@@ -99,9 +99,9 @@ const jsonLd = {
     },
     {
       "@type": "Service",
-      name: "Automatización de procesos empresariales con IA",
+      name: "Automatización empresarial con IA",
       description:
-        "Diseñamos workflows con n8n, agentes de IA y APIs para eliminar tareas repetitivas en ventas, marketing y operaciones. Arquitectura a medida.",
+        "Workflows con n8n y agentes de IA que dan resultados en ventas, marketing y operaciones. Sin plantillas. Hecho a la medida de tu arquitectura.",
       provider: {
         "@type": "Organization",
         name: "Ilaxus",

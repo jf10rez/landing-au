@@ -5,9 +5,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ilaxus.com"),
-  title: "Ilaxus — Automatización con IA que da resultados reales",
+  title: "Ilaxus | Contrata empleados digitales con IA",
   description:
-    "Workflows inteligentes con n8n y agentes de IA que llenan tu pipeline, actualizan tus dashboards en automático y gestionan tu día a día. Sin plantillas. Sin copiar y pegar datos nunca más.",
+    "Empleados digitales con IA para ventas, marketing, finanzas y más. Incorpora especialistas que trabajan para tu negocio 24/7 y potencia tu equipo.",
   keywords: [
     "automatización con IA",
     "workflows n8n",
@@ -26,23 +26,23 @@ export const metadata: Metadata = {
     locale: "es_ES",
     url: "https://ilaxus.com",
     siteName: "Ilaxus",
-    title: "Ilaxus — Automatización con IA que da resultados reales",
+    title: "Ilaxus | Contrata empleados digitales con IA",
     description:
-      "Workflows inteligentes con n8n y agentes de IA que llenan tu pipeline, actualizan tus dashboards en automático y gestionan tu día a día. Sin plantillas.",
+      "Empleados digitales con IA para ventas, marketing, finanzas y más. Incorpora especialistas que trabajan para tu negocio 24/7 y potencia tu equipo.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Ilaxus — Automatización con IA que da resultados reales",
+        alt: "Ilaxus | Contrata empleados digitales con IA",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ilaxus — Automatización con IA que da resultados reales",
+    title: "Ilaxus | Contrata empleados digitales con IA",
     description:
-      "Workflows con n8n y agentes de IA que llenan tu pipeline y actualizan tus dashboards solos. Sin plantillas.",
+      "Empleados digitales con IA para ventas, marketing, finanzas y más. Incorpora especialistas que trabajan para tu negocio 24/7 y potencia tu equipo.",
     images: ["/og-image.jpg"],
   },
   robots: {

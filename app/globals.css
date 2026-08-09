@@ -39,6 +39,16 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+html,
+body {
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
 h1,
 h2,
 h3,

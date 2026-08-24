@@ -73,10 +73,13 @@ export async function submitBooking(
     const rawEmail = formData.get("email");
     const rawPhone = formData.get("phone");
     const rawMessage = formData.get("message");
-    const honeypot = formData.get("website");
+    const honeypot = formData.get("website_hp");
 
     if (honeypot && honeypot.toString().length > 0) {
-      return { success: true, message: "" };
+      return {
+        success: true,
+        message: "Mensaje enviado. Revisaremos tu solicitud y te contactaremos pronto.",
+      };
     }
 
     const name = sanitizeInput(rawName?.toString() ?? "");

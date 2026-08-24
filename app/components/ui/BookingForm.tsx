@@ -114,11 +114,6 @@ export function BookingForm({ className }: BookingFormProps) {
       className={cn("space-y-5 text-left", className)}
       noValidate
     >
-      {/* Honeypot */}
-      <div className="sr-only" aria-hidden="true">
-        <input type="text" name="website" tabIndex={-1} autoComplete="off" />
-      </div>
-
       <FormField
         id="name"
         name="name"
@@ -192,6 +187,18 @@ export function BookingForm({ className }: BookingFormProps) {
           "Solicitar diagnóstico"
         )}
       </Button>
+
+      {/* Honeypot — hidden (display:none) evita autofill/password managers; los bots sin render lo rellenan igual */}
+      <div className="hidden" aria-hidden="true">
+        <input
+          type="text"
+          name="website_hp"
+          tabIndex={-1}
+          autoComplete="off"
+          spellCheck={false}
+          aria-hidden="true"
+        />
+      </div>
 
       {state && (
         <div

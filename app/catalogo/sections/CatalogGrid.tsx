@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowUpRight, Sparkles } from "../components/icons";
-import { categories, type Category, type Employee } from "../data";
+import { Price } from "../components/currency";
+import { formatCop } from "../currency";
+import { categories, customPlan, type Category, type Employee } from "../data";
 
 export function CatalogGrid() {
   return (
@@ -15,8 +17,9 @@ export function CatalogGrid() {
           </h2>
         </div>
         <div className="hidden max-w-sm text-sm text-white/50 md:block">
-          Cada empleado tiene dos planes: <span className="text-white">Starter</span>{" "}
-          para probar y <span className="text-white">Pro</span> para producción.
+          Cada empleado tiene tres planes: <span className="text-white">Starter</span>{" "}
+          para probar, <span className="text-white">Pro</span> para producción y{" "}
+          <span className="text-white">Custom</span> para agentes a la medida.
         </div>
       </div>
 
@@ -132,27 +135,51 @@ function EmployeeRow({
           ))}
         </div>
 
-        <div className="mt-auto flex flex-wrap items-end gap-x-8 gap-y-2 pt-2">
-          <div>
-            <div className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#ff003c]">
-              <Sparkles className="h-3 w-3" /> Starter
+        <div className="mt-auto pt-2">
+          <div className="flex flex-wrap items-end gap-x-8 gap-y-2">
+            <div>
+              <div className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#ff003c]">
+                <Sparkles className="h-3 w-3" /> Starter
+              </div>
+              <div className="mt-1 flex items-baseline gap-1">
+                <span className="text-2xl font-bold tracking-tight text-white">
+                  <Price cop={employee.starterPrice} />
+                </span>
+                <span className="text-xs text-white/50">/mes</span>
+              </div>
             </div>
-            <div className="mt-1 flex items-baseline gap-1">
-              <span className="text-2xl font-bold tracking-tight text-white">
-                ${employee.starterPrice}
-              </span>
-              <span className="text-xs text-white/50">/mes</span>
+            <div>
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="text-[10px] font-semibold uppercase tracking-widest text-white/40">
+                  Pro
+                </span>
+                {employee.proBadge && (
+                  <span className="rounded-full border border-[#ff003c]/40 bg-[#ff003c]/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-[#ff003c]">
+                    {employee.proBadge}
+                  </span>
+                )}
+              </div>
+              <div className="mt-1 flex items-baseline gap-1 text-sm">
+                <span className="text-white/50">
+                  <Price cop={employee.proPrice} />
+                </span>
+                <span className="text-white/30">/mes</span>
+              </div>
+            </div>
+            <div>
+              <div className="text-[10px] font-semibold uppercase tracking-widest text-white/40">
+                {customPlan.label}
+              </div>
+              <div className="mt-1 flex items-baseline gap-1 text-sm">
+                <span className="text-white/50">{customPlan.value}</span>
+              </div>
             </div>
           </div>
-          <div>
-            <div className="text-[10px] font-semibold uppercase tracking-widest text-white/40">
-              Pro
-            </div>
-            <div className="mt-1 flex items-baseline gap-1 text-sm">
-              <span className="text-white/50">${employee.proPrice}</span>
-              <span className="text-white/30">/mes</span>
-            </div>
-          </div>
+          {employee.disclaimer && (
+            <p className="mt-2 max-w-2xl text-xs leading-relaxed text-white/40">
+              {employee.disclaimer}
+            </p>
+          )}
         </div>
       </div>
 
@@ -164,14 +191,14 @@ function EmployeeRow({
           </div>
           <div className="mt-1 flex items-baseline gap-1">
             <span className="text-4xl font-bold tracking-tight text-white">
-              ${employee.starterPrice}
+              <Price cop={employee.starterPrice} />
             </span>
             <span className="text-sm text-white/50">/mes</span>
           </div>
         </div>
         <Link
           href="/#pricing"
-          aria-label={`Contratar a ${employee.name} desde ${employee.starterPrice}/mes`}
+          aria-label={`Contratar a ${employee.name} desde ${formatCop(employee.starterPrice)} COP/mes`}
           className="inline-flex w-full items-center justify-center gap-1 rounded-full bg-[#ff003c] px-4 py-2.5 text-sm font-semibold text-black transition hover:brightness-110"
         >
           Contratar

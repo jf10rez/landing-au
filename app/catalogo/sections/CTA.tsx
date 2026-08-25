@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, Sparkles } from "../components/icons";
+import { Price } from "../components/currency";
 
 export function CTA() {
   return (
@@ -14,21 +15,21 @@ export function CTA() {
         />
         <div className="relative max-w-2xl">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#ff003c]/40 bg-[#ff003c]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#ff003c]">
-            <Sparkles className="h-3 w-3" /> Starter desde $89/mes
+            <Sparkles className="h-3 w-3" /> Starter desde <Price cop={9900} />/mes
           </div>
           <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
             Arma tu equipo digital hoy.
           </h2>
           <p className="mt-4 text-white/60 md:text-lg">
-            Empieza con un empleado por $89/mes. Si funciona, escalas a Pro o
-            sumas más roles. Si no, cancelas sin costo.
+            Empieza con un agente por <Price cop={9900} />/mes. Si funciona,
+            escalas a Pro o sumas más roles. Si no, cancelas sin costo.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/#pricing"
               className="inline-flex items-center gap-2 rounded-full bg-[#ff003c] px-6 py-3 text-sm font-semibold text-black transition hover:brightness-110"
             >
-              Empezar por $89 <ArrowUpRight className="h-4 w-4" />
+              Empezar por <Price cop={9900} /> <ArrowUpRight className="h-4 w-4" />
             </Link>
             <a
               href="#catalogo"

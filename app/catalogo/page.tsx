@@ -12,7 +12,7 @@ import { StatsBar } from "./sections/StatsBar";
 export const metadata: Metadata = {
   title: "Empleados Digitales IA — Ilaxus",
   description:
-    "Catálogo de empleados digitales basados en IA por categoría: ventas, ingeniería, finanzas, marketing y más. Desde $89/mes.",
+    "Catálogo de empleados digitales basados en IA por categoría: ventas, marketing, contenido, legal, finanzas, e-commerce y más. Desde $9.900 COP/mes.",
   alternates: {
     canonical: "https://ilaxus.com/catalogo"
   },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "Empleados Digitales IA — Ilaxus",
     description:
-      "Contrata talento IA especializado desde $89/mes. Traders, programadores, analistas y más, operando 24/7.",
+      "Contrata talento IA especializado desde $9.900 COP/mes. Agentes de ventas, marketing, contenido y más, operando 24/7. Precios en COP y USD.",
   },
   twitter: {
     card: "summary_large_image",

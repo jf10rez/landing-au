@@ -148,6 +148,32 @@ export function Briefcase(props: IconProps) {
   );
 }
 
+export function ShoppingCart(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <circle cx="8" cy="21" r="1" />
+      <circle cx="19" cy="21" r="1" />
+      <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+    </Icon>
+  );
+}
+
+export function SlidersHorizontal(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <line x1="21" x2="14" y1="4" y2="4" />
+      <line x1="10" x2="3" y1="4" y2="4" />
+      <line x1="21" x2="12" y1="12" y2="12" />
+      <line x1="8" x2="3" y1="12" y2="12" />
+      <line x1="21" x2="16" y1="20" y2="20" />
+      <line x1="12" x2="3" y1="20" y2="20" />
+      <line x1="14" x2="14" y1="2" y2="6" />
+      <line x1="8" x2="8" y1="10" y2="14" />
+      <line x1="16" x2="16" y1="18" y2="22" />
+    </Icon>
+  );
+}
+
 export function ArrowUpRight(props: IconProps) {
   return (
     <Icon {...props}>

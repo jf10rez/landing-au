@@ -1,9 +1,10 @@
 import { categories } from "../data";
+import { CurrencyToggle } from "../components/currency";
 
 export function CategoryNav() {
   return (
     <section className="border-b border-white/5 bg-[#080808]">
-      <div className="mx-auto flex max-w-7xl flex-wrap gap-2 px-6 py-6">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 px-6 py-6">
         <span className="mr-2 self-center text-xs uppercase tracking-[0.18em] text-white/40">
           Categorías:
         </span>
@@ -16,6 +17,9 @@ export function CategoryNav() {
             {c.name}
           </a>
         ))}
+        <div className="ml-auto">
+          <CurrencyToggle />
+        </div>
       </div>
     </section>
   );

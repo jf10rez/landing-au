@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "../components/icons";
+import { Price } from "../components/currency";
 
 export function Hero() {
   return (
@@ -14,7 +15,7 @@ export function Hero() {
       <div className="relative mx-auto max-w-7xl px-6 pb-24 pt-40">
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase text-white/70">
           <span className="h-1.5 w-1.5 rounded-full bg-[#ff003c]" />
-          Empleados IA · desde $89/mes
+          Empleados IA · desde <Price cop={9900} />/mes
         </div>
         <h1 className="max-w-4xl text-5xl font-bold leading-[0.95] tracking-tight md:text-7xl">
           Contrata un empleado IA{" "}
@@ -22,8 +23,9 @@ export function Hero() {
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-white/60 md:text-xl">
           Catálogo de agentes especializados organizados por área. Arranca con
-          el plan <span className="text-white">Starter desde $89/mes</span> y
-          escala a Pro cuando lo necesites. Sin contratos, sin setup fee.
+          el plan <span className="text-white">Starter desde <Price cop={9900} />/mes</span> y
+          escala a Pro o Custom cuando lo necesites. Sin contratos, sin setup
+          fee. Precios en COP o USD.
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
           <a

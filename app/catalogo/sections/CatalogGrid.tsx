@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight, Sparkles } from "../components/icons";
 import { Price } from "../components/currency";
 import { formatCop } from "../currency";
+import { whatsappHref } from "../whatsapp";
 import { categories, customPlan, type Category, type Employee } from "../data";
 
 export function CatalogGrid() {
@@ -203,14 +204,16 @@ function EmployeeRow({
             <span className="text-sm text-white/50">/mes</span>
           </div>
         </div>
-        <Link
-          href="/#pricing"
+        <a
+          href={whatsappHref(employee.name, "Starter")}
+          target="_blank"
+          rel="noopener noreferrer"
           aria-label={`Contratar a ${employee.name} desde ${formatCop(employee.starterPrice)} COP/mes`}
           className="inline-flex w-full items-center justify-center gap-1 rounded-full bg-[#ff003c] px-4 py-2.5 text-sm font-semibold text-black transition hover:brightness-110"
         >
           Contratar
           <ArrowUpRight className="h-4 w-4" />
-        </Link>
+        </a>
         <Link
           href={`/catalogo/${employee.slug}`}
           className="inline-flex w-full items-center justify-center gap-1 rounded-full border border-white/15 px-4 py-2.5 text-sm font-semibold text-white/90 transition hover:bg-white/5"

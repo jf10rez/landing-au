@@ -13,18 +13,12 @@ import {
   getCategoryByEmployee,
   getEmployeeBySlug,
 } from "@/app/catalogo/data";
+import { whatsappHref } from "@/app/catalogo/whatsapp";
 
 export function generateStaticParams() {
   return categories.flatMap((category) =>
     category.employees.map((employee) => ({ slug: employee.slug })),
   );
-}
-
-const WHATSAPP_NUMBER = "573116626021";
-
-function whatsappHref(agentName: string, plan: string) {
-  const message = `Hola, me interesa contratar a ${agentName} (plan ${plan}) que vi en el catálogo de Ilaxus. ¿Me ayudan a empezar?`;
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
 export async function generateMetadata({

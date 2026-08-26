@@ -58,28 +58,27 @@ export const categories: Category[] = [
       {
         slug: "b2b-ia",
         name: "B2B IA",
-        tagline:
-          "Prospecta empresas, califica oportunidades y agenda reuniones en tu calendario.",
-        description:
-          "Un motor de prospección B2B que trabaja mientras tu equipo duerme. Busca empresas que encajan con tu perfil ideal de cliente, las estudia, redacta mensajes personalizados y agenda reuniones directamente en tu calendario. Los leads llegan calificados y con contexto, listos para que un humano cierre.",
-        idealFor:
-          "Equipos de ventas B2B, SaaS y servicios profesionales que necesitan más reuniones sin ampliar plantilla.",
+        tagline: "Prospecta empresas, califica oportunidades y agenda reuniones en tu calendario.",
+        description: "Un motor de prospección B2B que trabaja mientras tu equipo duerme. Busca empresas que encajan con tu perfil ideal de cliente, las estudia, redacta mensajes personalizados y agenda reuniones directamente en tu calendario. Los leads llegan calificados y con contexto, listos para que un humano cierre.",
+        idealFor: "Equipos de ventas B2B, SaaS y servicios profesionales que necesitan más reuniones sin ampliar plantilla.",
         skills: ["Prospectación B2B", "Calificación de leads", "CRM sync", "Agenda de reuniones"],
         starterFeatures: [
           "Hasta 100 leads prospectados al mes",
           "Enriquecimiento básico de empresas",
-          "Secuencias de email personalizados",
+          "Emails personalizados listos para copiar-pegar y enviar desde tu correo (modo manual)",
           "Sincronización con tu CRM",
+          "Sin suscripciones adicionales: pagas solo el plan",
         ],
         proFeatures: [
           "Prospección ilimitada",
           "Modelos avanzados de personalización",
           "Calificación predictiva de oportunidades",
+          "Envío 100% automatizado multi-canal (email + LinkedIn)",
           "Agenda automática de reuniones",
-          "Integraciones multi-canal (email + LinkedIn)",
+          "Suscripciones incluidas: WarmUp, dominio espejo anti-spam, Workspace de envío y modelos IA",
         ],
         starterPrice: 199900,
-        proPrice: 349900,
+        proPrice: 499900,
         icon: Briefcase,
         featured: true,
         proBadge: "Mejor valor por peso",
@@ -103,7 +102,7 @@ export const categories: Category[] = [
         ],
         starterFeatures: [
           "Atención 24/7 en WhatsApp y web",
-          "Hasta 1.000 conversaciones al mes",
+          "Hasta 100 conversaciones al mes",
           "Recomendación de productos",
           "Registro de cada interacción",
         ],
@@ -188,7 +187,7 @@ export const categories: Category[] = [
         proFeatures: [
           "Videos generativos profesionales con IA",
           "Avatares y locuciones realistas",
-          "Volumen ilimitado de publicaciones",
+          "Volumen ampliado en publicaciones",
           "A/B testing de ganchos y formatos",
           "Análisis de rendimiento por video",
         ],
@@ -238,30 +237,30 @@ export const categories: Category[] = [
     id: "finanzas",
     name: "Finanzas",
     description:
-      "Empleados especializados en análisis financiero, presupuestos, flujo de caja, reportes y apoyo en la toma de decisiones financieras.",
+      "Empleados de IA que dominan el dinero: analizan mercados, controlan presupuestos y flujo de caja y convierten tus números en decisiones.",
     employees: [
       {
         slug: "financiero-ia",
         name: "Financiero IA",
         tagline:
-          "Analiza finanzas, arma presupuestos y flujos de caja y entrega reportes para decidir.",
+          "Tu analista de mercados 24/7. Estudia acciones, criptomonedas y futuros, interpreta gráficos, tendencias e indicadores y detecta oportunidades potenciales de entrada y salida.",
         description:
-          "Un analista financiero que no duerme. Conecta tus fuentes — banco, facturación, contabilidad — arma el flujo de caja, detecta desviaciones del presupuesto y entrega reportes claros con recomendaciones accionables. Las cifras de siempre, ahora sin hojas de cálculo manuales.",
+          "Aplica análisis técnico real —tendencias, soportes y resistencias, velas, volumen e indicadores— sobre acciones, criptomonedas y futuros, y lo combina con contexto de mercado y gestión de riesgo para diseñar estrategias de trading e inversión de corto, mediano y largo plazo. No decide por ti: te entrega el análisis y el plan para que decidas con criterio.",
         idealFor:
-          "Pymes y emprendedores que quieren visibilidad financiera real sin contratar un analista full-time.",
-        skills: ["Análisis financiero", "Presupuestos", "Flujo de caja", "Reportes"],
+          "Inversionistas y traders que quieren análisis riguroso y disciplina de riesgo sin pagar suscripciones caras ni un analista full-time.",
+        skills: ["Análisis técnico", "Acciones", "Criptomonedas", "Futuros", "Trading", "Inversión", "Indicadores", "Gráficos y tendencias", "Gestión del riesgo"],
         starterFeatures: [
-          "Conexión con 1 fuente de datos",
-          "Flujo de caja actualizado a diario",
-          "Reporte financiero mensual",
-          "Presupuesto base con alertas",
+          "1 mercado a tu elección (acciones, cripto o futuros)",
+          "Análisis técnico diario de tus activos",
+          "Alertas de soportes, resistencias y rupturas",
+          "Reporte semanal de mercado y oportunidades",
         ],
         proFeatures: [
-          "Fuentes de datos ilimitadas",
-          "Dashboards en tiempo real",
-          "Análisis de escenarios y proyecciones",
-          "Detección automática de anomalías",
-          "Reportes para inversionistas",
+          "Mercados y activos ilimitados",
+          "Alertas en tiempo real de entradas y salidas",
+          "Estrategias de corto, mediano y largo plazo",
+          "Gestión de riesgo y tamaño de posición sugerido",
+          "Reporte mensual de desempeño de tu portafolio",
         ],
         starterPrice: 49900,
         proPrice: 89900,
@@ -272,43 +271,46 @@ export const categories: Category[] = [
   {
     id: "ecommerce",
     name: "E-commerce",
-    description:
-      "Empleados especializados en crear tiendas en línea, publicar productos, gestionar pedidos y acompañar al comprador durante toda la compra.",
+    description: "Empleados especializados en crear tiendas en línea, publicar productos, gestionar pedidos y acompañar al comprador durante toda la compra.",
     employees: [
       {
         slug: "ecommerce-ia",
         name: "Ecommerce IA",
-        tagline:
-          "Crea tu tienda online desde cero y gestiónala en automático: publica productos, procesa pedidos y atiende a tus compradores 24/7.",
-        description:
-          "Tu tienda online sin equipo técnico ni agencia. El agente monta la tienda en Shopify o WooCommerce, importa y redacta las fichas de producto, procesa los pedidos, y atiende a los compradores de principio a fin: dudas previas, seguimiento del envío y post-venta. Vendes sin tocar el panel de administración.",
-        idealFor:
-          "Negocios físicos que quieren vender online y tiendas existentes que necesitan operación sin fricción.",
+        tagline: "Tu tienda online, montada y operada por un empleado digital: publica productos, procesa pedidos y atiende a tus compradores 24/7. Sin código, sin agencia, sin tocar el panel.",
+        description: "Ecommerce IA es tu equipo de tienda en una sola persona. Te monta la tienda en Shopify o WooCommerce con la plantilla predeterminada o personalizada, te guia paso a paso en temas de hosting, dominio para montar tu tienda en la web, importa tu catálogo desde fotos, Excel o WhatsApp y redacta las fichas de producto con IA. Después opera la tienda por ti: publica productos, procesa pedidos, y atiende a cada comprador de principio a fin — dudas previas, asesoría de compra, seguimiento del envío y post-venta. Si tu producto necesita recomendación, la da; si el cliente se va sin comprar, lo recupera. Tú solo te concentras en tu negocio: el agente se encarga de la vitrina, la operación y los clientes.",
+        idealFor: "Negocios físicos que quieren vender online sin tocar tecnología, emprendedores con catálogo en WhatsApp/Instagram que quieren una tienda real, y tiendas existentes que necesitan operación sin fricción.",
         skills: [
           "Creación de tiendas",
           "Shopify / WooCommerce",
           "Gestión de catálogo",
           "Pedidos y pagos",
           "Atención al comprador",
+          "Seguimiento de envíos",
+          "Recuperación de carritos",
+          "Optimización de conversión"
         ],
         starterFeatures: [
-          "Creación de tienda en Shopify o WooCommerce",
-          "Hasta 50 productos publicados",
-          "Fichas de producto con IA",
-          "Atención al comprador en horario extendido",
+          "Tienda online lista con los detalles de tu negocio",
+          "Hasta 50 productos publicados con fichas de IA (texto + fotos)",
+          "Importación de catálogo desde fotos, Excel o WhatsApp",
+          "Reporte mensual de ventas",
+          "Guia para pasarelas de pago colombianas (Wompi, PayU)",
         ],
         proFeatures: [
+          "Todo lo de Starter, más:",
           "Catálogo ilimitado",
-          "Procesamiento automático de pedidos",
-          "Atención 24/7 con seguimiento de envíos",
+          "Procesamiento automático de pedidos (pago + confirmación)",
+          "Atención 24/7 con seguimiento de envíos en WhatsApp y web",
           "Recuperación de carritos abandonados",
-          "Optimización de conversión continua",
+          "Optimización de conversión continua (fichas, precios y promos)",
+          "Ventas por web + WhatsApp directo (multi-canal)",
+          "Reportes de ventas, inventario y clientes en tiempo real"
         ],
         starterPrice: 89900,
-        proPrice: 149900,
-        icon: ShoppingCart,
-      },
-    ],
+        proPrice: 189900,
+        icon: ShoppingCart
+      }
+    ]
   },
   {
     id: "autoservicio",

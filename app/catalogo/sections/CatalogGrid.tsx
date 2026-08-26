@@ -113,7 +113,14 @@ function EmployeeRow({
           </div>
         </div>
         <div>
-          <h4 className="text-2xl font-bold tracking-tight">{employee.name}</h4>
+          <h4 className="text-2xl font-bold tracking-tight">
+            <Link
+              href={`/catalogo/${employee.slug}`}
+              className="transition hover:text-[#ff003c]"
+            >
+              {employee.name}
+            </Link>
+          </h4>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/60">
             {employee.tagline}
           </p>
@@ -203,6 +210,12 @@ function EmployeeRow({
         >
           Contratar
           <ArrowUpRight className="h-4 w-4" />
+        </Link>
+        <Link
+          href={`/catalogo/${employee.slug}`}
+          className="inline-flex w-full items-center justify-center gap-1 rounded-full border border-white/15 px-4 py-2.5 text-sm font-semibold text-white/90 transition hover:bg-white/5"
+        >
+          Ver detalles
         </Link>
       </div>
     </div>

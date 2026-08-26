@@ -65,6 +65,12 @@ function getCardStyles(offset: number, bp: Breakpoint): CardStyle {
   return abs <= 2 ? cfg.offsetN : { ...cfg.offsetN, opacity: 0 };
 }
 
+function measureContentHeight(el: HTMLElement): number {
+  const inner = el.firstElementChild as HTMLElement | null;
+  const innerH = inner ? Math.max(inner.offsetHeight, inner.scrollHeight) : 0;
+  return Math.max(el.offsetHeight, innerH);
+}
+
 function getCategoryLabel(category: string): string {
   switch (category) {
     case "b2b":
@@ -73,6 +79,8 @@ function getCategoryLabel(category: string): string {
       return "Automatización para Agencias";
     case "openclaw":
       return "Agente de IA";
+    case "empleado-ia":
+      return "Empleado IA";
     default:
       return category;
   }
@@ -121,6 +129,41 @@ export function ProductCarousel({ products, autoplayMs = 5000 }: ProductCarousel
     return () => observer.disconnect();
   }, []);
 
+  /* ---- Stage height: reserve space for the tallest card ----
+     All cards are absolutely positioned, so they never contribute to the
+     stage's own height. Track the tallest card (ResizeObserver keeps it
+     correct if content/layout changes) and set it as min-height so the
+     nav arrows always clear the active card, regardless of animation state. */
+  useEffect(() => {
+    if (reduced) return;
+    const container = heightContainerRef.current;
+    if (!container) return;
+
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const tallest = cardRefs.current.reduce<number>((max, el) => {
+        if (!el) return max;
+        return Math.max(max, measureContentHeight(el));
+      }, 0);
+      container.style.minHeight = `${Math.ceil(tallest)}px`;
+    };
+
+    const scheduleUpdate = () => {
+      if (!raf) raf = window.requestAnimationFrame(update);
+    };
+
+    scheduleUpdate();
+
+    const observer = new ResizeObserver(scheduleUpdate);
+    cardRefs.current.forEach((el) => el && observer.observe(el));
+
+    return () => {
+      if (raf) window.cancelAnimationFrame(raf);
+      observer.disconnect();
+    };
+  }, [reduced, count, bp]);
+
   /* ---- GSAP card transitions ---- */
   useEffect(() => {
     if (reduced) return;
@@ -149,22 +192,6 @@ export function ProductCarousel({ products, autoplayMs = 5000 }: ProductCarousel
         el.style.willChange = Math.abs(wrapped) <= 1 ? "transform, opacity" : "auto";
       }
     });
-
-    /* ---- Animate stage height on mobile to match active card ---- */
-    if (isMobile) {
-      const activeEl = cardRefs.current[active];
-      const container = heightContainerRef.current;
-      if (activeEl && container) {
-        gsap.to(container, {
-          height: activeEl.offsetHeight,
-          duration: 0.5,
-          ease: "power3.out",
-        });
-      }
-    } else if (heightContainerRef.current) {
-      /* Reset inline height on desktop so min-h / content flow takes over */
-      gsap.set(heightContainerRef.current, { height: "" });
-    }
   }, [active, count, bp, isMobile, reduced]);
 
   /* ---- Progress bar ---- */
@@ -269,16 +296,6 @@ export function ProductCarousel({ products, autoplayMs = 5000 }: ProductCarousel
       });
     });
 
-    /* Set initial stage height on mobile; clear on desktop */
-    if (isMobile) {
-      const activeEl = cardRefs.current[active];
-      const container = heightContainerRef.current;
-      if (activeEl && container) {
-        gsap.set(container, { height: activeEl.offsetHeight });
-      }
-    } else if (heightContainerRef.current) {
-      gsap.set(heightContainerRef.current, { height: "" });
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reduced]);
 
@@ -306,7 +323,7 @@ export function ProductCarousel({ products, autoplayMs = 5000 }: ProductCarousel
       {/* 3D stage */}
       <div
         ref={heightContainerRef}
-        className="relative mx-auto min-h-[480px] max-w-5xl md:min-h-[500px] lg:min-h-[540px]">
+        className="relative mx-auto min-h-[480px] max-w-5xl">
         <div
           className="relative h-full w-full"
           style={{
@@ -359,7 +376,7 @@ export function ProductCarousel({ products, autoplayMs = 5000 }: ProductCarousel
       </div>
 
       {/* Controls */}
-      <div className="mt-6 flex flex-col items-center gap-4">
+      <div className="mt-10 flex flex-col items-center gap-4">
         <div className="flex items-center gap-5">
           <NavButton direction="prev" onClick={() => { prev(); pauseAutoplay(); resumeAutoplay(); }} />
           <div className="flex items-center gap-2" role="tablist" aria-label="Seleccionar producto">

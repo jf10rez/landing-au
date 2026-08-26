@@ -1,6 +1,21 @@
 import { Product } from "@/app/types";
+import { categories } from "@/app/catalogo/data";
+
+const agentProducts: Product[] = categories.flatMap((category) =>
+  category.employees.map((employee) => ({
+    id: employee.slug,
+    category: "empleado-ia",
+    title: employee.name,
+    description: employee.tagline,
+    features: employee.starterFeatures.slice(0, 4),
+    tags: employee.skills.slice(0, 4),
+    ctaLabel: "Ver agente",
+    ctaHref: `/catalogo/${employee.slug}`,
+  })),
+);
 
 export const products: Product[] = [
+  ...agentProducts,
   {
     id: "comercial",
     category: "comercial",

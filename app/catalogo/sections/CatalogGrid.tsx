@@ -1,26 +1,37 @@
 import Link from "next/link";
 import { ArrowUpRight, Sparkles } from "../components/icons";
 import { Price } from "../components/currency";
-import { formatCop } from "../currency";
+import { formatUsd, usdFromCop } from "../currency";
 import { whatsappHref } from "../whatsapp";
-import { categories, customPlan, type Category, type Employee } from "../data";
+import { getCategories, type Category, type Employee } from "../data";
+import { format } from "@/app/lib/i18n/utils";
+import type { Locale } from "@/app/lib/i18n/config";
+import type { Messages } from "@/app/lib/i18n/dictionaries";
 
-export function CatalogGrid() {
+export function CatalogGrid({
+  locale,
+  dict,
+}: {
+  locale: Locale;
+  dict: Messages;
+}) {
+  const categories = getCategories(dict);
+  const t = dict.catalog.grid;
+  const customPlan = dict.catalog.custom;
+
   return (
     <section id="catalogo" className="mx-auto max-w-7xl px-6 py-24">
       <div className="mb-12 flex items-end justify-between gap-8">
         <div>
           <div className="mb-3 text-xs uppercase tracking-[0.18em] text-white/50">
-            Catálogo
+            {t.eyebrow}
           </div>
           <h2 className="max-w-2xl text-3xl font-bold tracking-tight md:text-5xl">
-            Elige un área. Contrata un empleado.
+            {t.title}
           </h2>
         </div>
         <div className="hidden max-w-sm text-sm text-white/50 md:block">
-          Cada empleado tiene tres planes: <span className="text-white">Starter</span>{" "}
-          para probar, <span className="text-white">Pro</span> para producción y{" "}
-          <span className="text-white">Custom</span> para agentes a la medida.
+          {t.description}
         </div>
       </div>
 
@@ -30,6 +41,9 @@ export function CatalogGrid() {
             key={cat.id}
             category={cat}
             index={index}
+            locale={locale}
+            t={t}
+            customPlan={customPlan}
           />
         ))}
       </div>
@@ -42,9 +56,15 @@ const pad = (n: number) => String(n + 1).padStart(2, "0");
 function DepartmentCard({
   category,
   index,
+  locale,
+  t,
+  customPlan,
 }: {
   category: Category;
   index: number;
+  locale: Locale;
+  t: Messages["catalog"]["grid"];
+  customPlan: Messages["catalog"]["custom"];
 }) {
   const DeptIcon = category.employees[0].icon;
   return (
@@ -74,6 +94,9 @@ function DepartmentCard({
             isFirst={i === 0}
             isLast={i === category.employees.length - 1}
             category={category}
+            locale={locale}
+            t={t}
+            customPlan={customPlan}
           />
         ))}
       </div>
@@ -86,11 +109,17 @@ function EmployeeRow({
   category,
   isFirst,
   isLast,
+  locale,
+  t,
+  customPlan,
 }: {
   employee: Employee;
   category: Category;
   isFirst: boolean;
   isLast: boolean;
+  locale: Locale;
+  t: Messages["catalog"]["grid"];
+  customPlan: Messages["catalog"]["custom"];
 }) {
   const Icon = employee.icon;
   return (
@@ -105,7 +134,7 @@ function EmployeeRow({
       <div className="relative flex flex-1 flex-col gap-4">
         {employee.featured && (
           <span className="absolute right-0 top-0 rounded-full border border-[#ff003c]/40 bg-[#ff003c]/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-[#ff003c]">
-            Popular
+            {t.popular}
           </span>
         )}
         <div className="flex items-center gap-3 md:hidden">
@@ -116,7 +145,7 @@ function EmployeeRow({
         <div>
           <h4 className="text-2xl font-bold tracking-tight">
             <Link
-              href={`/catalogo/${employee.slug}`}
+              href={`/${locale}/catalogo/${employee.slug}`}
               className="transition hover:text-[#ff003c]"
             >
               {employee.name}
@@ -147,19 +176,19 @@ function EmployeeRow({
           <div className="flex flex-wrap items-end gap-x-8 gap-y-2">
             <div>
               <div className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#ff003c]">
-                <Sparkles className="h-3 w-3" /> Starter
+                <Sparkles className="h-3 w-3" /> {t.planStarter}
               </div>
               <div className="mt-1 flex items-baseline gap-1">
                 <span className="text-2xl font-bold tracking-tight text-white">
                   <Price cop={employee.starterPrice} />
                 </span>
-                <span className="text-xs text-white/50">/mes</span>
+                <span className="text-xs text-white/50">{t.perMonth}</span>
               </div>
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-1.5">
                 <span className="text-[10px] font-semibold uppercase tracking-widest text-white/40">
-                  Pro
+                  {t.planPro}
                 </span>
                 {employee.proBadge && (
                   <span className="rounded-full border border-[#ff003c]/40 bg-[#ff003c]/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-[#ff003c]">
@@ -171,7 +200,7 @@ function EmployeeRow({
                 <span className="text-white/50">
                   <Price cop={employee.proPrice} />
                 </span>
-                <span className="text-white/30">/mes</span>
+                <span className="text-white/30">{t.perMonth}</span>
               </div>
             </div>
             <div>
@@ -195,30 +224,33 @@ function EmployeeRow({
       <div className="flex flex-col gap-4 md:w-[200px] md:shrink-0 md:border-l md:border-white/10 md:pl-8">
         <div>
           <div className="text-xs uppercase tracking-[0.18em] text-white/50">
-            Desde
+            {t.from}
           </div>
           <div className="mt-1 flex items-baseline gap-1">
             <span className="text-4xl font-bold tracking-tight text-white">
               <Price cop={employee.starterPrice} />
             </span>
-            <span className="text-sm text-white/50">/mes</span>
+            <span className="text-sm text-white/50">{t.perMonth}</span>
           </div>
         </div>
         <a
-          href={whatsappHref(employee.name, "Starter")}
+          href={whatsappHref(locale, employee.name, "Starter")}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Contratar a ${employee.name} desde ${formatCop(employee.starterPrice)} COP/mes`}
+          aria-label={format(t.hireAria, {
+            name: employee.name,
+            price: formatUsd(usdFromCop(employee.starterPrice)),
+          })}
           className="inline-flex w-full items-center justify-center gap-1 rounded-full bg-[#ff003c] px-4 py-2.5 text-sm font-semibold text-black transition hover:brightness-110"
         >
-          Contratar
+          {t.hire}
           <ArrowUpRight className="h-4 w-4" />
         </a>
         <Link
-          href={`/catalogo/${employee.slug}`}
+          href={`/${locale}/catalogo/${employee.slug}`}
           className="inline-flex w-full items-center justify-center gap-1 rounded-full border border-white/15 px-4 py-2.5 text-sm font-semibold text-white/90 transition hover:bg-white/5"
         >
-          Ver detalles
+          {t.details}
         </Link>
       </div>
     </div>

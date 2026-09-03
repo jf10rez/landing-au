@@ -1,6 +1,7 @@
 export interface Product {
   id: string;
   category: "b2b" | "agency" | string;
+  categoryLabel: string;
   title: string;
   description: string;
   features: string[];

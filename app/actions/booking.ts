@@ -2,6 +2,9 @@
 
 import { headers } from "next/headers";
 import nodemailer from "nodemailer";
+import { isLocale, type Locale } from "@/app/lib/i18n/config";
+import { getDictionary } from "@/app/lib/i18n/dictionaries";
+import { format } from "@/app/lib/i18n/utils";
 
 export interface BookingState {
   success: boolean;
@@ -17,6 +20,11 @@ interface RateLimitEntry {
 const rateLimitMap = new Map<string, RateLimitEntry>();
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 60_000;
+
+function resolveLocale(value: FormDataEntryValue | null): Locale {
+  const raw = value?.toString() ?? "";
+  return isLocale(raw) ? raw : "en";
+}
 
 async function getClientIp(): Promise<string> {
   const h = await headers();
@@ -58,14 +66,16 @@ export async function submitBooking(
   _prevState: BookingState | null,
   formData: FormData
 ): Promise<BookingState> {
+  const locale = resolveLocale(formData.get("locale"));
+  const messages = getDictionary(locale).bookingFeedback;
+
   try {
     const ip = await getClientIp();
 
     if (!checkRateLimit(ip)) {
       return {
         success: false,
-        message:
-          "Has enviado demasiadas solicitudes. Por favor, espera un momento e intenta de nuevo.",
+        message: messages.rateLimited,
       };
     }
 
@@ -78,7 +88,7 @@ export async function submitBooking(
     if (honeypot && honeypot.toString().length > 0) {
       return {
         success: true,
-        message: "Mensaje enviado. Revisaremos tu solicitud y te contactaremos pronto.",
+        message: messages.success,
       };
     }
 
@@ -90,27 +100,25 @@ export async function submitBooking(
     const errors: Record<string, string[]> = {};
 
     if (name.length < 2 || name.length > 100) {
-      errors.name = ["El nombre debe tener entre 2 y 100 caracteres."];
+      errors.name = [messages.errors.name];
     }
 
     if (!isValidEmail(email)) {
-      errors.email = ["Por favor, introduce un correo electrónico válido."];
+      errors.email = [messages.errors.email];
     }
 
     if (message.length < 10 || message.length > 2000) {
-      errors.message = [
-        "Cuéntanos un poco más sobre tu proceso (entre 10 y 2000 caracteres).",
-      ];
+      errors.message = [messages.errors.message];
     }
 
     if (phone.length > 50) {
-      errors.phone = ["El teléfono es demasiado largo."];
+      errors.phone = [messages.errors.phone];
     }
 
     if (Object.keys(errors).length > 0) {
       return {
         success: false,
-        message: "Por favor, revisa los campos marcados.",
+        message: messages.reviewFields,
         errors,
       };
     }
@@ -126,8 +134,7 @@ export async function submitBooking(
       console.error("[booking] Missing SMTP environment variables");
       return {
         success: false,
-        message:
-          "No se pudo enviar la solicitud en este momento. Intenta de nuevo más tarde.",
+        message: messages.errorSend,
       };
     }
 
@@ -141,53 +148,54 @@ export async function submitBooking(
       },
     });
 
+    const subject = format(messages.emailSubject, { name });
+    const sentOn = `${messages.emailSentLabel}: ${new Date().toLocaleString(
+      locale === "es" ? "es-ES" : "en-US",
+      { dateStyle: "full", timeStyle: "short" }
+    )}`;
+
     const htmlBody = `
-      <h2>Nueva solicitud de diagnóstico</h2>
-      <p><strong>Nombre:</strong> ${escapeHtml(name)}</p>
+      <h2>${escapeHtml(subject)}</h2>
+      <p><strong>Name:</strong> ${escapeHtml(name)}</p>
       <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-      ${phone ? `<p><strong>Teléfono:</strong> ${escapeHtml(phone)}</p>` : ""}
-      <p><strong>Proceso a automatizar:</strong></p>
+      ${phone ? `<p><strong>Phone:</strong> ${escapeHtml(phone)}</p>` : ""}
+      <p><strong>Process to automate:</strong></p>
       <p style="white-space: pre-wrap;">${escapeHtml(message)}</p>
       <hr />
       <p style="font-size: 12px; color: #666;">
-        Enviado el ${new Date().toLocaleString("es-ES", {
-          dateStyle: "full",
-          timeStyle: "short",
-        })}
+        ${escapeHtml(sentOn)}
       </p>
     `;
 
     const textBody = `
-Nueva solicitud de diagnóstico
+${subject}
 
-Nombre: ${name}
+Name: ${name}
 Email: ${email}
-${phone ? `Teléfono: ${phone}\n` : ""}Proceso a automatizar:
+${phone ? `Phone: ${phone}\n` : ""}Process to automate:
 ${message}
 
-Enviado el: ${new Date().toLocaleString("es-ES")}
+${sentOn}
     `.trim();
 
     await transporter.sendMail({
       from: `"Ilaxus Landing" <${emailFrom}>`,
       to: emailTo,
       replyTo: email,
-      subject: `Nueva solicitud de diagnóstico — ${name}`,
+      subject,
       text: textBody,
       html: htmlBody,
     });
 
     return {
       success: true,
-      message:
-        "Mensaje enviado. Revisaremos tu solicitud y te contactaremos pronto.",
+      message: messages.success,
     };
   } catch (error) {
     console.error("[booking] Error sending email:", error);
     return {
       success: false,
-      message:
-        "No se pudo enviar la solicitud en este momento. Intenta de nuevo más tarde.",
+      message: messages.errorSend,
     };
   }
 }

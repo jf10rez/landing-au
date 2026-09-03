@@ -1,12 +1,14 @@
-import { categories } from "../data";
+import { getCategories } from "../data";
 import { CurrencyToggle } from "../components/currency";
+import type { Messages } from "@/app/lib/i18n/dictionaries";
 
-export function CategoryNav() {
+export function CategoryNav({ dict }: { dict: Messages }) {
+  const categories = getCategories(dict);
   return (
     <section className="border-b border-white/5 bg-[#080808]">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 px-6 py-6">
         <span className="mr-2 self-center text-xs uppercase tracking-[0.18em] text-white/40">
-          Categorías:
+          {dict.catalog.categoryNavLabel}
         </span>
         {categories.map((c) => (
           <a
@@ -18,7 +20,7 @@ export function CategoryNav() {
           </a>
         ))}
         <div className="ml-auto">
-          <CurrencyToggle />
+          <CurrencyToggle label={dict.catalog.currencyLabel} />
         </div>
       </div>
     </section>

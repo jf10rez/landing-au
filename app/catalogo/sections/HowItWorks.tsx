@@ -1,40 +1,20 @@
-const steps = [
-  {
-    n: "01",
-    t: "Elige el área",
-    d: "Ventas, marketing, contenido, legal, finanzas, e-commerce o autoservicio. Selecciona los roles que te faltan.",
-  },
-  {
-    n: "02",
-    t: "Arranca con Starter",
-    d: "Desde $9.900/mes por empleado. Sin contratos, sin setup, activo en 60 segundos.",
-  },
-  {
-    n: "03",
-    t: "Escala a Pro",
-    d: "Cuando validas el ROI, sube al plan Pro con volumen ilimitado, modelos avanzados e integraciones a medida.",
-  },
-  {
-    n: "04",
-    t: "O ve a la medida",
-    d: "¿Ningún plan encaja? Con Custom desarrollamos agentes pensados 100% para tu operación.",
-  },
-];
+import type { Messages } from "@/app/lib/i18n/dictionaries";
 
-export function HowItWorks() {
+export function HowItWorks({ dict }: { dict: Messages }) {
+  const t = dict.catalog.howItWorks;
   return (
     <section id="como" className="border-y border-white/5 bg-[#080808]">
       <div className="mx-auto max-w-7xl px-6 py-24">
         <div className="mb-14 max-w-2xl">
           <div className="mb-3 text-xs uppercase tracking-[0.18em] text-white/50">
-            Proceso
+            {t.eyebrow}
           </div>
           <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
-            Prueba barato. Escala cuando funcione.
+            {t.title}
           </h2>
         </div>
         <div className="grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 md:grid-cols-2 lg:grid-cols-4">
-          {steps.map((s) => (
+          {t.steps.map((s) => (
             <div key={s.n} className="bg-[#080808] p-8">
               <div className="font-mono text-sm text-[#ff003c]">{s.n}</div>
               <h3 className="mt-4 text-xl font-semibold">{s.t}</h3>

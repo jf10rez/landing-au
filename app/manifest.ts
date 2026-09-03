@@ -5,11 +5,12 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Ilaxus",
     short_name: "Ilaxus",
     description:
-      "Automatización de procesos empresariales con IA. Workflows con n8n y agentes de IA.",
-    start_url: "/",
+      "AI business process automation. Workflows with n8n and AI agents.",
+    start_url: "/en",
     display: "standalone",
     background_color: "#0A0A0B",
     theme_color: "#0A0A0B",
+    lang: "en",
     icons: [
       {
         src: "/icon.png",

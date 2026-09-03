@@ -5,39 +5,62 @@ import { Navbar } from "@/app/sections/Navbar";
 import { Footer } from "@/app/sections/Footer";
 import { ArrowUpRight, Sparkles } from "@/app/catalogo/components/icons";
 import { CurrencyToggle, Price } from "@/app/catalogo/components/currency";
-import { TRM_LABEL } from "@/app/catalogo/currency";
+import { TRM_LABEL, formatUsd, usdFromCop } from "@/app/catalogo/currency";
 import {
-  categories,
-  customFeatures,
-  customPlan,
-  getCategoryByEmployee,
-  getEmployeeBySlug,
+  allEmployeeSlugs,
+  findCategory,
+  findEmployee,
+  getCategories,
 } from "@/app/catalogo/data";
 import { whatsappHref } from "@/app/catalogo/whatsapp";
+import { isLocale } from "@/app/lib/i18n/config";
+import { getDictionary } from "@/app/lib/i18n/dictionaries";
+import {
+  SITE_URL,
+  canonicalPath,
+  format,
+  languagesFor,
+} from "@/app/lib/i18n/utils";
 
 export function generateStaticParams() {
-  return categories.flatMap((category) =>
-    category.employees.map((employee) => ({ slug: employee.slug })),
-  );
+  // Slugs are identical across locales; the parent [locale] segment
+  // generates each language separately.
+  return allEmployeeSlugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const employee = getEmployeeBySlug(slug);
+  const { locale: rawLocale, slug } = await params;
+  if (!isLocale(rawLocale)) notFound();
+  const locale = rawLocale;
+
+  const dict = getDictionary(locale);
+  const employee = findEmployee(getCategories(dict), slug);
   if (!employee) return {};
+
+  const starterPrice = `${formatUsd(usdFromCop(employee.starterPrice))} USD`;
+  const description = `${employee.tagline} ${format(
+    dict.employeePage.metaStarter,
+    { price: starterPrice },
+  )}`;
+  const ogLocale = locale === "en" ? "en_US" : "es_ES";
+  const path = `/catalogo/${employee.slug}`;
 
   return {
     title: `${employee.name} — Ilaxus`,
-    description: `${employee.tagline} Plan Starter desde ${employee.starterPrice.toLocaleString("es-CO")} COP/mes.`,
+    description,
     alternates: {
-      canonical: `https://ilaxus.com/catalogo/${employee.slug}`,
+      canonical: canonicalPath(locale, path),
+      languages: languagesFor(path),
     },
     openGraph: {
       type: "website",
+      locale: ogLocale,
+      url: `${SITE_URL}/${locale}/catalogo/${employee.slug}`,
+      siteName: "Ilaxus",
       title: `${employee.name} — Ilaxus`,
       description: employee.tagline,
     },
@@ -50,18 +73,27 @@ export async function generateMetadata({
 export default async function EmployeePage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const employee = getEmployeeBySlug(slug);
+  const { locale, slug } = await params;
+  if (!isLocale(locale)) notFound();
+
+  const dict = getDictionary(locale);
+  const t = dict.employeePage;
+  const catalogT = dict.catalog;
+  const categories = getCategories(dict);
+
+  const employee = findEmployee(categories, slug);
   if (!employee) notFound();
 
-  const category = getCategoryByEmployee(employee);
+  const category = findCategory(categories, employee);
   const Icon = employee.icon;
+  const customPlan = dict.catalog.custom;
+  const customFeatures = dict.catalog.custom.features;
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white antialiased">
-      <Navbar activeHref="/catalogo" />
+      <Navbar locale={locale} t={dict.nav} activeHref={`/${locale}/catalogo`} />
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-white/5">
@@ -75,21 +107,24 @@ export default async function EmployeePage({
         />
         <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-32">
           <nav
-            aria-label="Miga de pan"
+            aria-label={t.breadcrumbAria}
             className="mb-8 flex flex-wrap items-center gap-2 text-xs text-white/50"
           >
-            <Link href="/" className="transition hover:text-white">
-              Inicio
+            <Link href={`/${locale}`} className="transition hover:text-white">
+              {t.breadcrumbHome}
             </Link>
             <span aria-hidden>/</span>
-            <Link href="/catalogo" className="transition hover:text-white">
-              Catálogo
+            <Link
+              href={`/${locale}/catalogo`}
+              className="transition hover:text-white"
+            >
+              {t.breadcrumbCatalog}
             </Link>
             <span aria-hidden>/</span>
             {category && (
               <>
                 <Link
-                  href={`/catalogo#${category.id}`}
+                  href={`/${locale}/catalogo#${category.id}`}
                   className="transition hover:text-white"
                 >
                   {category.name}
@@ -131,27 +166,25 @@ export default async function EmployeePage({
             {/* Tarjeta de precio */}
             <div className="rounded-2xl border border-[#ff003c]/30 bg-gradient-to-br from-[#ff003c]/10 to-transparent p-6">
               <div className="text-[10px] font-semibold uppercase tracking-widest text-[#ff003c]">
-                Desde
+                {t.from}
               </div>
               <div className="mt-2 flex items-baseline gap-1">
                 <span className="text-5xl font-bold tracking-tight">
                   <Price cop={employee.starterPrice} />
                 </span>
-                <span className="text-sm text-white/50">/mes</span>
+                <span className="text-sm text-white/50">{t.perMonth}</span>
               </div>
-              <p className="mt-2 text-xs text-white/50">
-                Sin contratos. Cancela cuando quieras.
-              </p>
+              <p className="mt-2 text-xs text-white/50">{t.noContract}</p>
               <a
-                href={whatsappHref(employee.name, "Starter")}
+                href={whatsappHref(locale, employee.name, "Starter")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex w-full items-center justify-center gap-1 rounded-full bg-[#ff003c] px-4 py-2.5 text-sm font-semibold text-black transition hover:brightness-110"
               >
-                Contratar <ArrowUpRight className="h-4 w-4" />
+                {t.hire} <ArrowUpRight className="h-4 w-4" />
               </a>
               <div className="mt-4 flex justify-center">
-                <CurrencyToggle />
+                <CurrencyToggle label={catalogT.currencyLabel} />
               </div>
             </div>
           </div>
@@ -163,7 +196,7 @@ export default async function EmployeePage({
         <div className="grid gap-10 md:grid-cols-[1fr_320px]">
           <div>
             <div className="mb-3 text-xs uppercase tracking-[0.18em] text-white/50">
-              Qué hace
+              {t.whatItDoes}
             </div>
             <p className="max-w-3xl text-lg leading-relaxed text-white/70">
               {employee.description}
@@ -171,7 +204,7 @@ export default async function EmployeePage({
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
             <div className="text-xs uppercase tracking-[0.18em] text-white/50">
-              Ideal para
+              {t.idealFor}
             </div>
             <p className="mt-3 text-sm leading-relaxed text-white/70">
               {employee.idealFor}
@@ -186,24 +219,24 @@ export default async function EmployeePage({
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <div>
               <div className="mb-3 text-xs uppercase tracking-[0.18em] text-white/50">
-                Planes
+                {t.plans}
               </div>
               <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-                Empieza barato. Escala cuando funcione.
+                {t.plansTitle}
               </h2>
             </div>
-            <CurrencyToggle />
+            <CurrencyToggle label={catalogT.currencyLabel} />
           </div>
           <div className="grid gap-8 lg:grid-cols-3">
             <div className="rounded-2xl border border-[#ff003c]/30 bg-gradient-to-br from-[#ff003c]/10 to-transparent p-8">
               <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-[#ff003c]">
-                <Sparkles className="h-3.5 w-3.5" /> Starter
+                <Sparkles className="h-3.5 w-3.5" /> {catalogT.grid.planStarter}
               </div>
               <div className="mt-3 flex items-baseline gap-1">
                 <span className="text-4xl font-bold tracking-tight">
                   <Price cop={employee.starterPrice} />
                 </span>
-                <span className="text-sm text-white/50">/mes</span>
+                <span className="text-sm text-white/50">{t.perMonth}</span>
               </div>
               <ul className="mt-6 flex flex-col gap-3">
                 {employee.starterFeatures.map((feature) => (
@@ -216,19 +249,19 @@ export default async function EmployeePage({
                 </p>
               )}
               <a
-                href={whatsappHref(employee.name, "Starter")}
+                href={whatsappHref(locale, employee.name, "Starter")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 inline-flex w-full items-center justify-center gap-1 rounded-full bg-[#ff003c] px-4 py-2.5 text-sm font-semibold text-black transition hover:brightness-110"
               >
-                Empezar con Starter
+                {t.startStarter}
               </a>
             </div>
 
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-[10px] font-semibold uppercase tracking-widest text-white/50">
-                  Pro
+                  {catalogT.grid.planPro}
                 </span>
                 {employee.proBadge && (
                   <span className="rounded-full border border-[#ff003c]/40 bg-[#ff003c]/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-[#ff003c]">
@@ -240,7 +273,7 @@ export default async function EmployeePage({
                 <span className="text-4xl font-bold tracking-tight">
                   <Price cop={employee.proPrice} />
                 </span>
-                <span className="text-sm text-white/50">/mes</span>
+                <span className="text-sm text-white/50">{t.perMonth}</span>
               </div>
               <ul className="mt-6 flex flex-col gap-3">
                 {employee.proFeatures.map((feature) => (
@@ -248,12 +281,12 @@ export default async function EmployeePage({
                 ))}
               </ul>
               <a
-                href={whatsappHref(employee.name, "Pro")}
+                href={whatsappHref(locale, employee.name, "Pro")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 inline-flex w-full items-center justify-center gap-1 rounded-full border border-white/15 px-4 py-2.5 text-sm font-semibold text-white/90 transition hover:bg-white/5"
               >
-                Empezar con Pro
+                {t.startPro}
               </a>
             </div>
 
@@ -273,16 +306,15 @@ export default async function EmployeePage({
                 ))}
               </ul>
               <Link
-                href="/#pricing"
+                href={`/${locale}/#pricing`}
                 className="mt-8 inline-flex w-full items-center justify-center gap-1 rounded-full border border-white/15 px-4 py-2.5 text-sm font-semibold text-white/90 transition hover:bg-white/5"
               >
-                Agendar llamada
+                {t.bookCall}
               </Link>
             </div>
           </div>
           <p className="mt-6 text-xs text-white/40">
-            Precios en COP. Convierte a USD con el selector de moneda — cálculo
-            según TRM vigente ({TRM_LABEL}).
+            {format(t.note, { trm: TRM_LABEL })}
           </p>
         </div>
       </section>
@@ -300,34 +332,32 @@ export default async function EmployeePage({
           />
           <div className="relative max-w-2xl">
             <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
-              Contrata a {employee.name} hoy.
+              {format(t.ctaTitle, { name: employee.name })}
             </h2>
-            <p className="mt-4 text-white/60 md:text-lg">
-              Empieza con el plan Starter. Si funciona, escalas a Pro o Custom.
-              Si no, cancelas sin costo.
-            </p>
+            <p className="mt-4 text-white/60 md:text-lg">{t.ctaDescription}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href={whatsappHref(employee.name, "Starter")}
+                href={whatsappHref(locale, employee.name, "Starter")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-[#ff003c] px-6 py-3 text-sm font-semibold text-black transition hover:brightness-110"
               >
-                Empezar por <Price cop={employee.starterPrice} />
+                {t.startWith}
+                <Price cop={employee.starterPrice} />
                 <ArrowUpRight className="h-4 w-4" />
               </a>
               <Link
-                href="/catalogo"
+                href={`/${locale}/catalogo`}
                 className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/5"
               >
-                Ver otros agentes
+                {t.viewOthers}
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <Footer />
+      <Footer locale={locale} dict={dict} />
     </div>
   );
 }

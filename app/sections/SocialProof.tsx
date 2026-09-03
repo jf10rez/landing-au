@@ -1,14 +1,15 @@
 import { Container } from "@/app/components/ui/Container";
 import { ScrollReveal } from "@/app/components/animation/ScrollReveal";
 import { socialProof } from "@/app/data/socialProof";
+import type { Messages } from "@/app/lib/i18n/dictionaries";
 
-export function SocialProof() {
+export function SocialProof({ dict }: { dict: Messages }) {
   return (
     <section className="border-y border-border-default bg-bg-surface py-10 sm:py-12">
       <Container>
         <ScrollReveal>
           <p className="mb-6 text-center font-mono text-xs uppercase tracking-wider text-text-tertiary sm:mb-8">
-            Equipos que ya operan sin fricción
+            {dict.socialProof.eyebrow}
           </p>
         </ScrollReveal>
 

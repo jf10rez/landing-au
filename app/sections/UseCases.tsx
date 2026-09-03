@@ -3,19 +3,22 @@ import { SectionWrapper } from "@/app/components/layout/SectionWrapper";
 import { ScrollReveal } from "@/app/components/animation/ScrollReveal";
 import { UseCasesParallax } from "@/app/components/animation/UseCasesParallax";
 import { CountUp } from "@/app/components/animation/CountUp";
-import { useCases } from "@/app/data/useCases";
+import { getUseCases } from "@/app/data/useCases";
+import type { Messages } from "@/app/lib/i18n/dictionaries";
 
-export function UseCases() {
+export function UseCases({ dict }: { dict: Messages }) {
+  const t = dict.useCases;
+  const useCases = getUseCases(dict);
   return (
     <SectionWrapper id="casos" className="bg-bg-surface">
       <Container>
         <ScrollReveal>
           <div className="mb-10 max-w-2xl sm:mb-14 lg:mb-16">
             <span className="mb-4 block font-mono text-xs uppercase tracking-wider text-accent">
-              Resultados
+              {t.eyebrow}
             </span>
             <h2 className="font-sans text-[clamp(2rem,8vw,3rem)] font-bold leading-tight tracking-normal text-text-primary sm:text-[clamp(2.25rem,4vw,3rem)]">
-              Números que importan
+              {t.title}
             </h2>
           </div>
         </ScrollReveal>
@@ -34,7 +37,7 @@ export function UseCases() {
                     {uc.clientType}
                   </h3>
                   <h4 className="font-sans text-lg font-semibold text-text-primary">
-                    Problema
+                    {t.problemLabel}
                   </h4>
                   <p className="text-sm leading-relaxed text-text-secondary">
                     {uc.problem}
@@ -43,7 +46,7 @@ export function UseCases() {
 
                 <div className="flex min-w-0 flex-col gap-3">
                   <h4 className="font-sans text-lg font-semibold text-text-primary">
-                    Solución
+                    {t.solutionLabel}
                   </h4>
                   <p className="text-sm leading-relaxed text-text-secondary">
                     {uc.solution}

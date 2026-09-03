@@ -3,22 +3,23 @@ import { SectionWrapper } from "@/app/components/layout/SectionWrapper";
 import { ScrollReveal } from "@/app/components/animation/ScrollReveal";
 import { StackParallax } from "@/app/components/animation/StackParallax";
 import { stack } from "@/app/data/stack";
+import type { Messages } from "@/app/lib/i18n/dictionaries";
 
-export function Stack() {
+export function Stack({ dict }: { dict: Messages }) {
+  const t = dict.stack;
   return (
     <SectionWrapper id="stack">
       <Container>
         <ScrollReveal>
           <div className="mx-auto mb-12 max-w-2xl text-center sm:mb-16 lg:mb-20">
             <span className="mb-4 block font-mono text-xs uppercase tracking-wider text-accent">
-              Stack Tecnológico
+              {t.eyebrow}
             </span>
             <h2 className="font-sans text-[clamp(2rem,8vw,3rem)] font-bold leading-tight tracking-normal text-text-primary sm:text-[clamp(2.25rem,4vw,3rem)]">
-              Integramos las herramientas que ya usas
+              {t.title}
             </h2>
             <p className="mt-4 text-text-secondary">
-              Conectamos n8n, agentes de IA y las plataformas de tu negocio sin
-              romper lo que funciona.
+              {t.description}
             </p>
           </div>
         </ScrollReveal>
@@ -41,7 +42,7 @@ export function Stack() {
                       {item.name}
                     </span>
                     <span className="font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
-                      {item.category}
+                      {t.categories[item.category as keyof Messages["stack"]["categories"]] ?? item.category}
                     </span>
                   </div>
                 </div>
@@ -52,8 +53,7 @@ export function Stack() {
 
         <ScrollReveal delay={200}>
           <p className="mx-auto mt-12 max-w-lg text-center text-sm text-text-tertiary sm:mt-16">
-            ¿No ves tu herramienta? Si tiene API, la integramos. También
-            trabajamos con conectores privados y endpoints personalizados.
+            {t.footer}
           </p>
         </ScrollReveal>
       </Container>

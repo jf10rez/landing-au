@@ -13,3 +13,5 @@ export function formatCop(value: number): string {
 export function formatUsd(value: number): string {
   return `$${value.toLocaleString("en-US")}`;
 }
+
+export type Currency = "USD" | "COP";

@@ -5,7 +5,9 @@
 # optimizados. No afecta la configuración de producción.
 #
 # Uso:
-#   docker compose -f docker-compose.dev.yml up --build
+#   docker compose -f docker-compose.dev.yml up -d --build
+#   (o simplemente `docker compose up -d` cuando COMPOSE_FILE=docker-compose.dev.yml
+#    está definido en el .env local — el .env está gitignored, esto no afecta al servidor)
 # =============================================================================
 
 services:
@@ -24,6 +26,11 @@ services:
       - PORT=3000
       - HOSTNAME=0.0.0.0
       - CI=true
+
+    # Cargar secrets/config local (SMTP para el formulario de booking).
+    # .env está gitignored: no se sube al repo ni afecta al servidor.
+    env_file:
+      - .env
 
     # Volumen bind-mount para el código fuente + volúmenes nombrados para
     # directorios que el contenedor escribe. Esto evita que los archivos

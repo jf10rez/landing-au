@@ -2,8 +2,18 @@ import { Container } from "@/app/components/ui/Container";
 import { Button } from "@/app/components/ui/Button";
 import { CreatureBackground } from "@/app/components/animation/CreatureBackground";
 import { HeroParallax } from "@/app/components/animation/HeroParallax";
+import type { Locale } from "@/app/lib/i18n/config";
+import type { Messages } from "@/app/lib/i18n/dictionaries";
+import { localizedHref } from "@/app/lib/i18n/utils";
 
-export function Hero() {
+export function Hero({
+  locale,
+  dict,
+}: {
+  locale: Locale;
+  dict: Messages;
+}) {
+  const t = dict.hero;
   return (
     <HeroParallax>
       <section
@@ -24,15 +34,14 @@ export function Hero() {
               className="max-w-[20ch] text-center font-sans text-[clamp(2.5rem,10vw,4.5rem)] font-bold leading-[1.08] tracking-tight text-text-primary"
               style={{ willChange: "transform, opacity" }}
             >
-              Automatización de procesos sin plantillas.
+              {t.title}
             </h1>
 
             <p
               className="max-w-2xl text-center text-base leading-relaxed text-text-secondary sm:text-lg"
               style={{ willChange: "transform, opacity" }}
             >
-              Workflows con IA que se acoplan a tu arquitectura. n8n, agentes
-              personalizados y APIs — sin forzar herramientas que no necesitas.
+              {t.subtitle}
             </p>
 
             <div
@@ -40,11 +49,11 @@ export function Hero() {
               className="flex flex-wrap items-center justify-center gap-3 sm:gap-4"
               style={{ willChange: "transform, opacity" }}
             >
-              <Button href="#pricing" size="lg">
-                Agendar una llamada
+              <Button href={localizedHref(locale, "/#pricing")} size="lg">
+                {t.ctaPrimary}
               </Button>
-              <Button href="#como-funciona" variant="secondary" size="lg">
-                Ver cómo funciona
+              <Button href={localizedHref(locale, "/#como-funciona")} variant="secondary" size="lg">
+                {t.ctaSecondary}
               </Button>
             </div>
           </div>

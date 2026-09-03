@@ -8,6 +8,8 @@ import { Card } from "@/app/components/ui/Card";
 import { Badge } from "@/app/components/ui/Badge";
 import { Button } from "@/app/components/ui/Button";
 import { cn } from "@/app/lib/utils";
+import { format } from "@/app/lib/i18n/utils";
+import type { Messages } from "@/app/lib/i18n/dictionaries";
 import type { Product } from "@/app/types";
 
 /* ========================================================================
@@ -16,6 +18,7 @@ import type { Product } from "@/app/types";
 
 interface ProductCarouselProps {
   products: Product[];
+  ui: Messages["carousel"];
   autoplayMs?: number;
 }
 
@@ -71,26 +74,15 @@ function measureContentHeight(el: HTMLElement): number {
   return Math.max(el.offsetHeight, innerH);
 }
 
-function getCategoryLabel(category: string): string {
-  switch (category) {
-    case "b2b":
-      return "Automatización B2B";
-    case "agency":
-      return "Automatización para Agencias";
-    case "openclaw":
-      return "Agente de IA";
-    case "empleado-ia":
-      return "Empleado IA";
-    default:
-      return category;
-  }
-}
-
 /* ========================================================================
    Component
    ======================================================================== */
 
-export function ProductCarousel({ products, autoplayMs = 5000 }: ProductCarouselProps) {
+export function ProductCarousel({
+  products,
+  ui,
+  autoplayMs = 5000,
+}: ProductCarouselProps) {
   const stageRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const progressBarRef = useRef<HTMLDivElement>(null);
@@ -315,8 +307,8 @@ export function ProductCarousel({ products, autoplayMs = 5000 }: ProductCarousel
       ref={stageRef}
       className="relative"
       role="region"
-      aria-label="Carrusel de productos"
-      aria-roledescription="carrusel"
+      aria-label={ui.regionLabel}
+      aria-roledescription={ui.regionRole}
       onMouseEnter={pauseAutoplay}
       onMouseLeave={resumeAutoplay}
     >
@@ -352,8 +344,12 @@ export function ProductCarousel({ products, autoplayMs = 5000 }: ProductCarousel
                   willChange: Math.abs(wrapped) <= 1 ? "transform, opacity" : "auto",
                 }}
                 role="group"
-                aria-roledescription="diapositiva"
-                aria-label={`${product.title} — diapositiva ${i + 1} de ${count}`}
+                aria-roledescription={ui.slideRole}
+                aria-label={format(ui.slideAria, {
+                  title: product.title,
+                  index: i + 1,
+                  count,
+                })}
                 aria-hidden={wrapped !== 0}
               >
                 <div
@@ -378,8 +374,8 @@ export function ProductCarousel({ products, autoplayMs = 5000 }: ProductCarousel
       {/* Controls */}
       <div className="mt-10 flex flex-col items-center gap-4">
         <div className="flex items-center gap-5">
-          <NavButton direction="prev" onClick={() => { prev(); pauseAutoplay(); resumeAutoplay(); }} />
-          <div className="flex items-center gap-2" role="tablist" aria-label="Seleccionar producto">
+          <NavButton ui={ui} direction="prev" onClick={() => { prev(); pauseAutoplay(); resumeAutoplay(); }} />
+          <div className="flex items-center gap-2" role="tablist" aria-label={ui.tablistLabel}>
             {products.map((product, i) => (
               <button
                 key={product.id}
@@ -394,7 +390,7 @@ export function ProductCarousel({ products, autoplayMs = 5000 }: ProductCarousel
               />
             ))}
           </div>
-          <NavButton direction="next" onClick={() => { next(); pauseAutoplay(); resumeAutoplay(); }} />
+          <NavButton ui={ui} direction="next" onClick={() => { next(); pauseAutoplay(); resumeAutoplay(); }} />
         </div>
 
         {/* Progress bar */}
@@ -414,9 +410,11 @@ export function ProductCarousel({ products, autoplayMs = 5000 }: ProductCarousel
    ======================================================================== */
 
 function NavButton({
+  ui,
   direction,
   onClick,
 }: {
+  ui: Messages["carousel"];
   direction: "prev" | "next";
   onClick: () => void;
 }) {
@@ -425,7 +423,7 @@ function NavButton({
     <button
       onClick={onClick}
       className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-bg-surface text-text-secondary transition-all duration-200 hover:border-accent/50 hover:text-accent motion-safe:hover:scale-110 md:h-10 md:w-10"
-      aria-label={isPrev ? "Producto anterior" : "Siguiente producto"}
+      aria-label={isPrev ? ui.prevAria : ui.nextAria}
     >
       <svg
         width="16"
@@ -459,7 +457,7 @@ function ProductCardContent({
     >
       <div>
         <span className="mb-2 block font-mono text-xs uppercase tracking-wider text-accent">
-          {getCategoryLabel(product.category)}
+          {product.categoryLabel}
         </span>
         <h3 className="font-sans text-xl font-semibold leading-snug text-text-primary sm:text-2xl">
           {product.title}

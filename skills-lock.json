@@ -37,6 +37,12 @@
       "skillPath": "skills/gsap-scrolltrigger/SKILL.md",
       "computedHash": "1cdc5647693783cb7a662d84a5de434c88a051ed56b4d33597c9b5782b5973e6"
     },
+    "i18n": {
+      "source": "lobehub/lobehub",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/i18n/SKILL.md",
+      "computedHash": "4b5f9e0e878e935e5b0ee671bb6c14292ac446d111cdcaab3c27966865de438f"
+    },
     "next-best-practices": {
       "source": "vercel-labs/next-skills",
       "sourceType": "github",

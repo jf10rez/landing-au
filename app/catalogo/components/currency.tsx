@@ -1,9 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { formatCop, formatUsd, usdFromCop } from "../currency";
-
-type Currency = "COP" | "USD";
+import { formatCop, formatUsd, usdFromCop, type Currency } from "../currency";
 
 const STORAGE_KEY = "ilaxus-currency";
 
@@ -19,11 +17,12 @@ function subscribe(listener: () => void) {
 }
 
 function getSnapshot(): Currency {
-  return window.localStorage.getItem(STORAGE_KEY) === "USD" ? "USD" : "COP";
+  const stored = window.localStorage.getItem(STORAGE_KEY);
+  return stored === "USD" || stored === "COP" ? stored : "USD";
 }
 
 function getServerSnapshot(): Currency {
-  return "COP";
+  return "USD";
 }
 
 export function useCurrency() {
@@ -44,19 +43,24 @@ export function Price({
 }) {
   const currency = useCurrency();
   const formatted =
-    currency === "COP" ? formatCop(cop) : formatUsd(usdFromCop(cop));
+    currency === "USD" ? formatUsd(usdFromCop(cop)) : formatCop(cop);
   return <span className={className}>{formatted}</span>;
 }
 
-export function CurrencyToggle() {
+export function CurrencyToggle({
+  label = "Seleccionar moneda",
+}: {
+  label?: string;
+}) {
   const currency = useCurrency();
+  const options: Currency[] = ["USD", "COP"];
   return (
     <div
       role="group"
-      aria-label="Seleccionar moneda"
+      aria-label={label}
       className="inline-flex shrink-0 items-center rounded-full border border-white/10 bg-white/[0.03] p-1 text-xs font-semibold"
     >
-      {(["COP", "USD"] as const).map((option) => (
+      {options.map((option) => (
         <button
           key={option}
           type="button"

@@ -6,31 +6,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useReducedMotion } from "@/app/hooks/useReducedMotion";
 import { Container } from "@/app/components/ui/Container";
+import type { Messages } from "@/app/lib/i18n/dictionaries";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const steps = [
-  {
-    number: "01",
-    title: "Diagnóstico Operativo",
-    description:
-      "Mapeamos tus procesos actuales. Identificamos los puntos donde el tiempo se pierde y el dinero se filtra.",
-  },
-  {
-    number: "02",
-    title: "Construcción del Workflow",
-    description:
-      "Diseñamos el flujo con n8n, agentes de IA y las APIs de tus herramientas. Cada nodo tiene un propósito medible.",
-  },
-  {
-    number: "03",
-    title: "Entrega y Monitoreo",
-    description:
-      "No te dejamos solo. Entregamos el sistema documentado, capacitamos a tu equipo y monitoreamos que los números mejoren.",
-  },
-];
+type HowItWorksCopy = Messages["howItWorks"];
 
-export function HowItWorksHorizontal() {
+export function HowItWorksHorizontal({ t }: { t: HowItWorksCopy }) {
+  const steps = t.steps;
   const pinnedRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
@@ -129,10 +112,10 @@ export function HowItWorksHorizontal() {
         <Container>
           <div className="mb-10 max-w-2xl sm:mb-14 lg:mb-16">
             <span className="mb-4 block font-mono text-xs uppercase tracking-wider text-accent">
-              Proceso
+              {t.eyebrow}
             </span>
             <h2 className="font-sans text-[clamp(2rem,8vw,3rem)] font-bold leading-tight tracking-normal text-text-primary sm:text-[clamp(2.25rem,4vw,3rem)]">
-              Cómo automatizamos tus procesos
+              {t.title}
             </h2>
           </div>
           <div className="grid gap-8 md:grid-cols-3 lg:gap-12">
@@ -170,10 +153,10 @@ export function HowItWorksHorizontal() {
           <Container>
             <div className="max-w-2xl">
               <span className="mb-4 block font-mono text-xs uppercase tracking-wider text-accent">
-                Proceso
+                {t.eyebrow}
               </span>
               <h2 className="font-sans text-[clamp(2rem,8vw,3rem)] font-bold leading-tight tracking-normal text-text-primary sm:text-[clamp(2.25rem,4vw,3rem)]">
-                Cómo automatizamos tus procesos
+                {t.title}
               </h2>
             </div>
           </Container>

@@ -5,8 +5,17 @@ import { animate } from "animejs";
 import { useReducedMotion } from "@/app/hooks/useReducedMotion";
 import { Button } from "@/app/components/ui/Button";
 import { cn } from "@/app/lib/utils";
+import type { Locale } from "@/app/lib/i18n/config";
+import type { Messages } from "@/app/lib/i18n/dictionaries";
+import { localizedHref } from "@/app/lib/i18n/utils";
 
-export function StickyCTA() {
+export function StickyCTA({
+  locale,
+  t,
+}: {
+  locale: Locale;
+  t: Messages["stickyCta"];
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   const reduced = useReducedMotion();
@@ -66,11 +75,11 @@ export function StickyCTA() {
       )}
     >
       <Button
-        href="#pricing"
+        href={localizedHref(locale, "/#pricing")}
         size="lg"
         className="w-full shadow-[0_0_24px_rgba(255,0,51,0.2)] hover:shadow-[0_0_40px_rgba(255,0,51,0.35)] sm:w-auto"
       >
-        Solicitar diagnóstico
+        {t.label}
       </Button>
     </div>
   );

@@ -4,13 +4,19 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/app/components/ui/Container";
+import { LanguageSwitcher } from "@/app/components/ui/LanguageSwitcher";
 import { cn } from "@/app/lib/utils";
+import type { Locale } from "@/app/lib/i18n/config";
+import type { Messages } from "@/app/lib/i18n/dictionaries";
+import { localizedHref } from "@/app/lib/i18n/utils";
 
 interface NavbarProps {
+  locale: Locale;
+  t: Messages["nav"];
   activeHref?: string;
 }
 
-export function Navbar({ activeHref }: NavbarProps) {
+export function Navbar({ locale, t, activeHref }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -38,13 +44,10 @@ export function Navbar({ activeHref }: NavbarProps) {
     };
   }, []);
 
-  const links = [
-    { href: "/#productos", label: "Productos" },
-    { href: "/catalogo", label: "Catálogo" },
-    { href: "/#como-funciona", label: "Cómo funciona" },
-    { href: "/#casos", label: "Casos" },
-    { href: "/#pricing", label: "Agendar" },
-  ];
+  const links = t.links.map((link) => ({
+    ...link,
+    href: localizedHref(locale, link.href),
+  }));
 
   const isActive = (href: string) => href === activeHref;
 
@@ -59,10 +62,7 @@ export function Navbar({ activeHref }: NavbarProps) {
     >
       <Container>
         <div className="flex h-18 items-center justify-between gap-4">
-          <Link
-            href="/"
-            className="shrink-0"
-          >
+          <Link href={`/${locale}`} className="shrink-0">
             <Image
               src="/logo-ilaxus-800.webp"
               alt="Ilaxus"
@@ -90,13 +90,16 @@ export function Navbar({ activeHref }: NavbarProps) {
             ))}
           </div>
 
-          <Link
-            href="/#pricing"
-            className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-lg bg-accent px-3 text-xs font-medium text-white transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_16px_rgba(255,0,51,0.3)] sm:px-4"
-          >
-            <span className="hidden sm:inline">Agendar llamada</span>
-            <span className="sm:hidden">Agendar</span>
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link
+              href={localizedHref(locale, "/#pricing")}
+              className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-lg bg-accent px-3 text-xs font-medium text-white transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_16px_rgba(255,0,51,0.3)] sm:px-4"
+            >
+              <span className="hidden sm:inline">{t.cta}</span>
+              <span className="sm:hidden">{t.ctaShort}</span>
+            </Link>
+            <LanguageSwitcher locale={locale} />
+          </div>
         </div>
 
         <div className="-mx-4 overflow-x-auto border-t border-border-default/60 px-4 pb-2 md:hidden">

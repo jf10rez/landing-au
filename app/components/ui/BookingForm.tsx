@@ -7,8 +7,12 @@ import { Button } from "@/app/components/ui/Button";
 import { submitBooking } from "@/app/actions/booking";
 import { cn } from "@/app/lib/utils";
 import { DURATIONS, EASINGS } from "@/app/lib/animations";
+import type { Locale } from "@/app/lib/i18n/config";
+import type { Messages } from "@/app/lib/i18n/dictionaries";
 
 interface BookingFormProps {
+  locale: Locale;
+  t: Messages["booking"];
   className?: string;
 }
 
@@ -79,7 +83,11 @@ function FormField({
   );
 }
 
-export function BookingForm({ className }: BookingFormProps) {
+export function BookingForm({
+  locale,
+  t,
+  className,
+}: BookingFormProps) {
   const [state, formAction, isPending] = useActionState(submitBooking, null);
   const reduced = useReducedMotion();
   const statusRef = useRef<HTMLDivElement>(null);
@@ -117,9 +125,9 @@ export function BookingForm({ className }: BookingFormProps) {
       <FormField
         id="name"
         name="name"
-        label="Nombre"
+        label={t.fields.name.label}
         required
-        placeholder="Tu nombre"
+        placeholder={t.fields.name.placeholder}
         errors={state?.errors?.name}
       />
 
@@ -127,9 +135,9 @@ export function BookingForm({ className }: BookingFormProps) {
         id="email"
         name="email"
         type="email"
-        label="Correo electrónico"
+        label={t.fields.email.label}
         required
-        placeholder="tu@empresa.com"
+        placeholder={t.fields.email.placeholder}
         errors={state?.errors?.email}
       />
 
@@ -137,17 +145,17 @@ export function BookingForm({ className }: BookingFormProps) {
         id="phone"
         name="phone"
         type="tel"
-        label="Teléfono"
-        placeholder="Opcional"
+        label={t.fields.phone.label}
+        placeholder={t.fields.phone.placeholder}
         errors={state?.errors?.phone}
       />
 
       <FormField
         id="message"
         name="message"
-        label="¿Qué proceso te gustaría automatizar?"
+        label={t.fields.message.label}
         required
-        placeholder="Cuéntanos brevemente qué tareas repetitivas quieres eliminar..."
+        placeholder={t.fields.message.placeholder}
         errors={state?.errors?.message}
         as="textarea"
       />
@@ -181,12 +189,15 @@ export function BookingForm({ className }: BookingFormProps) {
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
               />
             </svg>
-            Enviando...
+            {t.sending}
           </span>
         ) : (
-          "Solicitar diagnóstico"
+          t.submit
         )}
       </Button>
+
+      {/* Locale para mensajes del server action */}
+      <input type="hidden" name="locale" value={locale} />
 
       {/* Honeypot — hidden (display:none) evita autofill/password managers; los bots sin render lo rellenan igual */}
       <div className="hidden" aria-hidden="true">

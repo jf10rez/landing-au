@@ -386,7 +386,7 @@ const en = {
         title: "Starter Plan",
         from: "From ",
         description:
-          "Ideal to get started. The Self-Setup Agent is the lowest entry point in the catalog. Zero setup, cancel whenever you want.",
+          "Ideal to get started. The Personal Assistant is the lowest entry point in the catalog. Zero setup, cancel whenever you want.",
       },
       pro: {
         title: "Pro Plan",
@@ -509,7 +509,7 @@ const en = {
         starterFeatures: [
           "Up to 100 prospected leads per month",
           "Basic company enrichment",
-          "Personalized emails ready to copy-paste and send from your inbox (manual mode)",
+          "Personalized emails ready to review and send with your approval",
           "Sync with your CRM",
           "No extra subscriptions: you only pay for the plan",
         ],
@@ -518,9 +518,12 @@ const en = {
           "Advanced personalization models",
           "Predictive opportunity scoring",
           "100% automated multi-channel outreach (email + LinkedIn)",
+          "Automatic lead follow-up with sequences",
           "Automatic meeting booking",
           "Subscriptions included: WarmUp, anti-spam mirror domain, sending workspace and AI models",
         ],
+        disclaimer:
+          "Starter is ideal to start: you keep full control over every send and follow-up. Pro unlocks full automation — sending, email warm-up and lead follow-up with no manual work.",
         proBadge: "Best value",
       },
       "asesor-comercial-ia": {
@@ -547,11 +550,14 @@ const en = {
         ],
         proFeatures: [
           "Unlimited conversations",
+          "Instant replies with advanced models",
           "Lead qualification and routing",
           "Automatic post-sale follow-up",
           "Integration with your catalog and payments",
           "Custom tone and scripts",
         ],
+        disclaimer:
+          "Starter includes standard capacity to get going and validate the flow with your team. Pro unlocks maximum speed and conversation quality.",
       },
       "marketing-ia": {
         name: "Marketing IA",
@@ -594,60 +600,67 @@ const en = {
           "Generative videos (Pro)",
         ],
         starterFeatures: [
-          "Daily publishing (up to 20 videos/mo)",
+          "Up to 2 videos per day (up to 12 narrative videos/mo)",
+          "Narrative AI videos",
+          "Standard video generation speed",
           "Niche of your choice with retraining",
           "Scripts and niche trends",
           "Automatic scheduling",
         ],
         proFeatures: [
+          "Up to 30 videos per month (narrative + generative)",
+          "Ultra-fast AI video generation",
           "Professional generative videos with AI",
           "Realistic avatars and voiceovers",
-          "Expanded publishing volume",
           "A/B testing of hooks and formats",
           "Per-video performance analytics",
         ],
       },
       "abogado-ia": {
-        name: "Legal IA",
+        name: "Labor Law IA",
         tagline:
-          "Drafts and reviews contracts, policies and legal documents; answers legal consultations.",
+          "Handles labor law consultations and documents: employment contracts, severance, memos and workplace risk.",
         description:
-          "A legal assistant available around the clock. It drafts contracts and policies from Colombian and international templates, reviews risky clauses, and answers legal consultations with clear references. Ideal for day-to-day operations that don't require a lawyer's signature.",
+          "A legal assistant specialized in labor law, available around the clock. It drafts and reviews employment contracts, severance, termination letters and memos from Colombian templates, reviews risky clauses and answers labor consultations with clear references. Ideal for the day-to-day of HR teams and workers, without waiting for a lawyer on every question.",
         idealFor:
-          "SMBs, startups and legal teams that need to free up time from repetitive document work.",
+          "Companies, HR departments and workers who need to solve labor-only matters without paying for legal advice on every document.",
         skills: [
-          "Contracts",
-          "Policies and terms",
-          "Legal consultations",
-          "Compliance",
+          "Labor law",
+          "Employment contracts",
+          "Severance",
+          "Workplace risk",
+          "Labor consultations",
+          "Labor compliance",
         ],
         starterFeatures: [
           "Up to 10 documents per month",
-          "Contract and policy templates",
-          "Basic clause review",
-          "Unlimited legal consultations",
+          "Labor templates: employment contracts, memos and letters",
+          "Basic review of labor clauses",
+          "Unlimited labor consultations",
         ],
         proFeatures: [
           "Unlimited documents",
-          "Deep review with risk matrix",
-          "Regulatory compliance (data protection)",
+          "Severance and benefits calculation and review",
+          "Workplace risk matrix and critical clauses",
+          "Regulatory compliance (data protection + labor regulations)",
           "Expiry and renewal alerts",
           "Approval flows with your team",
         ],
+        disclaimer:
+          "Focused exclusively on labor law. For other legal matters, consult a professional.",
       },
       "financiero-ia": {
         name: "Financial Analyst IA",
         tagline:
-          "Your 24/7 market analyst. It studies stocks, crypto and futures, interprets charts, trends and indicators, and spots potential entry and exit opportunities.",
+          "Your 24/7 market analyst. It interprets charts, trends and indicators, and spots entry and exit opportunities in stocks and cryptocurrency.",
         description:
-          "It applies real technical analysis — trends, support and resistance, candlesticks, volume and indicators — to stocks, crypto and futures, and combines it with market context and risk management to design short, medium and long-term trading and investment strategies. It doesn't decide for you: it hands you the analysis and the plan so you decide with judgment.",
+          "It applies real technical analysis — trends, support and resistance, candlesticks, volume and indicators — and combines it with market context and risk management to design short, medium and long-term trading and investment strategies. Starter analyzes the stock market; Pro adds cryptocurrency. It doesn't decide for you: it hands you the analysis and the plan so you decide with judgment.",
         idealFor:
           "Investors and traders who want rigorous analysis and risk discipline without paying for expensive subscriptions or a full-time analyst.",
         skills: [
           "Technical analysis",
-          "Stocks",
-          "Crypto",
-          "Futures",
+          "Stock market",
+          "Cryptocurrency",
           "Trading",
           "Investing",
           "Indicators",
@@ -655,18 +668,20 @@ const en = {
           "Risk management",
         ],
         starterFeatures: [
-          "1 market of your choice (stocks, crypto or futures)",
-          "Daily technical analysis of your assets",
+          "Stock market analysis (stocks)",
+          "Daily technical analysis of your stocks",
           "Support, resistance and breakout alerts",
           "Weekly market and opportunity report",
         ],
         proFeatures: [
-          "Unlimited markets and assets",
+          "Stock market + cryptocurrency",
           "Real-time entry and exit alerts",
           "Short, medium and long-term strategies",
           "Risk management and suggested position size",
           "Monthly portfolio performance report",
         ],
+        disclaimer:
+          "Starter focuses on the stock market. Pro expands your analysis to cryptocurrency.",
       },
       "ecommerce-ia": {
         name: "Ecommerce IA",
@@ -688,14 +703,14 @@ const en = {
         ],
         starterFeatures: [
           "Online store ready with your business details",
-          "Up to 50 published products with AI product sheets (text + photos)",
+          "Up to 200 published products with AI product sheets (text + photos)",
           "Catalog import from photos, Excel or WhatsApp",
           "Monthly sales report",
           "Guide for Colombian payment gateways (Wompi, PayU)",
         ],
         proFeatures: [
           "Everything in Starter, plus:",
-          "Unlimited catalog",
+          "Catalog of up to 1,000 products",
           "Automatic order processing (payment + confirmation)",
           "24/7 support with shipping tracking on WhatsApp and web",
           "Abandoned cart recovery",
@@ -739,11 +754,11 @@ const en = {
           "Starter includes ingestion of up to 2 manuals and an initial price catalog. Real-time ERP integration is enabled on Pro.",
       },
       "agente-autoconfigurable": {
-        name: "Self-Setup Agent",
+        name: "Personal Assistant IA",
         tagline:
-          "Build your own AI agent in minutes: choose channels, tools and personality, and deploy it yourself. The lowest price in the catalog.",
+          "Your personal AI assistant: choose channels, tools and personality, and deploy it in minutes. From standard capacity to advanced models.",
         description:
-          "The gateway to AI agents. You choose the name, personality, channels (WhatsApp, Telegram, web) and the tools it can use — calendar, spreadsheets, search — and the agent is deployed in minutes. No code, no agency, no sales calls. Perfect for learning, testing ideas and automating personal tasks.",
+          "The gateway to AI agents. You choose the name, personality, channels (WhatsApp, Telegram, web) and the tools it can use — calendar, spreadsheets, search — and it is deployed in minutes. No code, no agency, no sales calls. Perfect for learning, testing ideas and automating personal and day-to-day tasks.",
         idealFor:
           "Entrepreneurs, freelancers and curious minds who want their first AI agent without depending on anyone.",
         skills: [
@@ -754,20 +769,21 @@ const en = {
           "Self-deployment",
         ],
         starterFeatures: [
-          "1 agent, 1 channel",
+          "1 assistant, 1 channel",
           "Up to 200 tasks per month",
+          "Standard-capacity models",
+          "Standard memory and storage",
           "Preconfigured templates",
-          "Autonomous deployment in minutes",
         ],
         proFeatures: [
-          "Unlimited agents and channels",
-          "Expanded storage",
+          "Unlimited assistants and channels",
           "Advanced reasoning models",
+          "Expanded memory and storage",
           "Connection to your own APIs",
           "Priority support",
         ],
         disclaimer:
-          "Starter has limitations: reduced storage, standard models and lower task volume. Scale to Pro when you need it.",
+          "Starter includes standard capacity to start without friction. Pro unlocks advanced models and expands memory and storage.",
       },
     },
   },

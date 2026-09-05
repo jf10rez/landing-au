@@ -64,8 +64,8 @@ export const categoriesMeta: CategoryMeta[] = [
       {
         slug: "asesor-comercial-ia",
         icon: Headphones,
-        starterPrice: 49900,
-        proPrice: 89900,
+        starterPrice: 99900,
+        proPrice: 169900,
       },
     ],
   },
@@ -120,8 +120,8 @@ export const categoriesMeta: CategoryMeta[] = [
       {
         slug: "ecommerce-ia",
         icon: ShoppingCart,
-        starterPrice: 89900,
-        proPrice: 189900,
+        starterPrice: 449900,
+        proPrice: 599000,
       },
     ],
   },

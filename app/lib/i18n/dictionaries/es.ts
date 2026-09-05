@@ -388,7 +388,7 @@ const es: typeof en = {
         title: "Plan Starter",
         from: "Desde ",
         description:
-          "Ideal para arrancar. El Agente Autoconfigurable es el punto de entrada más bajo del catálogo. Cero setup, cancela cuando quieras.",
+          "Ideal para arrancar. El Asistente Personal es el punto de entrada más bajo del catálogo. Cero setup, cancela cuando quieras.",
       },
       pro: {
         title: "Plan Pro",
@@ -511,7 +511,7 @@ const es: typeof en = {
         starterFeatures: [
           "Hasta 100 leads prospectados al mes",
           "Enriquecimiento básico de empresas",
-          "Emails personalizados listos para copiar-pegar y enviar desde tu correo (modo manual)",
+          "Emails personalizados listos para revisar y enviar con tu aprobación",
           "Sincronización con tu CRM",
           "Sin suscripciones adicionales: pagas solo el plan",
         ],
@@ -520,9 +520,12 @@ const es: typeof en = {
           "Modelos avanzados de personalización",
           "Calificación predictiva de oportunidades",
           "Envío 100% automatizado multi-canal (email + LinkedIn)",
+          "Seguimiento automático de leads con secuencias",
           "Agenda automática de reuniones",
           "Suscripciones incluidas: WarmUp, dominio espejo anti-spam, Workspace de envío y modelos IA",
         ],
+        disclaimer:
+          "Starter es ideal para arrancar: tienes el control total de cada envío y seguimiento. Pro desbloquea la automatización completa — envío, calentamiento de correos y seguimiento de leads sin intervención.",
         proBadge: "Mejor valor",
       },
       "asesor-comercial-ia": {
@@ -549,12 +552,16 @@ const es: typeof en = {
         ],
         proFeatures: [
           "Conversaciones ilimitadas",
+          "Respuesta instantánea con modelos avanzados",
           "Calificación y routing de leads",
           "Seguimiento automático post-venta",
           "Integración con tu catálogo y pagos",
           "Tono y guiones a medida",
         ],
+disclaimer:
+          "Starter incluye capacidad estándar para arrancar y validar el flujo con tu equipo. Pro desbloquea la máxima velocidad y calidad de conversación.",
       },
+
       "marketing-ia": {
         name: "Marketing IA",
         tagline:
@@ -596,64 +603,88 @@ const es: typeof en = {
           "Videos generativos (Pro)",
         ],
         starterFeatures: [
-          "Publicación diaria (hasta 20 videos/mes)",
+          "Hasta 2 videos al día (hasta 12 narrativos al mes)",
+          "Videos narrativos con IA",
+          "Velocidad de generación estándar",
           "Nicho a elección con re-entrenamiento",
           "Guiones y tendencias del nicho",
           "Programación automática",
         ],
         proFeatures: [
+          "Hasta 30 videos al mes (narrativos + generativos)",
+          "Generación ultrarrápida de video con IA",
           "Videos generativos profesionales con IA",
           "Avatares y locuciones realistas",
-          "Volumen ampliado en publicaciones",
           "A/B testing de ganchos y formatos",
           "Análisis de rendimiento por video",
         ],
       },
       "abogado-ia": {
-        name: "Abogado IA",
+        name: "Abogado Laboral IA",
         tagline:
-          "Elabora y revisa contratos, políticas y documentos legales; resuelve consultas jurídicas.",
+          "Resuelve consultas y documentos de derecho laboral: contratos de trabajo, liquidaciones, minutas y riesgos laborales.",
         description:
-          "Un asistente jurídico disponible a toda hora. Redacta contratos y políticas a partir de plantillas colombianas e internacionales, revisa cláusulas riesgosas, y resuelve consultas jurídicas con referencias claras. Ideal para operaciones del día a día que no requieren firma de abogado.",
+          "Un asistente jurídico especializado en derecho laboral, disponible a toda hora. Redacta y revisa contratos de trabajo, liquidaciones, cartas de despido y minutas a partir de plantillas colombianas, revisa cláusulas riesgosas y resuelve consultas laborales con referencias claras. Ideal para el día a día de RR.HH. y de los trabajadores, sin esperar consulta jurídica por cada duda.",
         idealFor:
-          "Pymes, startups y equipos legales que necesitan liberar tiempo de trabajo repetitivo de documentos.",
-        skills: ["Contratos", "Políticas y términos", "Consultas legales", "Compliance"],
+          "Empresas, departamentos de RR.HH. y trabajadores que necesitan resolver temas exclusivamente laborales sin pagar asesoría jurídica por cada documento.",
+        skills: [
+          "Derecho laboral",
+          "Contratos de trabajo",
+          "Liquidaciones",
+          "Riesgos laborales",
+          "Consultas laborales",
+          "Compliance laboral",
+        ],
         starterFeatures: [
           "Hasta 10 documentos al mes",
-          "Plantillas de contratos y políticas",
-          "Revisión de cláusulas básicas",
-          "Consultas jurídicas ilimitadas",
+          "Plantillas laborales: contratos de trabajo, minutas y cartas",
+          "Revisión básica de cláusulas laborales",
+          "Consultas laborales ilimitadas",
         ],
         proFeatures: [
           "Documentos ilimitados",
-          "Revisión profunda con matriz de riesgos",
-          "Cumplimiento normativo (protección de datos)",
+          "Cálculo y revisión de liquidaciones y prestaciones",
+          "Matriz de riesgos laborales y cláusulas críticas",
+          "Cumplimiento normativo (protección de datos + normativa laboral)",
           "Alertas de vencimiento y renovación",
           "Flujos de aprobación con tu equipo",
         ],
+        disclaimer:
+          "Enfocado exclusivamente en derecho laboral. Para otros temas jurídicos consulta con un profesional.",
       },
       "financiero-ia": {
         name: "Financiero IA",
         tagline:
-          "Tu analista de mercados 24/7. Estudia acciones, criptomonedas y futuros, interpreta gráficos, tendencias e indicadores y detecta oportunidades potenciales de entrada y salida.",
+          "Tu analista de mercados 24/7. Interpreta gráficos, tendencias e indicadores y detecta oportunidades de entrada y salida en bolsa de valores y criptomonedas.",
         description:
-          "Aplica análisis técnico real —tendencias, soportes y resistencias, velas, volumen e indicadores— sobre acciones, criptomonedas y futuros, y lo combina con contexto de mercado y gestión de riesgo para diseñar estrategias de trading e inversión de corto, mediano y largo plazo. No decide por ti: te entrega el análisis y el plan para que decidas con criterio.",
+          "Aplica análisis técnico real —tendencias, soportes y resistencias, velas, volumen e indicadores— y lo combina con contexto de mercado y gestión de riesgo para diseñar estrategias de trading e inversión de corto, mediano y largo plazo. Starter analiza la bolsa de valores; Pro agrega criptomonedas. No decide por ti: te entrega el análisis y el plan para que decidas con criterio.",
         idealFor:
           "Inversionistas y traders que quieren análisis riguroso y disciplina de riesgo sin pagar suscripciones caras ni un analista full-time.",
-        skills: ["Análisis técnico", "Acciones", "Criptomonedas", "Futuros", "Trading", "Inversión", "Indicadores", "Gráficos y tendencias", "Gestión del riesgo"],
+        skills: [
+          "Análisis técnico",
+          "Bolsa de valores",
+          "Criptomonedas",
+          "Trading",
+          "Inversión",
+          "Indicadores",
+          "Gráficos y tendencias",
+          "Gestión del riesgo",
+        ],
         starterFeatures: [
-          "1 mercado a tu elección (acciones, cripto o futuros)",
-          "Análisis técnico diario de tus activos",
+          "Análisis de bolsa de valores (acciones)",
+          "Análisis técnico diario de tus acciones",
           "Alertas de soportes, resistencias y rupturas",
           "Reporte semanal de mercado y oportunidades",
         ],
         proFeatures: [
-          "Mercados y activos ilimitados",
+          "Bolsa de valores + criptomonedas",
           "Alertas en tiempo real de entradas y salidas",
           "Estrategias de corto, mediano y largo plazo",
           "Gestión de riesgo y tamaño de posición sugerido",
           "Reporte mensual de desempeño de tu portafolio",
         ],
+        disclaimer:
+          "Starter se enfoca en la bolsa de valores. Pro amplía tu análisis a criptomonedas.",
       },
       "ecommerce-ia": {
         name: "Ecommerce IA",
@@ -675,14 +706,14 @@ const es: typeof en = {
         ],
         starterFeatures: [
           "Tienda online lista con los detalles de tu negocio",
-          "Hasta 50 productos publicados con fichas de IA (texto + fotos)",
+          "Hasta 200 productos publicados con fichas de IA (texto + fotos)",
           "Importación de catálogo desde fotos, Excel o WhatsApp",
           "Reporte mensual de ventas",
           "Guia para pasarelas de pago colombianas (Wompi, PayU)",
         ],
         proFeatures: [
           "Todo lo de Starter, más:",
-          "Catálogo ilimitado",
+          "Catálogo de hasta 1.000 productos",
           "Procesamiento automático de pedidos (pago + confirmación)",
           "Atención 24/7 con seguimiento de envíos en WhatsApp y web",
           "Recuperación de carritos abandonados",
@@ -726,11 +757,11 @@ const es: typeof en = {
           "Starter incluye la ingesta de hasta 2 manuales y un catálogo de precios inicial. La integración de ERP en tiempo real se habilita en Pro.",
       },
       "agente-autoconfigurable": {
-        name: "Agente Autoconfigurable",
+        name: "Asistente Personal IA",
         tagline:
-          "Arma tu propio agente IA en minutos: elige canales, herramientas y personalidad, y despliégalo tú mismo. El precio más bajo del catálogo.",
+          "Tu asistente personal de IA: elige canales, herramientas y personalidad, y despliégalo en minutos. Desde capacidad estándar hasta modelos avanzados.",
         description:
-          "La puerta de entrada a los agentes IA. Tú eliges el nombre, la personalidad, los canales (WhatsApp, Telegram, web) y las herramientas que puede usar — calendario, hojas de cálculo, búsqueda — y el agente queda desplegado en minutos. Sin código, sin agencia, sin llamadas de ventas. Perfecto para aprender, probar ideas y automatizar tareas personales.",
+          "La puerta de entrada a los agentes IA. Tú eliges el nombre, la personalidad, los canales (WhatsApp, Telegram, web) y las herramientas que puede usar — calendario, hojas de cálculo, búsqueda — y queda desplegado en minutos. Sin código, sin agencia, sin llamadas de ventas. Perfecto para aprender, probar ideas y automatizar tareas personales y del día a día.",
         idealFor:
           "Emprendedores, freelancers y curiosos que quieren su primer agente IA sin depender de nadie.",
         skills: [
@@ -741,20 +772,21 @@ const es: typeof en = {
           "Despliegue propio",
         ],
         starterFeatures: [
-          "1 agente, 1 canal",
+          "1 asistente, 1 canal",
           "Hasta 200 tareas al mes",
+          "Modelos de capacidad estándar",
+          "Memoria y almacenamiento estándar",
           "Plantillas preconfiguradas",
-          "Despliegue autónomo en minutos",
         ],
         proFeatures: [
-          "Agentes y canales ilimitados",
-          "Almacenamiento ampliado",
+          "Asistentes y canales ilimitados",
           "Modelos avanzados de razonamiento",
+          "Memoria y almacenamiento ampliados",
           "Conexión con tus propias APIs",
           "Soporte prioritario",
         ],
         disclaimer:
-          "Starter con limitaciones: almacenamiento reducido, modelos estándar y menor volumen de tareas. Escala a Pro cuando lo necesites.",
+          "Starter incluye capacidad estándar para arrancar sin fricción. Pro desbloquea modelos avanzados y amplía memoria y almacenamiento.",
       },
     },
   },

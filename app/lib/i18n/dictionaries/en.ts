@@ -17,7 +17,7 @@ const en = {
     catalog: {
       title: "AI Digital Employees — Ilaxus",
       description:
-        "Catalog of AI-based digital employees by department: sales, marketing, content, legal, finance, e-commerce and more. From $3 USD/mo.",
+        "Catalog of AI-based digital employees by department: sales, marketing, content, legal, finance, e-commerce, operations and more. From $3 USD/mo.",
       ogTitle: "AI Digital Employees — Ilaxus",
       ogDescription:
         "Hire specialized AI talent from $3 USD/mo. Sales, marketing, content and more agents operating 24/7. Prices in USD and COP.",
@@ -421,7 +421,7 @@ const en = {
         {
           n: "01",
           t: "Choose a department",
-          d: "Sales, marketing, content, legal, finance, e-commerce or self-setup. Select the roles you're missing.",
+          d: "Sales, marketing, content, legal, finance, e-commerce, operations or self-setup. Select the roles you're missing.",
         },
         {
           n: "02",
@@ -479,6 +479,11 @@ const en = {
         name: "E-commerce",
         description:
           "Employees specialized in building online stores, publishing products, managing orders and supporting buyers through the whole purchase.",
+      },
+      operaciones: {
+        name: "Operations",
+        description:
+          "Specialists in technical operations: spare parts identification, equipment maintenance and field support.",
       },
       autoservicio: {
         name: "Self-setup",
@@ -698,6 +703,40 @@ const en = {
           "Web + direct WhatsApp sales (multi-channel)",
           "Real-time sales, inventory and customer reports",
         ],
+      },
+      "referencista-ia": {
+        name: "Parts & Quoting Specialist IA",
+        tagline:
+          "From the workshop to the right spare part in seconds — with manual evidence, not guesswork.",
+        description:
+          "The parts specialist every workshop wishes it had, on WhatsApp. The technician sends a photo or a description of the part and the agent queries your company's manuals to identify the exact part number. It replies with the reference, the manual section and an image of the page as evidence; and when in doubt, it offers up to 3 options ranked by confidence. It also builds complete quotes — parts, travel and labor — with your ERP prices. Golden rule: it never invents a code. If it's not in the manual, it says so.",
+        idealFor:
+          "Workshops, parts distributors and industrial machinery companies that already hold their technical knowledge in PDF manuals and want their technicians to stop losing hours hunting for references.",
+        skills: [
+          "Photo identification",
+          "Technical manuals",
+          "WhatsApp",
+          "Image evidence",
+          "Quoting",
+          "Anti-hallucination",
+        ],
+        starterFeatures: [
+          "Up to 100 part identifications per month",
+          "Photo or description → exact reference + manual section",
+          "Manual page image as evidence",
+          "Up to 3 ranked options when in doubt",
+          "Complete quotes (parts + travel + labor)",
+        ],
+        proFeatures: [
+          "Unlimited identifications and quotes",
+          "Ingest manuals for all your equipment",
+          "ERP integration: real, up-to-date prices",
+          "XLSX quotes ready to send",
+          "Trained on your business jargon and codes",
+          "Priority support",
+        ],
+        disclaimer:
+          "Starter includes ingestion of up to 2 manuals and an initial price catalog. Real-time ERP integration is enabled on Pro.",
       },
       "agente-autoconfigurable": {
         name: "Self-Setup Agent",

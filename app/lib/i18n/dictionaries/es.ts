@@ -19,7 +19,7 @@ const es: typeof en = {
     catalog: {
       title: "Empleados Digitales IA — Ilaxus",
       description:
-        "Catálogo de empleados digitales basados en IA por categoría: ventas, marketing, contenido, legal, finanzas, e-commerce y más. Desde $3 USD/mes.",
+        "Catálogo de empleados digitales basados en IA por categoría: ventas, marketing, contenido, legal, finanzas, e-commerce, operaciones y más. Desde $3 USD/mes.",
       ogTitle: "Empleados Digitales IA — Ilaxus",
       ogDescription:
         "Contrata talento IA especializado desde $3 USD/mes. Agentes de ventas, marketing, contenido y más, operando 24/7. Precios en USD y COP.",
@@ -383,8 +383,7 @@ const es: typeof en = {
       hire: "Contratar",
       details: "Ver detalles",
       hireAria: "Contratar a {{name}} desde {{price}}/mes",
-    },
-    pricingNote: {
+    },    pricingNote: {
       starter: {
         title: "Plan Starter",
         from: "Desde ",
@@ -424,7 +423,7 @@ const es: typeof en = {
         {
           n: "01",
           t: "Elige el área",
-          d: "Ventas, marketing, contenido, legal, finanzas, e-commerce o autoservicio. Selecciona los roles que te faltan.",
+          d: "Ventas, marketing, contenido, legal, finanzas, e-commerce, operaciones o autoservicio. Selecciona los roles que te faltan.",
         },
         {
           n: "02",
@@ -482,6 +481,11 @@ const es: typeof en = {
         name: "E-commerce",
         description:
           "Empleados especializados en crear tiendas en línea, publicar productos, gestionar pedidos y acompañar al comprador durante toda la compra.",
+      },
+      operaciones: {
+        name: "Operaciones",
+        description:
+          "Empleados especializados en operaciones técnicas: identificación de repuestos, mantenimiento de equipos y soporte en campo.",
       },
       autoservicio: {
         name: "Autoservicio",
@@ -686,6 +690,40 @@ const es: typeof en = {
           "Ventas por web + WhatsApp directo (multi-canal)",
           "Reportes de ventas, inventario y clientes en tiempo real",
         ],
+      },
+      "referencista-ia": {
+        name: "Referencista Cotizador IA",
+        tagline:
+          "Del taller al repuesto correcto en segundos — con evidencia del manual, no con suposiciones.",
+        description:
+          "El referencista que todo taller quisiera, disponible por WhatsApp. El técnico manda una foto o una descripción de la pieza y el agente consulta los manuales de tu empresa para identificar el número de parte exacto. Responde con la referencia, la sección del manual y la imagen de la página como evidencia; y si hay duda, ofrece hasta 3 opciones ordenadas por confianza. También arma cotizaciones completas —partes, desplazamiento y mano de obra— con los precios de tu ERP. Regla de oro: nunca inventa un código. Si no está en el manual, lo dice.",
+        idealFor:
+          "Talleres, distribuidores de repuestos y empresas de maquinaria industrial que ya tienen el conocimiento técnico guardado en manuales PDF y quieren que sus técnicos dejen de perder horas buscando referencias.",
+        skills: [
+          "Identificación por foto",
+          "Manuales técnicos",
+          "WhatsApp",
+          "Evidencia con imagen",
+          "Cotizaciones",
+          "Anti-alucinación",
+        ],
+        starterFeatures: [
+          "Hasta 100 identificaciones de parte al mes",
+          "Foto o descripción → referencia exacta + sección del manual",
+          "Imagen de la página del manual como evidencia",
+          "Hasta 3 opciones ordenadas cuando hay duda",
+          "Cotizaciones completas (partes + desplazamiento + mano de obra)",
+        ],
+        proFeatures: [
+          "Identificaciones y cotizaciones ilimitadas",
+          "Ingesta de los manuales de todos tus equipos",
+          "Integración con tu ERP: precios reales y actualizados",
+          "Cotizaciones en XLSX listas para enviar",
+          "Entrenamiento en la jerga y códigos de tu negocio",
+          "Soporte prioritario",
+        ],
+        disclaimer:
+          "Starter incluye la ingesta de hasta 2 manuales y un catálogo de precios inicial. La integración de ERP en tiempo real se habilita en Pro.",
       },
       "agente-autoconfigurable": {
         name: "Agente Autoconfigurable",

@@ -9,6 +9,7 @@ import {
   ShoppingCart,
   SlidersHorizontal,
   Video,
+  Wrench,
   type IconComponent,
 } from "./components/icons";
 
@@ -121,6 +122,17 @@ export const categoriesMeta: CategoryMeta[] = [
         icon: ShoppingCart,
         starterPrice: 89900,
         proPrice: 189900,
+      },
+    ],
+  },
+  {
+    id: "operaciones",
+    employees: [
+      {
+        slug: "referencista-ia",
+        icon: Wrench,
+        starterPrice: 149900,
+        proPrice: 349900,
       },
     ],
   },

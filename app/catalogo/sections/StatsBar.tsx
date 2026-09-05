@@ -7,7 +7,7 @@ export function StatsBar({ dict }: { dict: Messages }) {
     { value: <Price cop={9900} />, label: labels[0] },
     { value: "24/7", label: labels[1] },
     { value: "60s", label: labels[2] },
-    { value: "7", label: labels[3] },
+    { value: "8", label: labels[3] },
   ];
 
   return (

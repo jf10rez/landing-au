@@ -32,12 +32,12 @@ export function Footer({
           <ScrollReveal>
             <Link href={`/${locale}`} className="inline-block" aria-label={t.ariaHome}>
               <Image
-                src="/logo-ilaxus-800.webp"
+                src="/logo-ilaxus.webp"
                 alt="Ilaxus"
-                width={800}
-                height={450}
-                sizes="100px"
-                className="h-14 w-auto"
+                width={3072}
+                height={2048}
+                sizes="(max-width: 768px) 84px, 105px"
+                className="h-14 w-auto md:h-[4.375rem]"
               />
               <span className="sr-only">Ilaxus</span>
             </Link>

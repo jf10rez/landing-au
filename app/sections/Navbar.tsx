@@ -61,16 +61,16 @@ export function Navbar({ locale, t, activeHref }: NavbarProps) {
       )}
     >
       <Container>
-        <div className="flex h-18 items-center justify-between gap-4">
+        <div className="flex h-20 items-center justify-between gap-4">
           <Link href={`/${locale}`} className="shrink-0">
             <Image
-              src="/logo-ilaxus-800.webp"
+              src="/logo-ilaxus.webp"
               alt="Ilaxus"
-              width={800}
-              height={450}
+              width={3072}
+              height={2048}
               priority
-              sizes="(max-width: 768px) 100px, 114px"
-              className="h-14 w-auto md:h-16"
+              sizes="(max-width: 768px) 96px, 108px"
+              className="h-15 w-auto md:h-17"
             />
             <span className="sr-only">Ilaxus</span>
           </Link>

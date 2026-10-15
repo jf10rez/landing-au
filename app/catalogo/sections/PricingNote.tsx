@@ -1,18 +1,11 @@
-import Link from "next/link";
 import { ArrowUpRight, Sparkles } from "../components/icons";
 import { Price } from "../components/currency";
 import { TRM_LABEL } from "../currency";
-import { localizedHref, format } from "@/app/lib/i18n/utils";
-import type { Locale } from "@/app/lib/i18n/config";
+import { format } from "@/app/lib/i18n/utils";
+import { whatsappUrl } from "@/app/lib/contact";
 import type { Messages } from "@/app/lib/i18n/dictionaries";
 
-export function PricingNote({
-  locale,
-  dict,
-}: {
-  locale: Locale;
-  dict: Messages;
-}) {
+export function PricingNote({ dict }: { dict: Messages }) {
   const t = dict.catalog.pricingNote;
   const customPlan = dict.catalog.custom;
   const perMonth = dict.catalog.perMonth;
@@ -57,12 +50,14 @@ export function PricingNote({
             <p className="mt-3 text-sm leading-relaxed text-white/60">
               {customPlan.description}
             </p>
-            <Link
-              href={localizedHref(locale, "/#pricing")}
+            <a
+              href={whatsappUrl(dict.contact.whatsappMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#ff003c] transition hover:brightness-110"
             >
               {t.bookCall} <ArrowUpRight className="h-4 w-4" />
-            </Link>
+            </a>
           </div>
         </div>
         <p className="mt-6 text-xs text-white/40">

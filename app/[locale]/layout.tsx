@@ -5,6 +5,9 @@ import { GeistMono } from "geist/font/mono";
 import { isLocale, locales } from "@/app/lib/i18n/config";
 import { getDictionary } from "@/app/lib/i18n/dictionaries";
 import { SITE_URL, languagesFor } from "@/app/lib/i18n/utils";
+import { Analytics } from "@/app/components/analytics/Analytics";
+import { GoogleTagManager } from "@/app/components/analytics/GoogleTagManager";
+import { WhatsAppFloat } from "@/app/components/ui/WhatsAppFloat";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -78,6 +81,9 @@ export default async function RootLayout({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
 
+  const dict = getDictionary(locale);
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID || "GTM-M8WXBNJJ";
+
   return (
     <html
       lang={locale}
@@ -87,7 +93,13 @@ export default async function RootLayout({
         className="min-h-full flex flex-col bg-bg-base text-text-primary"
         suppressHydrationWarning
       >
+        <GoogleTagManager id={gtmId} />
         {children}
+        <WhatsAppFloat
+          message={dict.contact.whatsappMessage}
+          ariaLabel={dict.contact.whatsappAria}
+        />
+        <Analytics />
       </body>
     </html>
   );

@@ -5,6 +5,7 @@ import { animate } from "animejs";
 import { useReducedMotion } from "@/app/hooks/useReducedMotion";
 import { Button } from "@/app/components/ui/Button";
 import { submitBooking } from "@/app/actions/booking";
+import { trackEvent } from "@/app/lib/analytics";
 import { cn } from "@/app/lib/utils";
 import { DURATIONS, EASINGS } from "@/app/lib/animations";
 import type { Locale } from "@/app/lib/i18n/config";
@@ -92,10 +93,12 @@ export function BookingForm({
   const reduced = useReducedMotion();
   const statusRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const startedRef = useRef(false);
 
   useEffect(() => {
-    if (state?.success && formRef.current) {
-      formRef.current.reset();
+    if (state?.success) {
+      trackEvent("generate_lead", { form: "diagnostic" });
+      formRef.current?.reset();
     }
   }, [state?.success]);
 
@@ -121,6 +124,12 @@ export function BookingForm({
       action={formAction}
       className={cn("space-y-5 text-left", className)}
       noValidate
+      onFocus={() => {
+        if (!startedRef.current) {
+          startedRef.current = true;
+          trackEvent("form_start", { form: "diagnostic" });
+        }
+      }}
     >
       <FormField
         id="name"

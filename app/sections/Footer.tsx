@@ -6,6 +6,12 @@ import { LanguageSwitcher } from "@/app/components/ui/LanguageSwitcher";
 import type { Locale } from "@/app/lib/i18n/config";
 import type { Messages } from "@/app/lib/i18n/dictionaries";
 import { format, localizedHref } from "@/app/lib/i18n/utils";
+import {
+  CONTACT,
+  EMAIL_HREF,
+  PHONE_HREF,
+  whatsappUrl,
+} from "@/app/lib/contact";
 
 export function Footer({
   locale,
@@ -60,15 +66,47 @@ export function Footer({
             <LanguageSwitcher locale={locale} />
             {t.social.map((s) => (
               <ScrollReveal key={s.label} delay={40}>
-                <Link
+                <a
                   href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-sm text-text-tertiary transition-colors duration-200 hover:text-text-secondary"
                 >
                   {s.label}
-                </Link>
+                </a>
               </ScrollReveal>
             ))}
           </div>
+        </div>
+
+        {/* Contacto directo */}
+        <div className="flex flex-col items-center gap-2 border-t border-border-default py-8 text-center sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-8 sm:gap-y-3">
+          <span className="font-mono text-xs uppercase tracking-wider text-text-tertiary">
+            {t.contactTitle}
+          </span>
+          <a
+            href={EMAIL_HREF}
+            aria-label={dict.contact.emailAria}
+            className="text-sm text-text-secondary transition-colors duration-200 hover:text-text-primary"
+          >
+            {CONTACT.email}
+          </a>
+          <a
+            href={PHONE_HREF}
+            aria-label={dict.contact.phoneAria}
+            className="text-sm text-text-secondary transition-colors duration-200 hover:text-text-primary"
+          >
+            {CONTACT.phoneDisplay}
+          </a>
+          <a
+            href={whatsappUrl(dict.contact.whatsappMessage)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={dict.contact.whatsappAria}
+            className="text-sm text-text-secondary transition-colors duration-200 hover:text-text-primary"
+          >
+            WhatsApp
+          </a>
         </div>
 
         <div className="flex flex-col items-center gap-2 border-t border-border-default py-8 text-center">

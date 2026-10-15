@@ -76,7 +76,7 @@ export default async function CatalogoPage({
       <StatsBar dict={dict} />
       <CategoryNav dict={dict} />
       <CatalogGrid locale={locale} dict={dict} />
-      <PricingNote locale={locale} dict={dict} />
+      <PricingNote dict={dict} />
       <HowItWorks dict={dict} />
       <CTA locale={locale} dict={dict} />
       <Footer locale={locale} dict={dict} />

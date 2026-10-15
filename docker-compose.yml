@@ -22,11 +22,15 @@ services:
       - NODE_ENV=production
       - NEXT_TELEMETRY_DISABLED=1
       - PORT=3000
-      # Futuras variables de entorno (descomentar cuando se necesiten):
-      # - GEMINI_API_KEY=${GEMINI_API_KEY}
-      # - DATABASE_URL=${DATABASE_URL}      # PostgreSQL externo (no corre en este VPS)
-      # - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
-      # - NEXTAUTH_URL=${NEXTAUTH_URL}
+      # Formulario de contacto (SMTP) — runtime; definir en el .env del servidor.
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASS=${SMTP_PASS}
+      - BOOKING_EMAIL_TO=${BOOKING_EMAIL_TO}
+      - BOOKING_EMAIL_FROM=${BOOKING_EMAIL_FROM}
+      # La analítica (NEXT_PUBLIC_GA_MEASUREMENT_ID / NEXT_PUBLIC_CF_ANALYTICS_TOKEN)
+      # es de BUILD: se pasa como build-arg en el GitHub Action, no aquí.
     
     # Healthcheck — verifica que la aplicación responde correctamente
     healthcheck:

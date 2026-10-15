@@ -1,3 +1,8 @@
+import { whatsappUrl } from "@/app/lib/contact";
+
+const WHATSAPP_MESSAGE: string =
+  "Hi, I'd like information about Ilaxus AI digital employees.";
+
 const en = {
   meta: {
     home: {
@@ -29,10 +34,11 @@ const en = {
       { href: "/catalogo", label: "Catalog" },
       { href: "/#como-funciona", label: "How it works" },
       { href: "/#casos", label: "Use cases" },
-      { href: "/#pricing", label: "Book" },
+      { href: whatsappUrl(WHATSAPP_MESSAGE), label: "Book" },
     ],
     cta: "Book a call",
     ctaShort: "Book",
+    ctaHref: whatsappUrl(WHATSAPP_MESSAGE),
   },
   hero: {
     title: "Process automation, no off-the-shelf templates.",
@@ -304,14 +310,21 @@ const en = {
       { label: "Contact", href: "/#pricing" },
     ],
     social: [
-      { label: "LinkedIn", href: "#" },
-      { label: "Twitter", href: "#" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/company/illaxus/" },
+      { label: "Instagram", href: "https://www.instagram.com/ilaxus.ai/" },
     ],
+    contactTitle: "Direct contact",
     rights: "© {{year}} Ilaxus. All rights reserved.",
     tagline: "Designed to run without friction.",
   },
   stickyCta: {
     label: "Request diagnostic",
+  },
+  contact: {
+    whatsappMessage: WHATSAPP_MESSAGE,
+    whatsappAria: "Message us on WhatsApp",
+    emailAria: "Send us an email",
+    phoneAria: "Call us",
   },
   jsonLd: {
     organizationDescription:

@@ -15,6 +15,7 @@ import {
 import { whatsappHref } from "@/app/catalogo/whatsapp";
 import { isLocale } from "@/app/lib/i18n/config";
 import { getDictionary } from "@/app/lib/i18n/dictionaries";
+import { whatsappUrl } from "@/app/lib/contact";
 import {
   SITE_URL,
   canonicalPath,
@@ -307,12 +308,14 @@ export default async function EmployeePage({
                   <FeatureItem key={feature}>{feature}</FeatureItem>
                 ))}
               </ul>
-              <Link
-                href={`/${locale}/#pricing`}
+              <a
+                href={whatsappUrl(dict.contact.whatsappMessage)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-8 inline-flex w-full items-center justify-center gap-1 rounded-full border border-white/15 px-4 py-2.5 text-sm font-semibold text-white/90 transition hover:bg-white/5"
               >
                 {t.bookCall}
-              </Link>
+              </a>
             </div>
           </div>
           <p className="mt-6 text-xs text-white/40">

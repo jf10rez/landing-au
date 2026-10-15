@@ -1,4 +1,8 @@
 import type en from "./en";
+import { whatsappUrl } from "@/app/lib/contact";
+
+const WHATSAPP_MESSAGE: string =
+  "Hola, quiero información sobre los empleados digitales de Ilaxus.";
 
 const es: typeof en = {
   meta: {
@@ -31,10 +35,11 @@ const es: typeof en = {
       { href: "/catalogo", label: "Catálogo" },
       { href: "/#como-funciona", label: "Cómo funciona" },
       { href: "/#casos", label: "Casos" },
-      { href: "/#pricing", label: "Agendar" },
+      { href: whatsappUrl(WHATSAPP_MESSAGE), label: "Agendar" },
     ],
     cta: "Agendar llamada",
     ctaShort: "Agendar",
+    ctaHref: whatsappUrl(WHATSAPP_MESSAGE),
   },
   hero: {
     title: "Automatización de procesos sin plantillas.",
@@ -307,14 +312,21 @@ const es: typeof en = {
       { label: "Contacto", href: "/#pricing" },
     ],
     social: [
-      { label: "LinkedIn", href: "#" },
-      { label: "Twitter", href: "#" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/company/illaxus/" },
+      { label: "Instagram", href: "https://www.instagram.com/ilaxus.ai/" },
     ],
+    contactTitle: "Contacto directo",
     rights: "© {{year}} Ilaxus. Todos los derechos reservados.",
     tagline: "Diseñado para operar sin fricción.",
   },
   stickyCta: {
     label: "Solicitar diagnóstico",
+  },
+  contact: {
+    whatsappMessage: WHATSAPP_MESSAGE,
+    whatsappAria: "Escríbenos por WhatsApp",
+    emailAria: "Envíanos un correo electrónico",
+    phoneAria: "Llámanos por teléfono",
   },
   jsonLd: {
     organizationDescription:

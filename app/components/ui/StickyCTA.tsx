@@ -70,7 +70,7 @@ export function StickyCTA({
     <div
       ref={ref}
       className={cn(
-        "fixed inset-x-4 bottom-4 z-50 translate-x-[120%] opacity-0 sm:inset-x-auto sm:right-6 md:bottom-8 md:right-8",
+        "fixed bottom-4 right-4 z-50 translate-x-[120%] opacity-0 sm:right-6 md:bottom-8 md:right-8",
         reduced && visible && "translate-x-0 opacity-100"
       )}
     >

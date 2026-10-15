@@ -9,6 +9,7 @@ import { cn } from "@/app/lib/utils";
 import type { Locale } from "@/app/lib/i18n/config";
 import type { Messages } from "@/app/lib/i18n/dictionaries";
 import { localizedHref } from "@/app/lib/i18n/utils";
+import { isExternalHref } from "@/app/lib/contact";
 
 interface NavbarProps {
   locale: Locale;
@@ -76,46 +77,72 @@ export function Navbar({ locale, t, activeHref }: NavbarProps) {
           </Link>
 
           <div className="hidden items-center gap-8 md:flex">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "text-sm text-text-secondary transition-colors duration-200 hover:text-text-primary",
-                  isActive(link.href) && "text-text-primary"
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {links.map((link) =>
+              isExternalHref(link.href) ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-text-secondary transition-colors duration-200 hover:text-text-primary"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "text-sm text-text-secondary transition-colors duration-200 hover:text-text-primary",
+                    isActive(link.href) && "text-text-primary"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </div>
 
           <div className="flex items-center gap-3">
-            <Link
-              href={localizedHref(locale, "/#pricing")}
+            <a
+              href={t.ctaHref}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-lg bg-accent px-3 text-xs font-medium text-white transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_16px_rgba(255,0,51,0.3)] sm:px-4"
             >
               <span className="hidden sm:inline">{t.cta}</span>
               <span className="sm:hidden">{t.ctaShort}</span>
-            </Link>
+            </a>
             <LanguageSwitcher locale={locale} />
           </div>
         </div>
 
         <div className="-mx-4 overflow-x-auto border-t border-border-default/60 px-4 pb-2 md:hidden">
           <div className="flex min-w-max items-center gap-2 pt-2">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "inline-flex min-h-10 items-center rounded-md px-3 text-xs text-text-secondary transition-colors duration-200 hover:bg-white/5 hover:text-text-primary",
-                  isActive(link.href) && "text-text-primary"
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {links.map((link) =>
+              isExternalHref(link.href) ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-10 items-center rounded-md px-3 text-xs text-text-secondary transition-colors duration-200 hover:bg-white/5 hover:text-text-primary"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "inline-flex min-h-10 items-center rounded-md px-3 text-xs text-text-secondary transition-colors duration-200 hover:bg-white/5 hover:text-text-primary",
+                    isActive(link.href) && "text-text-primary"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </div>
         </div>
       </Container>

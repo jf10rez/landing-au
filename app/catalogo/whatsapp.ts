@@ -1,8 +1,9 @@
 import type { Locale } from "@/app/lib/i18n/config";
 import { getDictionary } from "@/app/lib/i18n/dictionaries";
 import { format } from "@/app/lib/i18n/utils";
+import { CONTACT } from "@/app/lib/contact";
 
-const WHATSAPP_NUMBER = "573116626021";
+const WHATSAPP_NUMBER = CONTACT.whatsappNumber;
 
 export function whatsappHref(
   locale: Locale,

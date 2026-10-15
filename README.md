@@ -1,5 +1,16 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Configuración: contacto y analítica
+
+- **Canales de contacto**: fuente única en `app/lib/contact.ts` (email, teléfono, WhatsApp, LinkedIn, Instagram). Se usan en el footer, la navbar, el hero, el catálogo y el JSON-LD.
+- **Botón flotante de WhatsApp**: `app/components/ui/WhatsAppFloat.tsx`, visible en todo el sitio desde el layout.
+- **Formulario de contacto**: `app/actions/booking.ts` (server action con `nodemailer`). Requiere variables SMTP (ver `.env.example`); sin ellas el formulario no envía y lo registra en logs como `[booking] Missing SMTP`.
+- **Analítica**: Google Tag Manager (`app/components/analytics/GoogleTagManager.tsx`, contenedor `GTM-M8WXBNJJ`), más GA4 y Cloudflare Web Analytics opcionales en `app/components/analytics/Analytics.tsx`. Mide visitas, páginas y eventos de conversión (`contact_whatsapp`, `contact_email`, `contact_phone`, `form_start`, `generate_lead`).
+- **Variables de build de analítica**: `NEXT_PUBLIC_GTM_ID`, `NEXT_PUBLIC_GA_MEASUREMENT_ID` y `NEXT_PUBLIC_CF_ANALYTICS_TOKEN` (el sitio es estático, así que se incrustan al **compilar la imagen**, no en runtime). En producción se definen como *Variables* del repo y se pasan como `build-args` en `.github/workflows/docker-build.yml`.
+
+Copia `.env.example` a `.env` para desarrollo local.
+
+
 ## Getting Started
 
 First, run the development server:

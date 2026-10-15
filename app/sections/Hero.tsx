@@ -5,6 +5,7 @@ import { HeroParallax } from "@/app/components/animation/HeroParallax";
 import type { Locale } from "@/app/lib/i18n/config";
 import type { Messages } from "@/app/lib/i18n/dictionaries";
 import { localizedHref } from "@/app/lib/i18n/utils";
+import { whatsappUrl } from "@/app/lib/contact";
 
 export function Hero({
   locale,
@@ -49,7 +50,12 @@ export function Hero({
               className="flex flex-wrap items-center justify-center gap-3 sm:gap-4"
               style={{ willChange: "transform, opacity" }}
             >
-              <Button href={localizedHref(locale, "/#pricing")} size="lg">
+              <Button
+                href={whatsappUrl(dict.contact.whatsappMessage)}
+                target="_blank"
+                rel="noopener noreferrer"
+                size="lg"
+              >
                 {t.ctaPrimary}
               </Button>
               <Button href={localizedHref(locale, "/#como-funciona")} variant="secondary" size="lg">

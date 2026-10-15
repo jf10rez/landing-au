@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/app/lib/i18n/config";
 import { getDictionary, type Messages } from "@/app/lib/i18n/dictionaries";
 import { SITE_URL } from "@/app/lib/i18n/utils";
+import { CONTACT } from "@/app/lib/contact";
 import { getFaq } from "@/app/data/faq";
 import { Navbar } from "@/app/sections/Navbar";
 import { Hero } from "@/app/sections/Hero";
@@ -69,11 +70,9 @@ function buildJsonLd(
         url: SITE_URL,
         logo: `${SITE_URL}/logo-wide.png`,
         description: j.organizationDescription,
-        email: "contacto@ilaxus.com",
-        sameAs: [
-          "https://linkedin.com/company/ilaxus",
-          "https://twitter.com/ilaxus",
-        ],
+        email: CONTACT.email,
+        telephone: CONTACT.phoneE164,
+        sameAs: [CONTACT.linkedin, CONTACT.instagram],
       },
       {
         "@type": "WebSite",

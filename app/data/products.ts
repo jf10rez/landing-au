@@ -27,13 +27,6 @@ export function getProducts(locale: Locale, dict: Messages): Product[] {
     "Email Sequences",
     "CRM Sync",
   ];
-  const marketingTags = [
-    "Meta Ads",
-    "Google Ads",
-    "Content IA",
-    "Reporting",
-    "Social Posting",
-  ];
 
   return [
     ...agentProducts,
@@ -46,28 +39,6 @@ export function getProducts(locale: Locale, dict: Messages): Product[] {
       features: dict.products.comercial.features,
       tags: comercialTags,
       ctaLabel: dict.products.comercial.ctaLabel,
-      ctaHref: "#pricing",
-    },
-    {
-      id: "marketing",
-      category: "marketing",
-      categoryLabel: dict.productCategories.marketing,
-      title: dict.products.marketing.title,
-      description: dict.products.marketing.description,
-      features: dict.products.marketing.features,
-      tags: marketingTags,
-      ctaLabel: dict.products.marketing.ctaLabel,
-      ctaHref: "#pricing",
-    },
-    {
-      id: "openclaw",
-      category: "openclaw",
-      categoryLabel: dict.productCategories.openclaw,
-      title: dict.products.openclaw.title,
-      description: dict.products.openclaw.description,
-      features: dict.products.openclaw.features,
-      tags: ["OpenClaw", "AI Agent", "Telegram", "WhatsApp", "24/7", "One-Click"],
-      ctaLabel: dict.products.openclaw.ctaLabel,
       ctaHref: "#pricing",
     },
   ];

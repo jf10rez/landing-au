@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Sparkles } from "../components/icons";
 import { Price } from "../components/currency";
+import { minStarterPrice } from "../data";
 import { localizedHref } from "@/app/lib/i18n/utils";
 import type { Locale } from "@/app/lib/i18n/config";
 import type { Messages } from "@/app/lib/i18n/dictionaries";
@@ -29,7 +30,7 @@ export function CTA({
         <div className="relative max-w-2xl">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#ff003c]/40 bg-[#ff003c]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#ff003c]">
             <Sparkles className="h-3 w-3" /> {t.badge}
-            <Price cop={9900} />
+            <Price cop={minStarterPrice} />
             {perMonth}
           </div>
           <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
@@ -37,7 +38,7 @@ export function CTA({
           </h2>
           <p className="mt-4 text-white/60 md:text-lg">
             {t.descriptionStart}
-            <Price cop={9900} />
+            <Price cop={minStarterPrice} />
             {perMonth}
             {t.descriptionEnd}
           </p>
@@ -46,7 +47,7 @@ export function CTA({
               href={localizedHref(locale, "/#pricing")}
               className="inline-flex items-center gap-2 rounded-full bg-[#ff003c] px-6 py-3 text-sm font-semibold text-black transition hover:brightness-110"
             >
-              {t.start} <Price cop={9900} />{" "}
+              {t.start} <Price cop={minStarterPrice} />{" "}
               <ArrowUpRight className="h-4 w-4" />
             </Link>
             <a

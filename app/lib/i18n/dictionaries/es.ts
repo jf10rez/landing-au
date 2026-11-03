@@ -23,10 +23,10 @@ const es: typeof en = {
     catalog: {
       title: "Empleados Digitales IA — Ilaxus",
       description:
-        "Catálogo de empleados digitales basados en IA por categoría: ventas, marketing, contenido, legal, finanzas, e-commerce, operaciones y más. Desde $3 USD/mes.",
+        "Catálogo de empleados digitales basados en IA por categoría: ventas, contenido, legal, finanzas, e-commerce y operaciones. Desde $16 USD/mes.",
       ogTitle: "Empleados Digitales IA — Ilaxus",
       ogDescription:
-        "Contrata talento IA especializado desde $3 USD/mes. Agentes de ventas, marketing, contenido y más, operando 24/7. Precios en USD y COP.",
+        "Contrata talento IA especializado desde $16 USD/mes. Agentes de ventas, contenido, legal, finanzas y más, operando 24/7. Precios en USD y COP.",
     },
   },
   nav: {
@@ -53,12 +53,10 @@ const es: typeof en = {
   },
   productsSection: {
     eyebrow: "Productos",
-    title: "Tres formas de recuperar tu tiempo. Elige la tuya.",
+    title: "Formas de recuperar tu tiempo. Elige la tuya.",
   },
   productCategories: {
     comercial: "Automatización comercial",
-    marketing: "Marketing",
-    openclaw: "Agente de IA",
     empleadoIa: "Empleado IA",
     b2b: "Automatización B2B",
     agency: "Automatización para Agencias",
@@ -86,32 +84,7 @@ const es: typeof en = {
       ],
       ctaLabel: "Ver para equipos comerciales",
     },
-    marketing: {
-      title: "Reportes que se escriben solos. Contenido que se publica solo.",
-      description:
-        "Conecta Meta Ads, Google Ads y Analytics en un workflow. Dashboards multi-cliente que se actualizan sin que nadie exporte CSVs a las 11 de la noche.",
-      features: [
-        "Dashboards multi-cliente que se refrescan en automático",
-        "Contenido con IA que pasa de idea a publicación sin edición",
-        "Campañas que se optimizan mientras tu equipo duerme",
-        "Publicación cross-platform en un clic — sin loguearte en cada red",
-      ],
-      ctaLabel: "Ver para agencias",
-    },
-    openclaw: {
-      title: "Agente de IA personal 24/7",
-      description:
-        "Tu asistente de IA privado, siempre activo y desplegable en 60 segundos. Se conecta a Telegram y WhatsApp para automatizar tus tareas diarias sin mantenimiento.",
-      features: [
-        "Despliegue en 1 clic — sin configuración técnica",
-        "Integración con Telegram y WhatsApp",
-        "Créditos de IA preinstalados",
-        "Entorno privado y seguro por defecto",
-        "Cero mantenimiento — actualizaciones automáticas",
-        "Bandeja de entrada propia para tu agente",
-      ],
-      ctaLabel: "Ver plan OpenClaw",
-    },
+
   },
   howItWorks: {
     eyebrow: "Proceso",
@@ -341,12 +314,6 @@ const es: typeof en = {
         "Leads enriquecidos, pipeline automático, CRM sincronizado. Tu equipo deja de copiar datos y empieza a cerrar deals. Integración con HubSpot, Salesforce, LinkedIn.",
       offerDescription: "Proyecto a medida según diagnóstico",
     },
-    productMarketing: {
-      name: "Automatización para agencias de marketing",
-      description:
-        "Dashboards multi-cliente que se actualizan solos, contenido con IA de idea a publicación, optimización de campañas programada y cross-platform en un clic.",
-      offerDescription: "Proyecto a medida según diagnóstico",
-    },
     serviceDescription:
       "Workflows con n8n y agentes de IA que dan resultados en ventas, marketing y operaciones. Sin plantillas. Hecho a la medida de tu arquitectura.",
     areaServed: [
@@ -400,7 +367,7 @@ const es: typeof en = {
         title: "Plan Starter",
         from: "Desde ",
         description:
-          "Ideal para arrancar. El Asistente Personal es el punto de entrada más bajo del catálogo. Cero setup, cancela cuando quieras.",
+          "Ideal para arrancar. Es el punto de entrada más económico del catálogo. Cero setup, cancela cuando quieras.",
       },
       pro: {
         title: "Plan Pro",
@@ -435,12 +402,12 @@ const es: typeof en = {
         {
           n: "01",
           t: "Elige el área",
-          d: "Ventas, marketing, contenido, legal, finanzas, e-commerce, operaciones o autoservicio. Selecciona los roles que te faltan.",
+          d: "Ventas, contenido, legal, finanzas, e-commerce y operaciones. Selecciona los roles que te faltan.",
         },
         {
           n: "02",
           t: "Arranca con Starter",
-          d: "Desde $3/mes por empleado. Sin contratos, sin setup, activo en 60 segundos.",
+          d: "Desde $16/mes por empleado. Sin contratos, sin setup, activo en 60 segundos.",
         },
         {
           n: "03",
@@ -469,11 +436,6 @@ const es: typeof en = {
         description:
           "Empleados especializados en generar oportunidades de negocio, prospectar empresas, conseguir clientes y apoyar el proceso comercial.",
       },
-      marketing: {
-        name: "Marketing",
-        description:
-          "Empleados especializados en diseñar estrategias de marketing, campañas publicitarias, SEO, email marketing, automatización y crecimiento de marca.",
-      },
       contenido: {
         name: "Creación de Contenido",
         description:
@@ -498,11 +460,6 @@ const es: typeof en = {
         name: "Operaciones",
         description:
           "Empleados especializados en operaciones técnicas: identificación de repuestos, mantenimiento de equipos y soporte en campo.",
-      },
-      autoservicio: {
-        name: "Autoservicio",
-        description:
-          "Agentes que configuras tú mismo, sin código y sin depender de nadie. La forma más económica de empezar con IA.",
       },
     },
     employees: {
@@ -588,30 +545,6 @@ disclaimer:
           "Starter incluye capacidad estándar para arrancar y validar el flujo con tu equipo. Pro desbloquea la máxima velocidad y calidad de conversación.",
       },
 
-      "marketing-ia": {
-        name: "Marketing IA",
-        tagline:
-          "Diseña estrategias, lanza campañas y automatiza el crecimiento de tu marca.",
-        description:
-          "Tu equipo de marketing completo en un solo agente. Conecta Meta Ads, Google Ads y Analytics, genera el contenido de cada campaña, lo publica y entrega reportes que se escriben solos. Los dashboards se refrescan sin que nadie exporte CSVs a las 11 de la noche.",
-        idealFor:
-          "Agencias, equipos de growth y marcas que necesitan ejecutar marketing consistente sin quemar a su gente.",
-        skills: ["Estrategia", "SEO", "Email marketing", "Automatización"],
-        starterFeatures: [
-          "1 marca y hasta 3 canales",
-          "Calendario de contenido semanal",
-          "Reportes mensuales automáticos",
-          "Publicación cross-platform",
-        ],
-        proFeatures: [
-          "Marcas y canales ilimitados",
-          "Dashboards multi-cliente en tiempo real",
-          "Optimización automática de campañas",
-          "Contenido IA de idea a publicación",
-          "Reportes white-label para clientes",
-        ],
-        proBadge: "Mejor valor",
-      },
       "tiktok-autopilot-ia": {
         name: "TikTok Autopilot IA",
         tagline:
@@ -782,38 +715,7 @@ disclaimer:
         disclaimer:
           "Starter incluye la ingesta de hasta 2 manuales y un catálogo de precios inicial. La integración de ERP en tiempo real se habilita en Pro.",
       },
-      "agente-autoconfigurable": {
-        name: "Asistente Personal IA",
-        tagline:
-          "Tu asistente personal de IA: elige canales, herramientas y personalidad, y despliégalo en minutos. Desde capacidad estándar hasta modelos avanzados.",
-        description:
-          "La puerta de entrada a los agentes IA. Tú eliges el nombre, la personalidad, los canales (WhatsApp, Telegram, web) y las herramientas que puede usar — calendario, hojas de cálculo, búsqueda — y queda desplegado en minutos. Sin código, sin agencia, sin llamadas de ventas. Perfecto para aprender, probar ideas y automatizar tareas personales y del día a día.",
-        idealFor:
-          "Emprendedores, freelancers y curiosos que quieren su primer agente IA sin depender de nadie.",
-        skills: [
-          "Sin código",
-          "Canales a elección",
-          "Herramientas a elección",
-          "Plantillas listas",
-          "Despliegue propio",
-        ],
-        starterFeatures: [
-          "1 asistente, 1 canal",
-          "Hasta 200 tareas al mes",
-          "Modelos de capacidad estándar",
-          "Memoria y almacenamiento estándar",
-          "Plantillas preconfiguradas",
-        ],
-        proFeatures: [
-          "Asistentes y canales ilimitados",
-          "Modelos avanzados de razonamiento",
-          "Memoria y almacenamiento ampliados",
-          "Conexión con tus propias APIs",
-          "Soporte prioritario",
-        ],
-        disclaimer:
-          "Starter incluye capacidad estándar para arrancar sin fricción. Pro desbloquea modelos avanzados y amplía memoria y almacenamiento.",
-      },
+
     },
   },
   employeePage: {

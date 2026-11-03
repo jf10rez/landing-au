@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "../components/icons";
 import { Price } from "../components/currency";
+import { minStarterPrice } from "../data";
 import type { Messages } from "@/app/lib/i18n/dictionaries";
 
 export function Hero({ dict }: { dict: Messages }) {
@@ -18,7 +19,7 @@ export function Hero({ dict }: { dict: Messages }) {
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase text-white/70">
           <span className="h-1.5 w-1.5 rounded-full bg-[#ff003c]" />
           {t.badge}
-          <Price cop={9900} />
+          <Price cop={minStarterPrice} />
           {dict.catalog.perMonth}
         </div>
         <h1 className="max-w-4xl text-5xl font-bold leading-[0.95] tracking-tight md:text-7xl">
@@ -30,7 +31,7 @@ export function Hero({ dict }: { dict: Messages }) {
           {t.descriptionStart}
           <span className="text-white">
             {t.descriptionPlan}
-            <Price cop={9900} />
+            <Price cop={minStarterPrice} />
             {dict.catalog.perMonth}
           </span>
           {t.descriptionEnd}

@@ -119,22 +119,6 @@ function buildJsonLd(
         },
       },
       {
-        "@type": "Product",
-        name: j.productMarketing.name,
-        description: j.productMarketing.description,
-        category: "Marketing Automation",
-        brand: { "@type": "Brand", name: "Ilaxus" },
-        offers: {
-          "@type": "Offer",
-          priceSpecification: {
-            "@type": "PriceSpecification",
-            priceCurrency: "USD",
-            description: j.productMarketing.offerDescription,
-          },
-          availability: "https://schema.org/InStock",
-        },
-      },
-      {
         "@type": "Service",
         name: j.websiteName,
         description: j.serviceDescription,

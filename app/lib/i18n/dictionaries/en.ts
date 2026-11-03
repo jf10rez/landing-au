@@ -52,12 +52,10 @@ const en = {
   },
   productsSection: {
     eyebrow: "Products",
-    title: "Three ways to get your time back. Pick yours.",
+    title: "Ways to get your time back. Pick yours.",
   },
   productCategories: {
     comercial: "Sales Automation",
-    marketing: "Marketing Automation",
-    openclaw: "AI Agent",
     empleadoIa: "AI Employee",
     b2b: "B2B Automation",
     agency: "Agency Automation",
@@ -85,32 +83,7 @@ const en = {
       ],
       ctaLabel: "See sales automation",
     },
-    marketing: {
-      title: "Reports that write themselves. Content that publishes on its own.",
-      description:
-        "Connect Meta Ads, Google Ads and Analytics in one workflow. Multi-client dashboards that refresh without anyone exporting CSVs at 11 PM.",
-      features: [
-        "Multi-client dashboards that refresh automatically",
-        "AI content that goes from idea to published without editing",
-        "Campaigns that optimize while your team sleeps",
-        "One-click cross-platform publishing — no logging into every network",
-      ],
-      ctaLabel: "See agency automation",
-    },
-    openclaw: {
-      title: "Your personal 24/7 AI agent",
-      description:
-        "Your private AI assistant, always on and deployable in 60 seconds. It connects to Telegram and WhatsApp to automate your daily tasks with zero maintenance.",
-      features: [
-        "One-click deploy — no technical setup",
-        "Telegram and WhatsApp integration",
-        "Preinstalled AI credits",
-        "Private and secure environment by default",
-        "Zero maintenance — automatic updates",
-        "A dedicated inbox for your agent",
-      ],
-      ctaLabel: "See the OpenClaw plan",
-    },
+
   },
   howItWorks: {
     eyebrow: "Process",
@@ -337,12 +310,6 @@ const en = {
       name: "AI sales automation for sales teams",
       description:
         "Enriched leads, automatic pipeline, synced CRM. Your team stops copying data and starts closing deals. HubSpot, Salesforce, LinkedIn integration.",
-      offerDescription: "Custom project based on diagnostic",
-    },
-    productMarketing: {
-      name: "Automation for marketing agencies",
-      description:
-        "Multi-client dashboards that update on their own, AI content from idea to publication, scheduled campaign optimization and cross-platform publishing in one click.",
       offerDescription: "Custom project based on diagnostic",
     },
     serviceDescription:

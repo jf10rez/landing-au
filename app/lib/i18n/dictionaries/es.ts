@@ -53,12 +53,10 @@ const es: typeof en = {
   },
   productsSection: {
     eyebrow: "Productos",
-    title: "Tres formas de recuperar tu tiempo. Elige la tuya.",
+    title: "Formas de recuperar tu tiempo. Elige la tuya.",
   },
   productCategories: {
     comercial: "Automatización comercial",
-    marketing: "Marketing",
-    openclaw: "Agente de IA",
     empleadoIa: "Empleado IA",
     b2b: "Automatización B2B",
     agency: "Automatización para Agencias",
@@ -86,32 +84,7 @@ const es: typeof en = {
       ],
       ctaLabel: "Ver para equipos comerciales",
     },
-    marketing: {
-      title: "Reportes que se escriben solos. Contenido que se publica solo.",
-      description:
-        "Conecta Meta Ads, Google Ads y Analytics en un workflow. Dashboards multi-cliente que se actualizan sin que nadie exporte CSVs a las 11 de la noche.",
-      features: [
-        "Dashboards multi-cliente que se refrescan en automático",
-        "Contenido con IA que pasa de idea a publicación sin edición",
-        "Campañas que se optimizan mientras tu equipo duerme",
-        "Publicación cross-platform en un clic — sin loguearte en cada red",
-      ],
-      ctaLabel: "Ver para agencias",
-    },
-    openclaw: {
-      title: "Agente de IA personal 24/7",
-      description:
-        "Tu asistente de IA privado, siempre activo y desplegable en 60 segundos. Se conecta a Telegram y WhatsApp para automatizar tus tareas diarias sin mantenimiento.",
-      features: [
-        "Despliegue en 1 clic — sin configuración técnica",
-        "Integración con Telegram y WhatsApp",
-        "Créditos de IA preinstalados",
-        "Entorno privado y seguro por defecto",
-        "Cero mantenimiento — actualizaciones automáticas",
-        "Bandeja de entrada propia para tu agente",
-      ],
-      ctaLabel: "Ver plan OpenClaw",
-    },
+
   },
   howItWorks: {
     eyebrow: "Proceso",
@@ -339,12 +312,6 @@ const es: typeof en = {
       name: "Automatización comercial con IA para equipos de ventas",
       description:
         "Leads enriquecidos, pipeline automático, CRM sincronizado. Tu equipo deja de copiar datos y empieza a cerrar deals. Integración con HubSpot, Salesforce, LinkedIn.",
-      offerDescription: "Proyecto a medida según diagnóstico",
-    },
-    productMarketing: {
-      name: "Automatización para agencias de marketing",
-      description:
-        "Dashboards multi-cliente que se actualizan solos, contenido con IA de idea a publicación, optimización de campañas programada y cross-platform en un clic.",
       offerDescription: "Proyecto a medida según diagnóstico",
     },
     serviceDescription:

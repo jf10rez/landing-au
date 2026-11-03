@@ -1,7 +1,6 @@
 import { StackItem } from "@/app/types";
 import {
   N8nIcon,
-  OpenClawIcon,
   MakeIcon,
   ZapierIcon,
   HubSpotIcon,
@@ -17,7 +16,6 @@ import {
 
 export const stack: StackItem[] = [
   { id: "n8n", name: "n8n", category: "Orchestration", icon: N8nIcon },
-  { id: "openclaw", name: "OpenClaw", category: "AI Agent", icon: OpenClawIcon },
   { id: "make", name: "Make", category: "Automation", icon: MakeIcon },
   { id: "zapier", name: "Zapier", category: "Automation", icon: ZapierIcon },
   { id: "hubspot", name: "HubSpot", category: "CRM", icon: HubSpotIcon },

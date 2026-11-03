@@ -1,6 +1,7 @@
 import { ArrowUpRight, Sparkles } from "../components/icons";
 import { Price } from "../components/currency";
 import { TRM_LABEL } from "../currency";
+import { minProPrice, minStarterPrice } from "../data";
 import { format } from "@/app/lib/i18n/utils";
 import { whatsappUrl } from "@/app/lib/contact";
 import type { Messages } from "@/app/lib/i18n/dictionaries";
@@ -20,7 +21,7 @@ export function PricingNote({ dict }: { dict: Messages }) {
             </div>
             <div className="mt-3 text-4xl font-bold tracking-tight">
               {t.starter.from}
-              <Price cop={9900} />
+              <Price cop={minStarterPrice} />
               {perMonth}
             </div>
             <p className="mt-3 text-sm leading-relaxed text-white/70">
@@ -33,7 +34,7 @@ export function PricingNote({ dict }: { dict: Messages }) {
             </div>
             <div className="mt-3 text-4xl font-bold tracking-tight">
               {t.pro.from}
-              <Price cop={49900} />
+              <Price cop={minProPrice} />
               {perMonth}
             </div>
             <p className="mt-3 text-sm leading-relaxed text-white/60">

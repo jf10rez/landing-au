@@ -1,13 +1,15 @@
 import { Price } from "../components/currency";
+import { getCategories, minStarterPrice } from "../data";
 import type { Messages } from "@/app/lib/i18n/dictionaries";
 
 export function StatsBar({ dict }: { dict: Messages }) {
   const labels = dict.catalog.stats.labels;
+  const areaCount = getCategories(dict).length;
   const stats = [
-    { value: <Price cop={9900} />, label: labels[0] },
+    { value: <Price cop={minStarterPrice} />, label: labels[0] },
     { value: "24/7", label: labels[1] },
     { value: "60s", label: labels[2] },
-    { value: "8", label: labels[3] },
+    { value: String(areaCount), label: labels[3] },
   ];
 
   return (

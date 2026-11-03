@@ -22,10 +22,10 @@ const en = {
     catalog: {
       title: "AI Digital Employees — Ilaxus",
       description:
-        "Catalog of AI-based digital employees by department: sales, marketing, content, legal, finance, e-commerce, operations and more. From $3 USD/mo.",
+        "Catalog of AI-based digital employees by department: sales, content, legal, finance, e-commerce and operations. From $16 USD/mo.",
       ogTitle: "AI Digital Employees — Ilaxus",
       ogDescription:
-        "Hire specialized AI talent from $3 USD/mo. Sales, marketing, content and more agents operating 24/7. Prices in USD and COP.",
+        "Hire specialized AI talent from $16 USD/mo. Sales, content, legal, finance and more agents operating 24/7. Prices in USD and COP.",
     },
   },
   nav: {
@@ -399,7 +399,7 @@ const en = {
         title: "Starter Plan",
         from: "From ",
         description:
-          "Ideal to get started. The Personal Assistant is the lowest entry point in the catalog. Zero setup, cancel whenever you want.",
+          "Ideal to get started. It is the lowest entry point in the catalog. Zero setup, cancel whenever you want.",
       },
       pro: {
         title: "Pro Plan",
@@ -434,12 +434,12 @@ const en = {
         {
           n: "01",
           t: "Choose a department",
-          d: "Sales, marketing, content, legal, finance, e-commerce, operations or self-setup. Select the roles you're missing.",
+          d: "Sales, content, legal, finance, e-commerce and operations. Select the roles you're missing.",
         },
         {
           n: "02",
           t: "Start with Starter",
-          d: "From $3/mo per employee. No contracts, no setup, live in 60 seconds.",
+          d: "From $16/mo per employee. No contracts, no setup, live in 60 seconds.",
         },
         {
           n: "03",
@@ -468,11 +468,6 @@ const en = {
         description:
           "Employees specialized in generating business opportunities, prospecting companies, winning clients and supporting the sales process.",
       },
-      marketing: {
-        name: "Marketing",
-        description:
-          "Employees specialized in designing marketing strategies, ad campaigns, SEO, email marketing, automation and brand growth.",
-      },
       contenido: {
         name: "Content Creation",
         description:
@@ -497,11 +492,6 @@ const en = {
         name: "Operations",
         description:
           "Specialists in technical operations: spare parts identification, equipment maintenance and field support.",
-      },
-      autoservicio: {
-        name: "Self-setup",
-        description:
-          "Agents you configure yourself, no code and no dependence on anyone. The cheapest way to start with AI.",
       },
     },
     employees: {
@@ -585,30 +575,6 @@ const en = {
         ],
         disclaimer:
           "Starter includes standard capacity to get going and validate the flow with your team. Pro unlocks maximum speed and conversation quality.",
-      },
-      "marketing-ia": {
-        name: "Marketing IA",
-        tagline:
-          "Designs strategies, launches campaigns and automates your brand growth.",
-        description:
-          "Your entire marketing team in a single agent. It connects Meta Ads, Google Ads and Analytics, generates the content for each campaign, publishes it and delivers reports that write themselves. Dashboards refresh without anyone exporting CSVs at 11 PM.",
-        idealFor:
-          "Agencies, growth teams and brands that need consistent marketing execution without burning out their people.",
-        skills: ["Strategy", "SEO", "Email marketing", "Automation"],
-        starterFeatures: [
-          "1 brand and up to 3 channels",
-          "Weekly content calendar",
-          "Automatic monthly reports",
-          "Cross-platform publishing",
-        ],
-        proFeatures: [
-          "Unlimited brands and channels",
-          "Real-time multi-client dashboards",
-          "Automatic campaign optimization",
-          "AI content from idea to publication",
-          "White-label client reports",
-        ],
-        proBadge: "Best value",
       },
       "tiktok-autopilot-ia": {
         name: "TikTok Autopilot IA",
@@ -780,38 +746,7 @@ const en = {
         disclaimer:
           "Starter includes ingestion of up to 2 manuals and an initial price catalog. Real-time ERP integration is enabled on Pro.",
       },
-      "agente-autoconfigurable": {
-        name: "Personal Assistant IA",
-        tagline:
-          "Your personal AI assistant: choose channels, tools and personality, and deploy it in minutes. From standard capacity to advanced models.",
-        description:
-          "The gateway to AI agents. You choose the name, personality, channels (WhatsApp, Telegram, web) and the tools it can use — calendar, spreadsheets, search — and it is deployed in minutes. No code, no agency, no sales calls. Perfect for learning, testing ideas and automating personal and day-to-day tasks.",
-        idealFor:
-          "Entrepreneurs, freelancers and curious minds who want their first AI agent without depending on anyone.",
-        skills: [
-          "No code",
-          "Channels of your choice",
-          "Tools of your choice",
-          "Ready templates",
-          "Self-deployment",
-        ],
-        starterFeatures: [
-          "1 assistant, 1 channel",
-          "Up to 200 tasks per month",
-          "Standard-capacity models",
-          "Standard memory and storage",
-          "Preconfigured templates",
-        ],
-        proFeatures: [
-          "Unlimited assistants and channels",
-          "Advanced reasoning models",
-          "Expanded memory and storage",
-          "Connection to your own APIs",
-          "Priority support",
-        ],
-        disclaimer:
-          "Starter includes standard capacity to start without friction. Pro unlocks advanced models and expands memory and storage.",
-      },
+
     },
   },
   employeePage: {

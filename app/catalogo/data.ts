@@ -1,13 +1,12 @@
 import { cache } from "react";
 import type { Messages } from "@/app/lib/i18n/dictionaries";
+import { COP_PER_USD } from "./currency";
 import {
   Briefcase,
   Calculator,
   Headphones,
-  Megaphone,
   PenLine,
   ShoppingCart,
-  SlidersHorizontal,
   Video,
   Wrench,
   type IconComponent,
@@ -58,8 +57,8 @@ export const categoriesMeta: CategoryMeta[] = [
       {
         slug: "b2b-ia",
         icon: Briefcase,
-        starterPrice: 199900,
-        proPrice: 499900,
+        starterPrice: Math.round(164 * COP_PER_USD),
+        proPrice: Math.round(220 * COP_PER_USD),
         featured: true,
       },
       {
@@ -67,17 +66,6 @@ export const categoriesMeta: CategoryMeta[] = [
         icon: Headphones,
         starterPrice: 99900,
         proPrice: 169900,
-      },
-    ],
-  },
-  {
-    id: "marketing",
-    employees: [
-      {
-        slug: "marketing-ia",
-        icon: Megaphone,
-        starterPrice: 199900,
-        proPrice: 349900,
       },
     ],
   },
@@ -137,19 +125,19 @@ export const categoriesMeta: CategoryMeta[] = [
       },
     ],
   },
-  {
-    id: "autoservicio",
-    employees: [
-      {
-        slug: "agente-autoconfigurable",
-        icon: SlidersHorizontal,
-        starterPrice: 9900,
-        proPrice: 49900,
-        featured: true,
-      },
-    ],
-  },
 ];
+
+export const minStarterPrice = Math.min(
+  ...categoriesMeta.flatMap((category) =>
+    category.employees.map((employee) => employee.starterPrice),
+  ),
+);
+
+export const minProPrice = Math.min(
+  ...categoriesMeta.flatMap((category) =>
+    category.employees.map((employee) => employee.proPrice),
+  ),
+);
 
 export const allEmployeeSlugs: string[] = categoriesMeta.flatMap((category) =>
   category.employees.map((employee) => employee.slug),
